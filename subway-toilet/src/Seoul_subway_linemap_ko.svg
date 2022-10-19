@@ -142,12 +142,11 @@
 		.st51{font-size:28px;}
 		.st52{font-size:80px;}
 		.st53{font-family:'Noto Sans CJK KR Regular';}
-		text{
-			transition: all 0.5s linear;
-		}
+		
 		text:hover{
 			cursor:pointer;
-			font-size: 25px;
+			font-size: 23px;
+			transition: all 0.5s linear;
 		}
 		
 	</style>
@@ -1788,7 +1787,7 @@
 					<text transform="matrix(1 0 0 1 3308.1523 2447.5)" class="T st53 st49">을지로4가</text>
 				</g>
 				<g class="T">
-					<text transform="matrix(1 0 0 1 3375.5 2374)" class="T"><tspan x="0" y="0" class="T st53 st49">동대문역사</tspan><tspan x="9.2" y="24" class="T st53 st49">문화공원</tspan></text>
+					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3425 2400)" class="T st53 st49">동대문역사문화공원</text>
 				</g>
 				<g class="T">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3512.0393 2399.7036)" class="T st53 st49">신당</text>
