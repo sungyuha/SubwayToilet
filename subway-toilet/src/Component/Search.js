@@ -4,7 +4,7 @@ function Search() {
     return(
         <div>
             <input type="text" placeholder="역명을 검색하세요." />
-            <button type="button">검섹</button>
+            <button type="button">검색</button>
         </div>
     )
 }
