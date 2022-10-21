@@ -1,0 +1,56 @@
+@import "./../styles/variables.scss";
+
+.footer__content {
+  background: $dark;
+  width: 100%;
+  height: $headerHeight + 130px;
+  color: gray;
+  padding: 1.5rem 7rem;
+
+  @include breakpoint(md) {
+    height: $headerHeight + 110px;
+  }
+
+  &__logo {
+    color: #eee;
+
+    h2 {
+      display: flex;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 0 0 10px;
+    }
+  }
+
+  &__team {
+    color: #bbb;
+    font-size: 14px;
+    width: 100%;
+    font-style: normal;
+  }
+
+  &__site {
+    ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+    li {
+      img {
+        width: 30px;
+        height: 30px;
+        border: 2px solid white;
+        border-radius: 20%;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &__copyright {
+    color: #bbb;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+}
