@@ -1,4 +1,4 @@
-import Layout from "./components/Layout";
+import Layout from "./Components/Layout";
 import { Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import PageNotice from "./pages/PageNotice";

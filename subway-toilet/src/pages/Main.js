@@ -1,6 +1,6 @@
 import React from "react";
-import MainNotice from "../components/MainNotice";
-import MainSuggest from "../components/MainSuggest";
+import MainNotice from "../Components/MainNotice";
+import MainSuggest from "../Components/MainSuggest";
 
 const Main = () => {
   return (
