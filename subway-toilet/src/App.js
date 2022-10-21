@@ -1,5 +1,6 @@
 import SubwayLineMap from "./SubwayLineMap";
 import Search from "./Component/Search";
+import SubwayData from "./Subway-map.json";
 
 function App() {
 
@@ -7,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <Search />
+      <Search data={SubwayData}/>
       <SubwayLineMap/>
     </div>
   );
