@@ -9,11 +9,13 @@ import SubwayLine from "../SubwayLineMap";
 const Main = () => {
   return (
     <>
-      <div className={styles.main__content}>
+      <div>
         <Search data={SubwayData} />
         <SubwayLine />
-        <MainNotice />
-        <MainSuggest />
+        <div className={styles.main__content}>
+          <MainNotice />
+          <MainSuggest />
+        </div>
       </div>
     </>
   );

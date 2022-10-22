@@ -1,8 +1,8 @@
 @import "./../styles/variables.scss";
 
 .container {
-  height: calc(100vh + #{$headerHeight});
-  padding-top: 4rem;
+  height: calc(180vh + #{$headerHeight});
+  padding-top: 0.5rem;
   display: flex;
   justify-content: center;
 }
