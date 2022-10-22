@@ -1,7 +1,23 @@
+@import "./../styles/variables.scss";
+
 .mainNotice__content {
-  width: 400px;
-  //   border: 1px solid red;
-  padding: 1rem 1rem;
+  width: 22rem;
+  padding: 1rem 0;
+
+  @include breakpoint(md) {
+    width: 33rem;
+    padding: 1rem 6rem;
+  }
+
+  @include breakpoint(sm) {
+    width: 22rem;
+    padding: 1rem 3rem;
+  }
+
+  @include breakpoint(bg) {
+    width: 20rem;
+    padding: 1rem 3rem;
+  }
 
   &__top {
     display: flex;
@@ -30,6 +46,21 @@
         border-bottom: 2px solid gray;
         margin-bottom: 1.5rem;
         padding: 0 0.2rem;
+
+        p:first-child {
+          width: 15rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        p:last-child {
+          display: none;
+
+          @include breakpoint(md) {
+            display: block;
+          }
+        }
       }
     }
   }
