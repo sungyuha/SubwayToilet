@@ -1,6 +1,6 @@
 
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="current"
-	 height="current" viewBox="0 0 5724 6515.6" style="enable-background:new 0 0 5724 6515.6;" xml:space="preserve">
+	 height="current" viewBox="0 0 5724 6515.6" style="enable-background:new 0 0 5724 6515.6; position: relative; top: 0; left:0;" xml:space="preserve" id='line2'>
 	<style type="text/css">
 		.st0{fill:#3681B7;}
 		.st1{fill:#FFFFFF;}
@@ -355,6 +355,7 @@
 		<rect x="3672" y="6192" class="LBGR" width="1080" height="216"/>
 	</g> -->
 	<!-- 모든역마다 있는  -->
+
 	<g id="stn-through">
 		<!-- <g id="동탄인덕원_1_" class="st25">
 			<g class="st26">
@@ -3747,4 +3748,5 @@
 			</g> -->
 		</g>
 	</g>
+	
 </svg>
