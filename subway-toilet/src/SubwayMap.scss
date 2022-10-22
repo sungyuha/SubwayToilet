@@ -1,0 +1,23 @@
+.SubwayMap{
+    width: 1000px;
+    height: 700px;
+    overflow: scroll;
+    border: 2px black solid;
+    position: relative;
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -ms-overflow-style: none;
+}
+.SubwayMap::-webkit-scrollbar{
+    display:none;
+}
+
+
+
+// .scrollLock{
+//     overflow: hidden;
+//     height: 100%;
+// }
