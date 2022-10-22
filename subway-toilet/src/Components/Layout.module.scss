@@ -3,11 +3,6 @@
 .container {
   height: calc(100vh + #{$headerHeight});
   padding-top: 4rem;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-
-  h1 {
-    padding: 1.5rem 2.5rem;
-  }
+  display: flex;
+  justify-content: center;
 }
