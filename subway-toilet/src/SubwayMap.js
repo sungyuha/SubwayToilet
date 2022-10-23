@@ -45,6 +45,13 @@ const SubwayLineMap = () => {
       arr[i].addEventListener('click', function(){
         console.log(this.textContent);
       });
+      
+      arr[i].addEventListener('mouseenter', function(){
+        this.firstChild.classList.add('selectedText');
+      });
+      arr[i].addEventListener('mouseleave', function(){
+        this.firstChild.classList.remove('selectedText');
+      });
     }
     const zoomElementWrap = ref.current;
     const zoomElement = zoomElementWrap.firstChild; //svg객체
@@ -67,7 +74,7 @@ const SubwayLineMap = () => {
     const AbsoluteOriginTop = parseFloat(zoomElement.style.top);
     let oldScale = 1;
     let newScale = 1;
-    const ZOOM_SPEED = 0.1;
+    const ZOOM_SPEED = 0.2;
     zoomElementWrap.addEventListener("wheel", function(e){
       e.preventDefault();
       if(!isDragging){
@@ -81,10 +88,10 @@ const SubwayLineMap = () => {
             zoomElement.style.top = AbsoluteOriginTop + 'px';
           } 
         }else{//확대
-          if(oldScale < 10){
+          if(oldScale < 20){
             newScale = oldScale + ZOOM_SPEED;
           }else{
-            newScale = 10;
+            newScale = 20;
           }
           
         }
