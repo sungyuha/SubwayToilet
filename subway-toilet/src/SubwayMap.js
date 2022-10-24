@@ -1,10 +1,15 @@
 import './SubwayMap.scss';
 import {ReactComponent as SubwayLine2} from './Seoul_subway_linemap_ko.svg';
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
+import SubwayTooltip from './Components/SubwayTooltip';
 
 const SubwayLineMap = () => {
 
   const ref = useRef(); // svg감싸는 div
+  const [isTooltipOpen, SetIsTooltipOpen] = useState(false);
+  const [tooltipX, SetTooltipX] = useState(null);
+  const [tooltipY, SetTooltipY] = useState(null);
+  const [tooltipTitle, SetTooltipTitle] = useState(null);
 
   function zoomInOut( viewEl, contentEl, oldScale, newScale, mx, my ){
 
@@ -40,10 +45,18 @@ const SubwayLineMap = () => {
     const arr = document.getElementById('line2_text').children;
     
     let isDragging = false;
-
+    document.addEventListener("click", (e)=>{
+      if(e.target.localName !== 'text'){
+        SetIsTooltipOpen(false);
+      }
+    });
     for(let i = 0; i < arr.length; i++){
-      arr[i].addEventListener('click', function(){
-        console.log(this.textContent);
+      arr[i].addEventListener('click', function(e){
+        console.dir(this.firstChild);
+        SetIsTooltipOpen(true);
+        SetTooltipX(e.offsetX);
+        SetTooltipY(e.offsetY);
+        SetTooltipTitle(this.firstChild.textContent);
       });
       
       arr[i].addEventListener('mouseenter', function(){
@@ -77,6 +90,7 @@ const SubwayLineMap = () => {
     const ZOOM_SPEED = 0.2;
     zoomElementWrap.addEventListener("wheel", function(e){
       e.preventDefault();
+      SetIsTooltipOpen(false);
       if(!isDragging){
           // console.dir(e);
         if( e.deltaY > 0 ){//축소
@@ -152,8 +166,9 @@ const SubwayLineMap = () => {
   }, []);
   
   return(
-
+      
       <div className='SubwayMap' id='SubwayMap' ref={ref}>
+          {isTooltipOpen && <SubwayTooltip X={tooltipX} Y={tooltipY} title={tooltipTitle}/>}
           <SubwayLine2 width='100%' height='100%'/>
       </div>
      
