@@ -1,8 +1,18 @@
-.SubwayMap{
-    width: 1000px;
-    height: 700px;
-    overflow: scroll;
+.SubwayMap-wrap{
+    
+    margin-top: 105px;
+    width: 100%;
+    height: 600px;
     border: 2px black solid;
+    display: flex;
+}
+
+.SubwayMap{
+    border: 2px green solid;
+    width: 700px;
+    height: 500px;
+    overflow: scroll;
+    
     position: relative;
     -ms-user-select: none; 
     -moz-user-select: -moz-none;
@@ -21,10 +31,10 @@
 }
 
 
-// .scrollLock{
-//     overflow: hidden;
-//     height: 100%;
-// }
+.scrollLock{
+    overflow: hidden;
+    height: 100%;
+}
 
 
 // .tooltip-wrap{
@@ -46,6 +56,8 @@
 	border-radius: .4em;
     width: 180px;
     height: 100px;
+    left: 0px;
+    top: 0px;
     z-index: 5;
     color: white;
     text-align: center;
