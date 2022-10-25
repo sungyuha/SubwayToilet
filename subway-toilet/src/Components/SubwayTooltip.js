@@ -1,4 +1,4 @@
-import '../SubwayMap.scss';
+import './SubwayMap.scss';
 import {useRef, useEffect} from 'react';
 import line2icon from "../images/Line_2.png";
 
@@ -10,8 +10,8 @@ const SubwayTooltip = (props) => {
 
     useEffect(()=>{
         const Tooltip = ref.current;
-        Tooltip.style.left = props.X - parseFloat(Tooltip.clientWidth)/2 + 'px';
-        Tooltip.style.top = props.Y - parseFloat(Tooltip.clientHeight) - 30 + 'px';
+        Tooltip.style.left = props.X - Tooltip.clientWidth/2 + 'px';
+        Tooltip.style.top = props.Y- Tooltip.clientHeight - 16 + 'px';
     });
 
     return(

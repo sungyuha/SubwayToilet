@@ -1,7 +1,9 @@
 import './SubwayMap.scss';
 import {ReactComponent as SubwayLine2} from './Seoul_subway_linemap_ko.svg';
 import {useEffect, useRef, useState} from 'react';
-import SubwayTooltip from './Components/SubwayTooltip';
+import SubwayTooltip from './SubwayTooltip';
+import Search from "./Search";
+import SubwayData from "./Subway-map.json";
 
 const SubwayLineMap = () => {
 
@@ -43,20 +45,20 @@ const SubwayLineMap = () => {
   //드래그 했을 때 위치 바꿔 주는 것
   useEffect(()=>{
     const arr = document.getElementById('line2_text').children;
-    
+    const zoomElementWrap = ref.current;
+    const zoomElement = zoomElementWrap.firstChild; //svg객체
     let isDragging = false;
-    document.addEventListener("click", (e)=>{
+    document.addEventListener("mousedown", (e)=>{
       if(e.target.localName !== 'text'){
         SetIsTooltipOpen(false);
       }
     });
     for(let i = 0; i < arr.length; i++){
-      arr[i].addEventListener('click', function(e){
-        console.dir(this.firstChild);
-        SetIsTooltipOpen(true);
-        SetTooltipX(e.offsetX);
-        SetTooltipY(e.offsetY);
+      arr[i].addEventListener('click', function(e){ //e.target : <text>태그 , this : text감싸는 <g>태그
+        SetTooltipX(e.target.getBoundingClientRect().x + (this.getBoundingClientRect().width / 2));
+        SetTooltipY(e.target.getBoundingClientRect().y);
         SetTooltipTitle(this.firstChild.textContent);
+        SetIsTooltipOpen(true);
       });
       
       arr[i].addEventListener('mouseenter', function(){
@@ -66,8 +68,7 @@ const SubwayLineMap = () => {
         this.firstChild.classList.remove('selectedText');
       });
     }
-    const zoomElementWrap = ref.current;
-    const zoomElement = zoomElementWrap.firstChild; //svg객체
+    
     
 
     // const BODY = document.querySelector("body");
@@ -166,11 +167,15 @@ const SubwayLineMap = () => {
   }, []);
   
   return(
-      
-      <div className='SubwayMap' id='SubwayMap' ref={ref}>
-          {isTooltipOpen && <SubwayTooltip X={tooltipX} Y={tooltipY} title={tooltipTitle}/>}
+      <div className='SubwayMap-wrap'>
+        <Search data={SubwayData} SetIsTooltipOpen={SetIsTooltipOpen} SetTooltipX={SetTooltipX} SetTooltipY={SetTooltipY} SetTooltipTitle={SetTooltipTitle} />
+        {isTooltipOpen && <SubwayTooltip X={tooltipX} Y={tooltipY} title={tooltipTitle}/>}
+        <div className='SubwayMap' id='SubwayMap' ref={ref}>
+          
           <SubwayLine2 width='100%' height='100%'/>
+        </div>
       </div>
+      
      
   );
 }

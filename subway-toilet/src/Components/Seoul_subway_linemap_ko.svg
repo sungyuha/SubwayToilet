@@ -1775,158 +1775,157 @@
 			
 			
 			<g id ='line2_text' class='st46'>
-				<g class="T">
+				<g class="T" id="201">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3122.9822 2433.7993)" class="T st53 st49">시청</text>
-					
 				</g>
-				<g class="T">
+				<g class="T" id="202">
 					<text transform="matrix(1 0 0 1 3177.002 2452)" class="T st53 st49">을지로입구</text>
 				</g>
-				<g class="T">
+				<g class="T" id="203">
 					<text transform="matrix(1 0 0 1 3233.1523 2390)" class="T st53 st49">을지로3가</text>
 				</g>
-				<g class="T">
+				<g class="T" id="204">
 					<text transform="matrix(1 0 0 1 3308.1523 2447.5)" class="T st53 st49">을지로4가</text>
 				</g>
-				<g class="T">
+				<g class="T" id="205">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3425 2400)" class="T st53 st49">동대문역사문화공원</text>
 				</g>
-				<g class="T">
+				<g class="T" id="206">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3512.0393 2399.7036)" class="T st53 st49">신당</text>
 				</g>
-				<g class="T">
+				<g class="T" id="207">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3512.0393 2500.7732)" class="T st53 st49">상왕십리</text>
 				</g>
-				<g class="T">
+				<g class="T" id="208">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3663.3464 2470.3911)" class="T st53 st49">왕십리</text>
 				</g>
-				<g class="T">
+				<g class="T" id="209">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3649.3831 2606.4551)" class="T st53 st49">한양대</text>
 				</g>
-				<g class="T">
+				<g class="T" id="210">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3714.644 2645.6943)" class="T st53 st49">뚝섬</text>
 				</g>
-				<g class="T">
+				<g class="T" id="211">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3818.0557 2711.7732)" class="T st53 st49">성수</text>
 				</g>
-				<g class="T">
+				<g class="T" id="244">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3766.3938 2489.9436)" class="T st53 st49">용답</text>
 				</g>
-				<g class="T">
+				<g class="T" id="245">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3776.9158 2376.4226)" class="T st53 st49">신답</text>
 				</g>
-				<g class="T">
+				<g class="T" id="250">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3653.3992 2398.3938)" class="T st53 st49">용두</text>
 				</g>
-				<g class="T">
+				<g class="T" id="246">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3597.5796 2319.5361)" class="T st53 st49">신설동</text>
 				</g>
-				<g class="T">
+				<g class="T" id="212">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3982.7449 2650.4241)" class="T st53 st49">건대입구</text>
 				</g>
-				<g class="T">
+				<g class="T" id="213">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4068.0381 2640.4312)" class="T st53 st49">구의</text>
 				</g>
-				<g class="T">
+				<g class="T" id="214">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4144.0811 2708.4238)" class="T st53 st49">강변</text>
 				</g>
-				<g class="T">
+				<g class="T" id="215">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4136.9771 2911.771)" class="T st53 st49">잠실나루</text>
 				</g>
-				<g class="T">
+				<g class="T" id="216">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4168.5225 2934.7803)" class="T st53 st49">잠실</text>
 				</g>
-				<g class="T">
+				<g class="T" id="217">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4126.6987 3055.7017)" class="T st53 st49">잠실새내</text>
 				</g>
-				<g class="T">
+				<g class="T" id="218">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4041.5037 3046.4539)" class="T st53 st49">종합운동장</text>
 				</g>
-				<g class="T">
+				<g class="T" id="219">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3930.2908 3036.4539)" class="T st53 st49">삼성</text>
 				</g>
-				<g class="T">
+				<g class="T" id="220">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3739.8879 3110.4663)" class="T st53 st49">선릉</text>
 				</g>
-				<g class="T">
+				<g class="T" id="221">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3678.8772 3118.4678)" class="T st53 st49">역삼</text>
 				</g>
-				<g class="T">
+				<g class="T" id="222">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3623.3672 3047.7979)" class="T st53 st49">강남</text>
 				</g>
-				<g class="T">
+				<g class="T" id="223">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3477.0447 3153.7539)" class="T st53 st49">교대</text>
 				</g>
-				<g class="T">
+				<g class="T" id="224">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3404.8403 3146.8699)" class="T st53 st49">서초</text>
 				</g>
-				<g class="T">
+				<g class="T" id="225">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3333.7771 3334.6047)" class="T st53 st49">방배</text>
 				</g>
-				<g class="T">
+				<g class="T" id="226">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3201.9878 3323.6362)" class="T st53 st49">사당</text>
 				</g>
-				<g class="T">
+				<g class="T" id="227">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3049.3428 3348.646)" class="T st53 st49">낙성대</text>
 				</g>
-				<g class="T">
+				<g class="T" id="228">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2934.9558 3314.665)" class="T st53 st49">서울대입구</text>
 				</g>
-				<g class="T">
+				<g class="T" id="229">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2919.9998 3181.2222)" class="T st53 st49">봉천</text>
 				</g>
-				<g class="T">
+				<g class="T" id="230">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2805.4321 3254.0215)" class="T st53 st49">신림</text>
 				</g>
-				<g class="T">
+				<g class="T" id="231">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2702.4834 3225.6567)" class="T st53 st49">신대방</text>
 				</g>
-				<g class="T">
+				<g class="T" id="232">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2509.9348 3306.6858)" class="T st53 st49">구로디지털단지</text>
 				</g>
-				<g class="T">
+				<g class="T" id="233">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2509.988 3153.7529)" class="T st53 st49">대림</text>
 				</g>
-				<g class="T">
+				<g class="T" id="234">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2582.7725 2963.854)" class="T st53 st49">신도림</text>
 				</g>
-				<g class="T">
+				<g class="T" id="247">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2432.8169 2988.6414)" class="T st53 st49">도림천</text>
 				</g>
-				<g class="T">
+				<g class="T" id="248">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2268.0737 3001.6536)" class="T st53 st49">양천구청</text>
 				</g>
-				<g class="T">
+				<g class="T" id="249">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2098.7383 2915.3289)" class="T st53 st49">신정네거리</text>
 				</g>
-				<g class="T">
+				<g class="T" id="200">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2221.6082 2746.1589)" class="T st53 st49">까치산</text>
 				</g>
-				<g class="T">
+				<g class="T" id="235">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2505.9819 2897.4014)" class="T st53 st49">문래</text>
 				</g>
-				<g class="T">
+				<g class="T" id="236">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2585 2819)" class="T st53 st49">영등포구청</text>
 				</g>
-				<g class="T">
+				<g class="T" id="237">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2592.9463 2677.7883)" class="T st53 st49">당산</text>
 				</g>
-				<g class="T">
+				<g class="T" id="238">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2696.946 2572.7886)" class="T st53 st49">합정</text>
 				</g>
-				<g class="T">
+				<g class="T" id="239">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2786.7417 2480.1536)" class="T st53 st49">홍대입구</text>
 				</g>
-				<g class="T">
+				<g class="T" id="240">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2884.2383 2459.772)" class="T st53 st49">신촌</text>
 				</g>
-				<g class="T">
+				<g class="T" id="241">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2947.9399 2462.269)" class="T st53 st49">이대</text>
 				</g>
-				<g class="T">
+				<g class="T" id="242">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3007.9482 2462.7681)" class="T st53 st49">아현</text>
 				</g>
-				<g class="T">
+				<g class="T" id="243">
 					<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3009.9763 2542.6379)" class="T st53 st49">충정로</text>
 				</g>
 
