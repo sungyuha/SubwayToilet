@@ -8,6 +8,16 @@ const LoginRegister = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const register = () => {
+    // axios
+    // .then(res)
+    // res.data
+    // if(code === ){
+    //   alert(회원가입성공)
+    // }
+  }
+
+
   const tabClickHandler = (index) => {
     setActiveIndex(index);
   };
@@ -36,10 +46,7 @@ const LoginRegister = () => {
                 <a className="simpleLogin"><img src={naver} width='50px'/></a>
                 <a className="simpleLogin"><img src={kakao} width='50px'></img></a>
                 <a className="simpleLogin"><img src={google} width='50px'></img></a>
-                    
-                    
                 </div>
-
             </div>
             
           </div>
@@ -50,7 +57,16 @@ const LoginRegister = () => {
           <li className={activeIndex===1 ? "is-active" : ""} onClick={()=>tabClickHandler(1)}> 회원가입 </li>
       ),
       tabCont:(
-          <div> 회원가입 </div>
+          <div className="register-form">
+            <h1>회원가입을 해주세요</h1>
+            <form style={{ display: "flex", flexDirection: "column" }}>
+              <input type='text' name='id' placeholder='아이디'/>
+              <input type='password' name='password' placeholder='비밀번호'/>
+              <input type='email' name='email' placeholder='이메일'/>
+              <input type='text' name='name' placeholder='이름'/>
+              <button type='button' value="회원가입" onClick={register}/>
+            </form>
+          </div>
       )
     }
   ]
