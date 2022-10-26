@@ -1,0 +1,42 @@
+@import "./../styles/variables.scss";
+
+.wrap {
+    
+    .form-user {
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+            margin-top: 2rem;
+
+                input {
+                width: 20rem;
+                height: 3rem;
+                border: 1px solid black;
+                border-radius: 10px;
+                }
+            }
+        }
+
+    .btn {
+        width: 20rem;
+        height: 3rem;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        margin-top: 18px;
+        background: #0357FB;
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .delete {
+        cursor: pointer;
+        margin-left: -0.5rem;
+        margin-top: 3rem;
+        
+    }
+}

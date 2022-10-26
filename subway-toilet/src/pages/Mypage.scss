@@ -1,0 +1,22 @@
+.mypage-wrap{
+    margin-top: 100px;
+    list-style: none;
+    cursor: pointer;
+
+    .txt {
+        display: flex;
+        margin-left:50px;
+        align-items: center;
+
+        .txt:hover {
+            color: rgb(40, 60, 243);
+            transform: scaleX(1);
+            text-transform:uppercase;
+            border-bottom: solid 3px rgb(40, 60, 243);
+        }
+
+        .is-active {
+            margin-left: 1px;
+        }
+    }
+}
