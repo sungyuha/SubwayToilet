@@ -54,6 +54,7 @@ exports.postSignUP = async (req, res, next) => {
 
 
 exports.postLogin = (req, res, next) => {
+  console.log(req.body);
   const {id, password} = req.body;
 
   user.findOne({id : id}).then(async(result) => {
