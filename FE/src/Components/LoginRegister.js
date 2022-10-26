@@ -9,12 +9,13 @@ const LoginRegister = () => {
   const SERVER_URL = 'http://localhost:8000/user/login';
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const loginHandler = async () => {
+  const loginHandler = (e) => {
+    console.log(e.target);
     e.preventDefault();
-    const userid = e.target.userid.value;
+    const id = e.target.userid.value;
     const password = e.target.password.value;
-    await axios.post(SERVER_URL, {
-      userid, 
+    axios.post(SERVER_URL, {
+      id, 
       password
     }).then((res) => {
       console.log(res);
@@ -44,7 +45,7 @@ const LoginRegister = () => {
       tabCont:(
           <div className="login-form">
             <h1>로그인을 해주세요</h1>
-            <form style={{ display: "flex", flexDirection: "column" }}>
+            <form onSubmit={loginHandler}style={{ display: "flex", flexDirection: "column" }}>
                 <input type='text' name='userid' placeholder='아이디'/>
                 <br/>
                 <input type='password' name='password' placeholder='비밀번호'/>
@@ -52,7 +53,7 @@ const LoginRegister = () => {
                     <a>아이디/비밀번호를 잊으셨나요?</a>
                 </div>
                 <br/>
-                <input type='submit' value="로그인" onClick={loginHandler}/>
+                <input type='submit' value="로그인" />
             </form>
             <div>
                 <p>----------------Or continue with----------------</p>
