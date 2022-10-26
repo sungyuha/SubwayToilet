@@ -1,0 +1,32 @@
+.rewiew_wrap {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 20rem;
+    height: 13rem;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 1.5rem;
+
+    .subway-txt, .subway-content, .subway-Cleanliness, .nickname {
+        margin-left: 15px;
+        padding-top: 20px;
+        list-style:none;
+
+        .subway-content1 {
+            width: 5rem;
+            font-size: 15px;
+            border: 1px solid #0357FB;
+        } 
+
+        .subway-content2, .subway-content3 {
+            width: 6rem;
+            font-size: 15px;
+            border: 1px solid #0357FB;
+            margin-left: 20px;
+        }
+    }
+
+    .nickname {
+        margin-left: 16rem;
+    }
+}

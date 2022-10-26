@@ -1,0 +1,13 @@
+.user-txt-wrap{
+    margin-top: 8rem;
+    display: flex;
+    font-size: 20px;
+    list-style:none;
+    cursor: pointer;
+
+    .txt{
+        margin: 0 auto;
+        padding-left: 5rem;
+        margin-bottom: 3rem;
+    }
+}
