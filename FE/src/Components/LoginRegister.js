@@ -3,12 +3,26 @@ import '../Components/Login.scss';
 import kakao from '../images/login_kakao.png';
 import naver from '../images/login_naver.png';
 import google from '../images/login_google.png';
+import axios from 'axios';
 
 const LoginRegister = () => {
-
+  const SERVER_URL = 'http://localhost:8000/user/login';
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const register = () => {
+  const loginHandler = async () => {
+    e.preventDefault();
+    const userid = e.target.userid.value;
+    const password = e.target.password.value;
+    await axios.post(SERVER_URL, {
+      userid, 
+      password
+    }).then((res) => {
+      console.log(res);
+    });
+
+  }
+
+  const registerHandler = (e) => {
     // axios
     // .then(res)
     // res.data
@@ -31,14 +45,14 @@ const LoginRegister = () => {
           <div className="login-form">
             <h1>로그인을 해주세요</h1>
             <form style={{ display: "flex", flexDirection: "column" }}>
-                <input type='text' name='email' placeholder='이메일'/>
+                <input type='text' name='userid' placeholder='아이디'/>
                 <br/>
                 <input type='password' name='password' placeholder='비밀번호'/>
                 <div>
                     <a>아이디/비밀번호를 잊으셨나요?</a>
                 </div>
                 <br/>
-                <input type='submit' value="로그인"/>
+                <input type='submit' value="로그인" onClick={loginHandler}/>
             </form>
             <div>
                 <p>----------------Or continue with----------------</p>
@@ -64,7 +78,7 @@ const LoginRegister = () => {
               <input type='password' name='password' placeholder='비밀번호'/>
               <input type='email' name='email' placeholder='이메일'/>
               <input type='text' name='name' placeholder='이름'/>
-              <button type='button' value="회원가입" onClick={register}/>
+              <input type='submit' value="회원가입" onClick={registerHandler}/>
             </form>
           </div>
       )
