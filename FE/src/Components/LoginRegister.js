@@ -46,13 +46,13 @@ const LoginRegister = () => {
     e.preventDefault();
     const id = e.target.R_userid.value;
     const password = e.target.R_password.value;
-    const username = e.target.username.value;
+    const name = e.target.username.value;
     const email = e.target.email.value;
   
     axios.post(SERVER_URL2, {
       id,
       password,
-      username,
+      name,
       email 
     }).then((res) => {
       console.log(res);
