@@ -28,7 +28,6 @@ const LoginRegister = () => {
     });
   }
   const loginHandler = (e) => {
-    console.log(e.target);
     e.preventDefault();
     const id = e.target.L_userid.value;
     const password = e.target.L_password.value;
