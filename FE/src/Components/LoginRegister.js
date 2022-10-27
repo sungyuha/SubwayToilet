@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const LoginRegister = () => {
   const SERVER_URL = 'http://localhost:8000/user/login';
+  const SERVER_URL2 = 'http://localhost:8000/user/signup';
   const [activeIndex, setActiveIndex] = useState(0);
 
   const loginHandler = (e) => {
@@ -24,12 +25,28 @@ const LoginRegister = () => {
   }
 
   const registerHandler = (e) => {
-    // axios
-    // .then(res)
-    // res.data
-    // if(code === ){
-    //   alert(회원가입성공)
-    // }
+    console.log(e.target);
+    e.preventDefault();
+    const id = e.target.userid.value;
+    const password = e.target.password.value;
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+  
+    axios.post(SERVER_URL2, {
+      id,
+      password,
+      name,
+      email 
+    }).then((res) => {
+      console.log(res);
+
+      if(res.data.code == 422) {
+        alert("이미 좋재하는 회원입니다.")
+      }
+      
+    }).catch(function(error){
+      console.log(error);
+    })
   }
 
 
@@ -72,12 +89,12 @@ const LoginRegister = () => {
       tabCont:(
           <div className="login-form">
             <h1>회원가입</h1>
-            <form style={{ display: "flex", flexDirection: "column" }}>
+            <form onSubmit={registerHandler} style={{ display: "flex", flexDirection: "column" }}>
+              <input type='text' name='userid'  placeholder='아이디'/>
+              <input type='password' name='password'  placeholder='비밀번호'/>
               <input type='text' name='name' placeholder='이름'/>
-              <input type='text' name='id' placeholder='아이디'/>
-              <input type='password' name='password' placeholder='비밀번호'/>
               <input type='email' name='email' placeholder='이메일'/>
-              <input style={{background:"rebeccapurple", color:"white", cursor:"pointer", marginTop: "0.95rem"}} type='submit' value="회원가입" onClick={registerHandler}/>
+              <input style={{background:"rebeccapurple", color:"white", cursor:"pointer", marginTop: "0.95rem"}} type='submit' value="회원가입"  />
             </form>
           </div>
       )
