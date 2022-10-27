@@ -1,15 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const cors = require('cors');
 const app = express();
+
+dotenv.config();
 
 // const subLineRoutes = require('./routes/subLineRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 // app.use('/home', subLineRoutes);
 app.use('/user', usersRoutes);
 app.use('/admin', adminRoutes);
@@ -20,13 +23,11 @@ app.use((error, req, res, next) => {
     return next(error);
   }
   res.status(error.code || 500);
-  res.json({ message: error.message || 'An unknown error occurred!' });
+  res.json({ message: error.message || '에러 발생!' });
 });
 mongoose
-  .connect(
-    'mongodb+srv://zzbtang:5gcPtBrF3axjgF6C@cluster0.cvwm2tb.mongodb.net/JiHwa?retryWrites=true&w=majority'
-  )
-  .then(app.listen(8000), console.log('mongoDB server connected'))
+  .connect(process.env.DB)
+  .then(app.listen(process.env.PORT), console.log('mongoDB server connected'))
   .catch((err) => {
     console.log(err);
   });
