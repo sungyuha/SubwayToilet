@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const LoginRegister = () => {
   const SERVER_URL = 'http://localhost:8000/user/login';
+  const SERVER_URL2 = 'http://localhost:8000/user/signup';
   const [activeIndex, setActiveIndex] = useState(0);
   const [inputs, setInputs] = useState({
     L_userid: '',
@@ -41,12 +42,28 @@ const LoginRegister = () => {
   }
 
   const registerHandler = (e) => {
-    // axios
-    // .then(res)
-    // res.data
-    // if(code === ){
-    //   alert(회원가입성공)
-    // }
+    console.log(e.target);
+    e.preventDefault();
+    const id = e.target.R_userid.value;
+    const password = e.target.R_password.value;
+    const username = e.target.username.value;
+    const email = e.target.email.value;
+  
+    axios.post(SERVER_URL2, {
+      id,
+      password,
+      username,
+      email 
+    }).then((res) => {
+      console.log(res);
+
+      if(res.data.code == 422) {
+        alert("이미 존재하는 회원입니다.")
+      }
+      
+    }).catch(function(error){
+      console.log(error);
+    })
   }
 
 
