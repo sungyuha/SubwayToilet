@@ -1,11 +1,10 @@
 import mainIMG from "../images/MAIN.png";
-import './Login.scss';
+import "./TitleLogoImg.scss"
 
 const TitleLogoImg = () => {
     
     return(
-        <div className="titleLogoImg-wrap">
-            <h1>로고 or 문구</h1>
+        <div >
             <img className="LogoImg" src={mainIMG}/>
         </div>
     );

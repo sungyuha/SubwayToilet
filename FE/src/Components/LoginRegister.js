@@ -44,23 +44,21 @@ const LoginRegister = () => {
       ),
       tabCont:(
           <div className="login-form">
-            <h1>로그인을 해주세요</h1>
-            <form onSubmit={loginHandler}style={{ display: "flex", flexDirection: "column" }}>
+            <h1>로그인</h1>
+            <form onSubmit={loginHandler}>
                 <input type='text' name='userid' placeholder='아이디'/>
-                <br/>
                 <input type='password' name='password' placeholder='비밀번호'/>
                 <div>
                     <a>아이디/비밀번호를 잊으셨나요?</a>
                 </div>
-                <br/>
-                <input type='submit' value="로그인" />
+                <input style={{background:"rebeccapurple", color:"white", cursor:"pointer"}} type='submit' value="로그인" />
             </form>
-            <div>
-                <p>----------------Or continue with----------------</p>
+            <div className='other-login-form'>
+                <p>OR</p>
                 <div>
-                <a className="simpleLogin"><img src={naver} width='50px'/></a>
-                <a className="simpleLogin"><img src={kakao} width='50px'></img></a>
-                <a className="simpleLogin"><img src={google} width='50px'></img></a>
+                <a className="simpleLogin"><img src={naver}/></a>
+                <a className="simpleLogin"><img src={kakao}></img></a>
+                <a className="simpleLogin"><img src={google}></img></a>
                 </div>
             </div>
             
@@ -72,14 +70,14 @@ const LoginRegister = () => {
           <li className={activeIndex===1 ? "is-active" : ""} onClick={()=>tabClickHandler(1)}> 회원가입 </li>
       ),
       tabCont:(
-          <div className="register-form">
-            <h1>회원가입을 해주세요</h1>
+          <div className="login-form">
+            <h1>회원가입</h1>
             <form style={{ display: "flex", flexDirection: "column" }}>
+              <input type='text' name='name' placeholder='이름'/>
               <input type='text' name='id' placeholder='아이디'/>
               <input type='password' name='password' placeholder='비밀번호'/>
               <input type='email' name='email' placeholder='이메일'/>
-              <input type='text' name='name' placeholder='이름'/>
-              <input type='submit' value="회원가입" onClick={registerHandler}/>
+              <input style={{background:"rebeccapurple", color:"white", cursor:"pointer", marginTop: "0.95rem"}} type='submit' value="회원가입" onClick={registerHandler}/>
             </form>
           </div>
       )
