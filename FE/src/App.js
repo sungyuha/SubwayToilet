@@ -15,7 +15,6 @@ function App() {
         <Route path="/page-notice" element={<PageNotice />} />
         <Route path="/page-notice/write" element={<PageNotice_Write />} />
         <Route path="/page-suggest" element={<PageSuggest />} />
-        
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
       </Routes>
