@@ -8,12 +8,29 @@ import axios from 'axios';
 const LoginRegister = () => {
   const SERVER_URL = 'http://localhost:8000/user/login';
   const [activeIndex, setActiveIndex] = useState(0);
+  const [inputs, setInputs] = useState({
+    L_userid: '',
+    L_password: '',
+    R_userid: '',
+    R_password: '',
+    username: '',
+    email: '',
+  });
+  
+  const {L_userid, L_password, R_userid, R_password, username, email} = inputs;
 
+  const onChangeText = (e) => {
+    const { value, name } = e.target; // e.target에서 value와 name 추출
+    setInputs({
+      ...inputs, // 기존의 input 객체를 복사(불변성을 위해)
+      [name]: value, // name 키를 가진 값을 value 로 변경
+    });
+  }
   const loginHandler = (e) => {
     console.log(e.target);
     e.preventDefault();
-    const id = e.target.userid.value;
-    const password = e.target.password.value;
+    const id = e.target.L_userid.value;
+    const password = e.target.L_password.value;
     axios.post(SERVER_URL, {
       id, 
       password
@@ -35,6 +52,14 @@ const LoginRegister = () => {
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
+    setInputs({
+      L_userid: '',
+      L_password: '',
+      R_userid: '',
+      R_password: '',
+      username: '',
+      email: '',
+    });
   };
 
   const tabContArr = [
@@ -45,9 +70,9 @@ const LoginRegister = () => {
       tabCont:(
           <div className="login-form">
             <h1>로그인</h1>
-            <form onSubmit={loginHandler}>
-                <input type='text' name='userid' placeholder='아이디'/>
-                <input type='password' name='password' placeholder='비밀번호'/>
+            <form id="loginForm" onSubmit={loginHandler} style={{ display: "flex", flexDirection: "column" }}>
+                <input type='text' name='L_userid' placeholder='아이디' onChange={onChangeText} value={L_userid}/>
+                <input type='password' name='L_password' placeholder='비밀번호' onChange={onChangeText} value={L_password}/>
                 <div>
                     <a>아이디/비밀번호를 잊으셨나요?</a>
                 </div>
@@ -61,7 +86,6 @@ const LoginRegister = () => {
                 <a className="simpleLogin"><img src={google}></img></a>
                 </div>
             </div>
-            
           </div>
       )
     },
@@ -72,12 +96,12 @@ const LoginRegister = () => {
       tabCont:(
           <div className="login-form">
             <h1>회원가입</h1>
-            <form style={{ display: "flex", flexDirection: "column" }}>
-              <input type='text' name='name' placeholder='이름'/>
-              <input type='text' name='id' placeholder='아이디'/>
-              <input type='password' name='password' placeholder='비밀번호'/>
-              <input type='email' name='email' placeholder='이메일'/>
-              <input style={{background:"rebeccapurple", color:"white", cursor:"pointer", marginTop: "0.95rem"}} type='submit' value="회원가입" onClick={registerHandler}/>
+            <form id="registerForm" style={{ display: "flex", flexDirection: "column" }} onSubmit={registerHandler}>
+              <input type='text' name='R_userid' placeholder='아이디'  onChange={onChangeText} value={R_userid}/>
+              <input type='password' name='R_password' placeholder='비밀번호'  onChange={onChangeText} value={R_password}/>
+              <input type='text' name='username' placeholder='이름'  onChange={onChangeText} value={username}/>
+              <input type='email' name='email' placeholder='이메일'  onChange={onChangeText} value={email}/>
+              <input style={{background:"rebeccapurple", color:"white", cursor:"pointer", marginTop: "0.95rem"}} type='submit' value="회원가입"/>
             </form>
           </div>
       )
