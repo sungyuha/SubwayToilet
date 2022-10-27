@@ -5,12 +5,37 @@
     height: 600px;
     border: 2px black solid;
     display: flex;
+    
+    @media screen and (max-width: 576px) {
+        flex-wrap: wrap;
+    }
+    @media screen and (min-width: 576px) {
+        flex-wrap: wrap;
+    }
+    @media screen and (min-width: 768px) { 
+        flex-wrap: wrap;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media screen and (min-width: 992px) { 
+        flex-wrap: nowrap;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @media screen and (min-width: 1200px) { 
+        flex-wrap: nowrap;
+    }
+
+    // XX-Large devices (larger desktops, 1400px and up)
+    @media screen and (min-width: 1400px) { 
+        flex-wrap: nowrap;
+    }
 }
 
 .SubwayMap{
     border: 2px green solid;
-    width: 700px;
-    height: 500px;
+    width: 750px;
+    height: 600px;
     overflow: scroll;
     
     position: relative;

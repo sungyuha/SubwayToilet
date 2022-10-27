@@ -40,7 +40,7 @@ const LoginRegister = () => {
   const tabContArr = [
     {
       tabTitle:(
-        <li className={activeIndex===0 ? "is-active" : ""} onClick={()=>tabClickHandler(0)}> 로그인 </li>
+        <li className={activeIndex===0 ? "is-active" : ""} onClick={()=>tabClickHandler(0)} key='0'> 로그인 </li>
       ),
       tabCont:(
           <div className="login-form">
@@ -67,7 +67,7 @@ const LoginRegister = () => {
     },
     {
       tabTitle:(
-          <li className={activeIndex===1 ? "is-active" : ""} onClick={()=>tabClickHandler(1)}> 회원가입 </li>
+          <li className={activeIndex===1 ? "is-active" : ""} onClick={()=>tabClickHandler(1)} key='1'> 회원가입 </li>
       ),
       tabCont:(
           <div className="login-form">
