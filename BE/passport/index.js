@@ -7,16 +7,18 @@ const auth = require('../models/auth');
 
 passport.serializeUser((user, done) => {
   console.info('a', user);
-  done(null, user.name);
+  done(null, user['_id']);
 });
 
-passport.deserializeUser((name, done) => {
-  console.log('b', name);
+passport.deserializeUser((id, done) => {
+  console.log('b', id);
   auth
-    .findOne({ name })
+    .findOne({ id })
     .then((user) => done(null, user))
     .catch((err) => done(err));
 });
 
 passport.use(kakao);
+// passport.use(google)
+// passport.use(naver)
 module.exports = passport;
