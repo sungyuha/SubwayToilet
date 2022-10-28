@@ -5,7 +5,8 @@ import PageNotice from "./pages/PageNotice";
 import PageSuggest from "./pages/PageSuggest";
 import MyPage from "./pages/MyPage";
 import Login from "./pages/Login";
-import PageNotice_Write from "./pages/PageNotice_Write";
+import Finds from "./pages/Finds";
+import Modify from "./Components/Modify";
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/page-notice" element={<PageNotice />} />
-        <Route path="/page-notice/write" element={<PageNotice_Write />} />
         <Route path="/page-suggest" element={<PageSuggest />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/finds" element={<Finds />} />
+        <Route path="/modify" element={<Modify />} />
       </Routes>
     </Layout>
   );
