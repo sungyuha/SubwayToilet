@@ -56,26 +56,10 @@ exports.postSignUP = async (req, res, next) => {
   const userInfo = new user(object);
   await userInfo.save();
 
-  // 토큰 생성 코드
-  let token;
-  try {
-    token = jwt.sign(
-      { id: userInfo.id, email: userInfo.email, name: userInfo.name },
-      secretKey,
-      {
-        expiresIn: '10m',
-      }
-    );
-  } catch (err) {
-    const error = new HttpError('회원 가입 오류.', 500);
-    return next(error);
-  }
-
   res.status(201).json({
     id: userInfo.id,
     email: userInfo.email,
     name: userInfo.name,
-    token: token,
   });
   // res.send('회원가입 완료');
 };
@@ -87,6 +71,7 @@ exports.postLogin = async (req, res, next) => {
 
   try {
     existingUser = await user.findOne({ id: id });
+    console.log(existingUser);
   } catch (err) {
     const error = new HttpError('로그인 오류', 500);
     return next(error);
@@ -109,12 +94,7 @@ exports.postLogin = async (req, res, next) => {
     return next(error);
   }
 
-  // await user.findOne({ id: id }).then(async (result) => {
-  //   if (!result) return res.send('아이디가 없습니다.');
-  //   const checkPw = await bcrypt.compare(password, result.password);
-  //   if (!checkPw) res.send('로그인 실패, 비밀번호 불일치');
-  // });
-
+  
   let token;
   try {
     token = jwt.sign(
@@ -125,17 +105,23 @@ exports.postLogin = async (req, res, next) => {
       },
       secretKey,
       { expiresIn: '10m' }
-    );
-  } catch (err) {
-    const error = new HttpError('로그인 오류.', 500);
-    return next(error);
-  }
-  res.json({
-    message: '로그인 성공',
-    id: id,
-    token: token,
-  });
-};
+      );
+    } catch (err) {
+      const error = new HttpError('로그인 오류.', 500);
+      return next(error);
+    }
+    res.json({
+      message: '로그인 성공',
+      id: id,
+      token: token,
+    });
+    // await user.findOne({ id: id }).then(async (result) => {
+    //   if (!result) return res.send('아이디가 없습니다.');
+    //   const checkPw = await bcrypt.compare(password, result.password);
+    //   if (checkPw) res.send('로그인 성공');
+    //   else res.send('로그인 실패, 비밀번호 불일치') 
+    // });
+  };
 
 exports.postIdFind = async (req, res, next) => {
   const { email, name } = req.body;
