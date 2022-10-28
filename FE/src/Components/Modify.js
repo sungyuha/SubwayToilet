@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Modify.scss";
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ const Modify = () => {
         pwd: '',
     });
     const [result, setResult] = useState('');
+    // const [result, setResult] = useRef('');
 
     const { password, pwd } = inputs;
     const onChangeText = (e) => {
@@ -39,7 +40,7 @@ const Modify = () => {
     // 비밀번호 재설정
     const ModifyFindHandler = () => {
             if (inputs.password.length < 1 || inputs.pwd.length < 1) {
-                setResult('📝패스워드 입력📝'); // 비밀번호 무입력 상태일 때와 둘 중에 하나의 값이 입력 상태가 아닐때
+                setResult('📝비밀번호 입력📝'); // 비밀번호 무입력 상태일 때와 둘 중에 하나의 값이 입력 상태가 아닐때
             } else if (inputs.password === inputs.pwd) {// 비밀번호가 같다면  
                 setResult('✅일치✅');
             } else {// 비밀번호가 같지 않다면
