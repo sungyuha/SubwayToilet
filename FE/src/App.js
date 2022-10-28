@@ -6,7 +6,7 @@ import PageSuggest from "./pages/PageSuggest";
 import MyPage from "./pages/MyPage";
 import Login from "./pages/Login";
 import Finds from "./pages/Finds";
-import Modify from "./Components/Modify";
+import PwModify from "./pages/PwModify";
 import PageNotice_Write from "./pages/PageNotice_Write";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/finds" element={<Finds />} />
-        <Route path="/modify" element={<Modify />} />
+        <Route path="/pwmodify" element={<PwModify />} />
       </Routes>
     </Layout>
   );
