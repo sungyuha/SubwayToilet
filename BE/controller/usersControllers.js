@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const salt = 12;
 const jwt = require('jsonwebtoken');
-const secretKey = process.env.SECRET_KEY;
+const secretKey = process.env.TOKEN_SECRET_KEY;
 const user = require('../models/users');
 
 exports.getSignUP = (req, res, next) => {
