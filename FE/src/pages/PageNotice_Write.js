@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './PageNotice.scss';
-import {CKEditor} from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import MyCkeditor from '../Components/MyCkeditor';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -14,11 +13,7 @@ const PageNotice_Write = () => {
     const onChangeTitle = (e) => {
         setNoticeTitle(e.target.value);
     }
-    const handleChange = (e, editor) => {
-        const data = editor.getData();
-        console.log(data);
-        setAddData(data);
-    }
+    
     const NoticeSubmitHandler = (e) => {
         e.preventDefault();
         const writer = 'admin'
@@ -48,7 +43,7 @@ const PageNotice_Write = () => {
                     <div><span>작성자</span>관리자</div>
                     <div className="textarea-wrap">
                         <span>내용</span>
-                        <CKEditor editor={ClassicEditor} data={addData} onChange={handleChange} />
+                        <MyCkeditor addData={addData} setAddData={setAddData}/>
                     </div>
                     <div className='noticeButton-wrap'>
                         <button type='submit'>등록</button>
