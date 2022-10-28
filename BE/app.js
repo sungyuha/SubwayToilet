@@ -28,12 +28,14 @@ app.use(passport.session());
 const adminRoutes = require('./routes/adminRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const authRoutes = require('./routes/authRoutes');
+const boardRoutes = require('./routes/boardRoutes');
 
 app.use(cors());
 // app.use('/home', subLineRoutes);
 app.use('/user', usersRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
+app.use('/page-notice', boardRoutes);
 
 // 오류 처리 미들웨어
 app.use((error, req, res, next) => {
