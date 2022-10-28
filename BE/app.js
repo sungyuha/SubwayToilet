@@ -1,21 +1,39 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const app = express();
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
 
 dotenv.config();
 
-// const subLineRoutes = require('./routes/subLineRoutes');
-const usersRoutes = require('./routes/usersRoutes');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser('COOKIE_SECRET'));
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.COOKIE,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+    },
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 const adminRoutes = require('./routes/adminRoutes');
+const usersRoutes = require('./routes/usersRoutes');
+const authRoutes = require('./routes/authRoutes');
 
-app.use(bodyParser.json());
 app.use(cors());
 // app.use('/home', subLineRoutes);
 app.use('/user', usersRoutes);
 app.use('/admin', adminRoutes);
+app.use('/auth', authRoutes);
 
 // 오류 처리 미들웨어
 app.use((error, req, res, next) => {
