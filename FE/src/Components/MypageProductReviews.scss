@@ -5,23 +5,31 @@
 
     .list {
         display: flex;
-        border: 1px solid black;
+        border: 1.5px solid #bbb;
         border-radius: 10px;
-        height: 4rem;
+        height: 6rem;
         margin-bottom: 1rem;
 
-        .nick, .review {
-            margin-left: 10px;
+        .nick {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+            font-size: 13px;
+        }
+
+        .review {
+            padding-left: 4rem;
             margin: auto;
         }
-    
-        .btn {
-            font-size: 16px;
-            width: 7rem; 
-            height: 2rem;
-            margin-left: 3rem;
-            margin-right: auto;
-        }
+    }
+
+    .btn {
+        font-size: 15px;
+        width: 5rem;
+        height: 5rem;
+        margin-left: 6rem;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        background: rebeccapurple;
     }
 }
 
