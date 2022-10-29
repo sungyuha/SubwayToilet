@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Finds from "./pages/Finds";
 import PwModify from "./pages/PwModify";
 import PageNotice_Write from "./pages/PageNotice_Write";
+import PageNotice_View from "./pages/PageNotice_View";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/page-notice" element={<PageNotice />} />
         <Route path="/page-notice/write" element={<PageNotice_Write />} />
+        <Route path="/page-notice/view/:postId" element={<PageNotice_View />} />
         <Route path="/page-suggest" element={<PageSuggest />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />

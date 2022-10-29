@@ -24,7 +24,7 @@ const PageNotice_Write = () => {
             title,
             content
         }).then((res) => {
-        console.log(res);
+            navigate("/page-notice");
         });
     }
     const cancelWrite = () => {
@@ -43,7 +43,7 @@ const PageNotice_Write = () => {
                     <div><span>작성자</span>관리자</div>
                     <div className="textarea-wrap">
                         <span>내용</span>
-                        <MyCkeditor addData={addData} setAddData={setAddData}/>
+                        <MyCkeditor addData={addData} setAddData={setAddData} writer='admin'/>
                     </div>
                     <div className='noticeButton-wrap'>
                         <button type='submit'>등록</button>

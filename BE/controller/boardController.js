@@ -15,14 +15,20 @@ exports.noticeWrite = async (req, res) => {
 
 
 exports.uploadImg = (req,  res) => {
-    res.send('이미지 업로드!');
+    console.log(req.file);
+    res.status(200).json({
+        uploaded: true,
+        url: `http://localhost:8000/imgUploadFolder/${req.file.filename}`,
+
+    })
 }
 exports.viewList = async (req, res) => {
     
-    
-
     const notices = await Notice.find().sort({date: 'desc'});
     res.send(notices);
 }
 
-
+exports.viewPost = async (req, res) => {
+    const post = await Notice.findOne({ _id: req.body.postId });
+    res.send(post);
+}

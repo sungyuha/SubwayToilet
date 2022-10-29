@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const multer = require("multer");
+const path = require("path");
 const router = Router();
 
 const boardController = require('../controller/boardController');
@@ -8,10 +9,16 @@ const upload = multer({
     storage : multer.diskStorage({
         destination(req, file, done){
             console.log(file);
-            done(null, 'imgUploadFolder/');
+            done(null, 'public/imgUploadFolder/');
         },
         filename(req, file, done){
-            done(null, `${Date.now()}_${file.originalname}`);
+            function getFullYmdStr(){
+                //년월일시분초 문자열 생성
+                var d = new Date();
+                return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + " " + d.getHours() + "-" + d.getMinutes() + "-" + d.getSeconds();
+            }
+            done(null, req.body.writer +"_" + getFullYmdStr() + "_" + file.originalname);
+            filename = req.body.writer +"_" + getFullYmdStr() + "_" + file.originalname;
         },
     }),
     limits: { fileSize: 10*1024*1024}, //5mb
@@ -19,6 +26,7 @@ const upload = multer({
 
 
 router.get('/', boardController.viewList);
+router.post('/view', boardController.viewPost);
 router.post('/write', boardController.noticeWrite);
 router.post('/write/uploadImg', upload.single('uploadImg'), boardController.uploadImg);
 module.exports = router;
