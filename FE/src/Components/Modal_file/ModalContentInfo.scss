@@ -1,0 +1,57 @@
+$color-point: rgb(19, 18, 20);
+
+.modal_content_info {
+  display: flex;
+  flex-direction: column;
+
+  &_title {
+    color: $color-point;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: &$color-point;
+    text-align: center;
+
+    p {
+      margin: 0;
+      margin: 2rem 0 1.2rem 0;
+      padding: 0;
+    }
+  }
+
+  &_content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    ul {
+      border-radius: 8px;
+      margin: 0;
+      margin-bottom: 0.5rem;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      color: $color-point;
+
+      li {
+        border: 2px solid rgb(243, 246, 255);
+        border-radius: 10px;
+        margin-right: 1rem;
+        padding: 0 1rem;
+
+        p {
+          margin: 0;
+          padding: 0.5rem 0;
+          font-size: 12px;
+          font-weight: 800;
+          color: gray;
+
+          img {
+            width: 0.7rem;
+            height: 0.7rem;
+            padding-right: 0.4rem;
+          }
+        }
+      }
+    }
+  }
+}
