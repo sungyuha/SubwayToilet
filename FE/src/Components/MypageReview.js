@@ -11,6 +11,7 @@ const MypageReview = () => {
     return (
         <div>
             <div className="wrap">
+            <h1>작성한 리뷰</h1>
                 <div className="rewiew_wrap"><br />
                     <div>
                         <span className="subway-txt">역명 : 문래역</span><br />

@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Mypageuser.scss";
 
 const MypageUser = () => {
-    const SERVER_URL = 'http://localhost:8000/user/mypage/reset'; // 임의작성
+    const SERVER_URL7 = 'http://localhost:8000/userinfo/edit';
     const [ inputs , setInputs ] = useState({
         name: '',
         id: '',
@@ -28,7 +28,7 @@ const MypageUser = () => {
         const name = e.target.name.value;
         const password = e.target.password.value;
         const email = e.target.email.value;
-        axios.update(SERVER_URL, {
+        axios.delete(SERVER_URL7, {
             id,
             name,
             password,
@@ -42,6 +42,24 @@ const MypageUser = () => {
     // 회원탈퇴
     //const [delete, setDelete] = useState('');
 
+    const SERVER_URL8 = 'http://localhost:8000/userinfo/delete';
+    const MypageDelete = (e) => {
+        console.log(e.target);
+        e.preventDefault();
+        const id = e.target.id.value;
+        const name = e.target.name.value;
+        const password = e.target.password.value;
+        const email = e.target.email.value;
+        axios.delete(SERVER_URL8, {
+            id,
+            name,
+            password,
+            email,
+        })
+        .then((res) => {
+            console.log(res);
+        });
+    }
 
     return (
         <div className="wrap">
@@ -54,7 +72,7 @@ const MypageUser = () => {
                     <input type="email" placeholder='이메일' value={email} onChange={onChangeMypage} /><br />
                     <button type="submit" className="mypage-btn">회원정보수정</button>
                     <div>
-                        <span className="delete">
+                        <span className="delete" onClick={MypageDelete}>
                             회원탈퇴
                         </span>
                     </div>    
