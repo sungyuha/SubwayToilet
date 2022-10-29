@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 const PageNotice_Write = () => {
-    const SERVER_URL = 'http://localhost:8000/notice/write';
+    const SERVER_URL = 'http://localhost:8000/page-notice/write';
     const navigate = useNavigate();
     const [noticeTitle, setNoticeTitle] = useState('');
     const [addData, setAddData] = useState("");
@@ -14,15 +14,15 @@ const PageNotice_Write = () => {
         setNoticeTitle(e.target.value);
     }
     
-    const NoticeSubmitHandler = (e) => {
+    const NoticeSubmitHandler = async (e) => {
         e.preventDefault();
         const writer = 'admin'
         const title = noticeTitle;
         const content = addData;
-        axios.post(SERVER_URL, {
-        writer, 
-        title,
-        content
+        await axios.post(SERVER_URL, {
+            writer, 
+            title,
+            content
         }).then((res) => {
         console.log(res);
         });

@@ -17,5 +17,8 @@ const upload = multer({
     limits: { fileSize: 10*1024*1024}, //5mb
 });
 
+
+router.get('/', boardController.viewList);
+router.post('/write', boardController.noticeWrite);
 router.post('/write/uploadImg', upload.single('uploadImg'), boardController.uploadImg);
 module.exports = router;
