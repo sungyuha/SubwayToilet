@@ -58,3 +58,22 @@
 .cancelButton{
     background: rgb(105, 105, 105);
 }
+// Notice-write
+// ////////////////////////////////////////
+
+.noticeList-wrap{
+    margin-top: 100px;
+    text-align: center;
+}
+.listInfo-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.listInfo-wrap > button{
+    background: rgba(255, 255, 255, 0);
+    color: black;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+}
