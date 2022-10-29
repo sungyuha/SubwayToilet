@@ -1,0 +1,10 @@
+.modal_content {
+  padding: 2rem 3rem;
+
+  &_box {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    box-shadow: 1px 1px 10px 0 gray;
+  }
+}
