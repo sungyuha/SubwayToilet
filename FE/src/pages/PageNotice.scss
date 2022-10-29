@@ -100,6 +100,7 @@
 }
 .noticeList-top > .title{
     flex: 4 1 0;
+    
 }
 .noticeList-top > .writer{
     flex: 2 1 0;
@@ -122,4 +123,53 @@
 
 .pagination{
     margin-top: 30px;
+}
+
+// notice View
+
+.NoticeView-wrap{
+    margin-top: 100px;
+    
+    width: 80%;
+    h1{
+        text-align: center;
+    }
+}
+.viewContent-wrap{
+    margin-top: 100px;
+    
+    
+}
+.NoticeView_tag{
+    text-align: start;
+}
+
+.viewContent-innerWrap{
+    margin-top: 20px;
+    border: 1px solid rgb(168, 168, 168);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.viewContent-title{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(179, 179, 179);
+}
+.viewContent-writer{
+    border-bottom: 1px solid rgb(179, 179, 179);
+    background-color: rgba(0, 0, 0, 0.644);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+    padding: 5px;
+    font-size: 0.8rem;
+}
+.viewContent-content{
+    padding-top: 10px;
+    margin-top: 5px;
+    border-top: 1px solid rgb(179, 179, 179);
 }

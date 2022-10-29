@@ -1,9 +1,12 @@
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import axios from 'axios';
+
+
 const MyCkeditor = (props) => {
     const UPLOAD_URL = 'http://localhost:8000/page-notice/write/uploadImg';
     function uploadAdaptor(loader){
+        console.dir(loader);
         return{
             upload : () => {
                 const config = {
@@ -12,11 +15,12 @@ const MyCkeditor = (props) => {
                 return new Promise((resolve, reject) => {
                     const formData = new FormData();
                     loader.file.then((file) => {
-                        console.log(file);
+                        formData.append('writer', props.writer);
                         formData.append("uploadImg", file);
+                        
                         axios.post(UPLOAD_URL, formData, config)
                         .then((result) => {
-                            console.log(result.data);
+                            resolve({default: result.data.url});
                         }).catch((err) => {
                             console.log('failure!');
                         });
@@ -34,7 +38,7 @@ const MyCkeditor = (props) => {
         <div className="ckeditor-wrap">
             <CKEditor
                 config={{
-                    extraPlugins: [uploadPlugin]
+                    extraPlugins: [uploadPlugin],
                 }}
                 editor={ Editor }
                 data={props.addData}

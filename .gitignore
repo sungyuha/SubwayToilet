@@ -103,5 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-imgUploadFolder/*.png
-imgUploadFolder/*.jpg
+
+BE/public/imgUploadFolder/*
+!BE/public/imgUploadFolder/test.txt

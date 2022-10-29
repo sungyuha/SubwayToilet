@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import Paging from "../Components/Paging";
 import axios from "axios";
 import './PageNotice.scss';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Notice = () => {
   const navigate = useNavigate();
@@ -85,7 +85,7 @@ const Notice = () => {
         {currentPosts && items.length > 0 ? currentPosts.map((item, index)=> (
         <div className="notice-obj">
           <div className="num">{items.length-((currentpage-1) * postPerPage)-index}</div>
-          <div className="title">{item.title}</div>
+          <div className="title"><Link to={'/page-notice/view/' + item._id}  style={{ textDecoration: "none", color:'inherit'}}>{item.title}</Link></div>
           <div className="writer">{item.writer}</div>
           <div className="date">{elapsedTime(item.date)}</div>
         </div>

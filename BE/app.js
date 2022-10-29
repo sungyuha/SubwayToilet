@@ -9,6 +9,7 @@ const passport = require('passport');
 
 dotenv.config();
 
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser('COOKIE_SECRET'));
