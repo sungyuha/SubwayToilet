@@ -1,9 +1,4 @@
-@import "./../styles/variables.scss";
-
 .wrap {
-    h1 {
-        text-align: center;
-    }
 
     .user {
         margin: 0 auto;
@@ -28,7 +23,11 @@
             }
         }
 
-    .btn {
+    h1 {
+        text-align: center;
+    }
+
+    .mypage-btn {
         width: 20rem;
         height: 3rem;
         border-radius: 10px;
