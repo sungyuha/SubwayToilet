@@ -9,10 +9,15 @@ const Modify = () => {
         pwd: '',
     });
     const [result, setResult] = useState('');
-    // const [result, setResult] = useRef('');
+    //const [result, setResult] = useRef('');
+    
+    // const inputReset = () => {
+    //     setInputs('');
+    //     setResult.current.focus();
+    // };
 
     const { password, pwd } = inputs;
-    const onChangeText = (e) => {
+    const onKeyPressText = (e) => {
         console.dir(e.target.value);
         const { value, name } = e.target; // e.target에서 value와 name 추출
         setInputs({
@@ -39,25 +44,24 @@ const Modify = () => {
 
     // 비밀번호 재설정
     const ModifyFindHandler = () => {
-            if (inputs.password.length < 1 || inputs.pwd.length < 1) {
-                setResult('📝비밀번호 입력📝'); // 비밀번호 무입력 상태일 때와 둘 중에 하나의 값이 입력 상태가 아닐때
-            } else if (inputs.password === inputs.pwd) {// 비밀번호가 같다면  
-                setResult('✅일치✅');
-            } else {// 비밀번호가 같지 않다면
-                setResult('❌불일치❌');
-            }
+        if (inputs.password.length < 1 || inputs.pwd.length < 1) {
+            setResult('📝비밀번호 입력📝'); // 비밀번호 무입력 상태일 때와 둘 중에 하나의 값이 입력 상태가 아닐때
+        } else if (inputs.password === inputs.pwd) {// 비밀번호가 같다면  
+            setResult('✅일치✅');
+        } else {// 비밀번호가 같지 않다면
+            setResult('❌불일치❌');
         }
+    }
 
     return (
         <div className="Modify">
             <h1 className="id-txt2">비밀번호 변경</h1>
             <form onSubmit={IdModifyHandler} className="modify-form">
                 <br />
-                <input type="password" name="password" placeholder='비밀번호' value={password} onChange={onChangeText}/>
+                <input type="password" name="password" placeholder='비밀번호' value={password} onChange={onKeyPressText} />
                 <br />
                 <br />
-                <input type="password" name="pwd" placeholder='비밀번호 확인' value={pwd} onChange={onChangeText}/>
-                <br /><br />
+                <input type="password" name="pwd" placeholder='비밀번호 확인' value={pwd} onChange={onKeyPressText} />
                 <div>
                     <span className="login-link">로그인하러 가기</span>
                 </div>    

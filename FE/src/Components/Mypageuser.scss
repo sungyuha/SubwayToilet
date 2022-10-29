@@ -1,8 +1,15 @@
 @import "./../styles/variables.scss";
 
 .wrap {
-    
-    .form-user {
+    h1 {
+        text-align: center;
+    }
+
+    .user {
+        margin: 0 auto;
+    }
+
+    .form-wrap{
 
         form {
             width: 100%;
@@ -15,7 +22,7 @@
                 input {
                 width: 20rem;
                 height: 3rem;
-                border: 1px solid black;
+                border: 1.5px solid #bbb;
                 border-radius: 10px;
                 }
             }
@@ -27,16 +34,17 @@
         border-radius: 10px;
         border: none;
         cursor: pointer;
-        margin-top: 18px;
-        background: #0357FB;
+        margin-top: 16px;
+        background: rebeccapurple;
         color: #fff;
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 2rem;
     }
 
     .delete {
         cursor: pointer;
         margin-left: -0.5rem;
-        margin-top: 3rem;
+        margin-top: 5rem;
         
     }
 }
