@@ -64,6 +64,11 @@
 .noticeList-wrap{
     margin-top: 100px;
     text-align: center;
+    width: 80%;
+}
+.noticeList-content{
+    margin-top: 100px;
+
 }
 .listInfo-wrap{
     display: flex;
@@ -76,4 +81,45 @@
     outline: none;
     box-shadow: none;
     padding: 0;
+}
+.noticeList-top{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(212, 213, 255);
+    font-weight: bold;
+    padding: 15px 0;
+}
+.notice-obj{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    border-bottom: 1px solid black;
+}
+.noticeList-top > .num{
+    flex: 1 1 0;
+}
+.noticeList-top > .title{
+    flex: 4 1 0;
+}
+.noticeList-top > .writer{
+    flex: 2 1 0;
+}
+.noticeList-top > .date{
+    flex: 1 1 0;
+}
+.notice-obj > .num{
+    flex: 1 1 0;
+}
+.notice-obj > .title{
+    flex: 4 1 0;
+}
+.notice-obj > .writer{
+    flex: 2 1 0;
+}
+.notice-obj > .date{
+    flex: 1 1 0;
+}
+
+.pagination{
+    margin-top: 30px;
 }
