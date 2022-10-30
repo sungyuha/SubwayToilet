@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useNavigate, useRef, useState } from "react";
 import "./Modify.scss";
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ const Modify = () => {
         pwd: '',
     });
     const [result, setResult] = useState('');
+    const navigate = useNavigate();
     //const [result, setResult] = useRef('');
     
     // const inputReset = () => {
@@ -33,12 +34,13 @@ const Modify = () => {
         e.preventDefault();
         const password = e.target.password.value;
         const pwd = e.target.pwd.value;
-        axios.update(SERVER_URL5, {
+        axios.post(SERVER_URL5, {
             password,
             pwd,
         })
         .then((res) => {
             console.log(res);
+            navigate("/user/login");
         });
     }
 

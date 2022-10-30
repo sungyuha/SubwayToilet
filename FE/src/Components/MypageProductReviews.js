@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./MypageProductReviews.scss";
 //import axios from "axios";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const MypageProductReviews = () => {
     
     // 게시글 데이터 조회
+    const [items, setItems] = useState([]);
     const [data, setData] = useState([]);
     const [review, setreview] = useState('');
     
@@ -20,7 +21,7 @@ const MypageProductReviews = () => {
     }
 
     const Data = data.map(
-        (item, index) =>
+        (items, index) =>
             <div key={index}>
                 <p>{review}</p>
             </div>
@@ -32,23 +33,24 @@ const MypageProductReviews = () => {
             <br />
 
             <div className="list">
-                <p className="nick">이름</p>
-                <p className="review" onChange={Revieveshandle} value={review}>{review}작성한 게시글이 조회됩니다. 조회됩니다.</p>
-                <Link to="/PageSuggest">
-                    <button className="btn">자세히보기</button>
-                </Link>
+                <p className="nick">{items.name}</p>
+                <p className="review">작성한 게시글이 조회됩니다. 조회됩니다.</p>
+                {/* <span className="review" onChange={Revieveshandle} value={review} data={items.content} /> */}
+                <button className="btn-1" style={{color:'white'}}><Link to="{/PageSuggest}">자세히보기</Link></button>
             </div>
 
             <div className="list">
-                <p className="nick">이름</p>
+                <p className="nick">{items.name}</p>
                 <p className="review">작성한 게시글이 조회됩니다. 조회됩니다.</p>
-                <button className="btn">자세히보기</button>
+                {/* <span className="review" onChange={Revieveshandle} value={review} data={items.content} /> */}
+                <button className="btn-1" style={{color:'white'}}><Link to="{/PageSuggest}">자세히보기</Link></button>
             </div>
 
             <div className="list">
-                <p className="nick">이름</p>
+                <p className="nick">{items.name}</p>
                 <p className="review">작성한 게시글이 조회됩니다. 조회됩니다.</p>
-                <button className="btn">자세히보기</button>
+                {/* <span className="review" onChange={Revieveshandle} value={review} data={items.content} /> */}
+                <button className="btn-1" style={{color:'white'}}><Link to="{/PageSuggest}">자세히보기</Link></button>
             </div>
         </div>
     )

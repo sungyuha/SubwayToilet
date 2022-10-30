@@ -28,7 +28,7 @@ const MypageUser = () => {
         const name = e.target.name.value;
         const password = e.target.password.value;
         const email = e.target.email.value;
-        axios.delete(SERVER_URL7, {
+        axios.post(SERVER_URL7, {
             id,
             name,
             password,
