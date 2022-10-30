@@ -9,15 +9,15 @@ const passport = require('passport');
 
 dotenv.config();
 
-app.use(express.static("public"));
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser(process.env.COOKIE));
+app.use(cookieParser('cookie'));
 app.use(
   session({
     resave: false,
     saveUninitialized: false,
-    secret: process.env.COOKIE,
+    secret: 'cookie',
     cookie: {
       httpOnly: true,
       secure: false,

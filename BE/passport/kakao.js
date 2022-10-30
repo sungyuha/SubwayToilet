@@ -1,7 +1,7 @@
-const KakaoStrategy = require('passport-kakao').Strategy;
+const Kakao = require('passport-kakao').Strategy;
 const kaUser = require('../models/auth');
 
-module.exports = new KakaoStrategy(
+module.exports = new Kakao(
   {
     clientID: process.env.KAKAO,
     callbackURL: process.env.KAKAO_URL,
@@ -19,7 +19,7 @@ module.exports = new KakaoStrategy(
         const user = await new kaUser({
           email: profile._json && profile._json.kakao_account_email,
           nickname: profile.displayName,
-          snsId: profile.id,
+          id: profile.id,
           provider: 'kakao',
         });
         user.save((err) => {
