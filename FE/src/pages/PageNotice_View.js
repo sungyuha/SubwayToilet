@@ -14,11 +14,25 @@ const PageNotice_View = (props) => {
     }
 
     const params = useParams();
-    console.log(params);
+
+    const deletePost = () => {
+        console.log(items);
+        axios.delete(SERVER_URL,{
+            data: {
+                postId: items._id
+            }
+            
+        }).then((res) =>{
+            navigate("/page-notice");
+        });
+    }
 
     useEffect(()=>{
-        const postId = params.postId;
-        axios.post(SERVER_URL, {postId}).then((res) => {
+        axios.get(SERVER_URL, {
+            params: {
+                postId: params.postId
+            } 
+        }).then((res) => {
             setItems(res.data);
         });
 
@@ -50,7 +64,7 @@ const PageNotice_View = (props) => {
                 <div className='noticeButton-wrap'>
                     <button type='button' className='cancelButton' onClick={()=>{moveList()}}>목록</button>
                     <button type='button'>수정</button>
-                    <button type='button'>삭제</button>
+                    <button type='button' onClick={()=>{deletePost()}}>삭제</button>
                 </div>
                 
                 
