@@ -1,28 +1,15 @@
 const { Router } = require('express');
-const passport = require('../passport/index.js');
 const router = Router();
+const authController = require('../controller/authController');
 
-// export kakao = passport.authenticate('kakao')
-// router.get('/kakao', controller.kakao);
-router.get('/kakao', passport.authenticate('kakao'));
-router.get(
-  '/kakao/callback',
-  passport.authenticate('kakao', {
-    failureRedirect: '/auth',
-  }),
-  (req, res) => {
-    res.redirect('/auth');
-  }
-);
+router.get('/kakao', authController.getKakao);
+router.get('/kakao/callback', authController.getKakaoCallback);
+router.post('/local', authController.postLocal);
 
 // router.get('/naver', authController.naver);
 // router.get('/google', authController.google);
 
-// 
-router.get('/logout', (req, res) => {
-  req.logout();
-  req.session.destroy();
-  res.redirect('/');
-});
+//
+router.get('/logout', authController.logout);
 
 module.exports = router;

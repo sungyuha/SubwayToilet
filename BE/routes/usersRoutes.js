@@ -23,11 +23,11 @@ router.post(
   ],
   usersControllers.postSignUP
 );
-router.post(
-  '/login',
-  [check('id').not().isEmpty(), check('password').not().isEmpty()],
-  usersControllers.postLogin
-);
+// router.post(
+//   '/login',
+//   [check('id').not().isEmpty(), check('password').not().isEmpty()],
+//   usersControllers.postLogin
+// );
 router.post('/id/find', usersControllers.postIdFind);
 router.post('/pw/check');
 router.post('/pw/reset');

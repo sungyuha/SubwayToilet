@@ -26,6 +26,7 @@ module.exports = new KakaoStrategy(
           if (err) {
             console.log(err);
           }
+          console.log(user);
           return done(err, user);
         });
       }

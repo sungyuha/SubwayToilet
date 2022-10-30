@@ -7,7 +7,7 @@ exports.getAdmin = (req, res, next) => {
   res.send();
 };
 
-// api 호출해서 db에 정보 저장하는 로직... 더러워요..
+// api 호출해서 db에 정보 저장하는 로직
 exports.getLines = async (req, res, next) => {
   // 2호선 역 정보 받아오는 함수 실행
   const stationsInfo = await linesNum2();
@@ -20,8 +20,6 @@ exports.getLines = async (req, res, next) => {
       stinCd,
       routNm,
     });
-
-    // station.save();
 
     // 각 역의 비장애인, 장애인 화장실 정보 받아오는 함수 실행
     const toilets = await lineNum2Toilet(stinCd);
