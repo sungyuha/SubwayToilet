@@ -1,6 +1,6 @@
 const Notice = require('../models/notice');
 
-exports.noticeWrite = async (req, res) => {
+exports.writePost = async (req, res) => {
     const { writer, title, content } = req.body;
     const object = {
         writer,
@@ -11,6 +11,16 @@ exports.noticeWrite = async (req, res) => {
     const writeInfo = new Notice(object);
     await writeInfo.save();
     res.send('글작성 완료');
+}
+exports.modifyPost = async (req, res) => {
+    const { writer, title, content, _id } = req.body;
+    const object = {
+        writer,
+        title,
+        content
+      };
+    const result = await Notice.findOneAndUpdate({_id: _id}, object);
+    res.send(result);
 }
 
 
@@ -33,6 +43,9 @@ exports.viewPost = async (req, res) => {
     const post = await Notice.findOne({ _id: req.query.postId });
     res.send(post);
 }
+
+
+
 
 exports.deletePost = async (req, res) => {
     // console.log(req.body.postId);
