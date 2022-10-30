@@ -29,6 +29,13 @@ exports.viewList = async (req, res) => {
 }
 
 exports.viewPost = async (req, res) => {
-    const post = await Notice.findOne({ _id: req.body.postId });
+    // console.log(req);
+    const post = await Notice.findOne({ _id: req.query.postId });
     res.send(post);
+}
+
+exports.deletePost = async (req, res) => {
+    // console.log(req.body.postId);
+    const deleted = await Notice.findByIdAndDelete(req.body.postId);
+    res.send(deleted);
 }
