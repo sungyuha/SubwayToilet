@@ -57,6 +57,7 @@ exports.postSignUP = async (req, res, next) => {
   await userInfo.save();
 
   res.status(201).json({
+    message: '회원가입 완료',
     id: userInfo.id,
     email: userInfo.email,
     name: userInfo.name,
@@ -64,64 +65,63 @@ exports.postSignUP = async (req, res, next) => {
   // res.send('회원가입 완료');
 };
 
-exports.postLogin = async (req, res, next) => {
-  const { id, password } = req.body;
+// exports.postLogin = async (req, res, next) => {
+//   const { id, password } = req.body;
 
-  let existingUser;
+//   let existingUser;
 
-  try {
-    existingUser = await user.findOne({ id: id });
-    console.log(existingUser);
-  } catch (err) {
-    const error = new HttpError('로그인 오류', 500);
-    return next(error);
-  }
-  if (!existingUser) {
-    const error = new HttpError('아이디가 없습니다.', 401);
-    return next(error);
-  }
+//   try {
+//     existingUser = await user.findOne({ id: id });
+//     console.log(existingUser);
+//   } catch (err) {
+//     const error = new HttpError('로그인 오류', 500);
+//     return next(error);
+//   }
+//   if (!existingUser) {
+//     const error = new HttpError('아이디가 없습니다.', 401);
+//     return next(error);
+//   }
 
-  let isValidPassword = false;
-  try {
-    isValidPassword = await bcrypt.compare(password, existingUser.password);
-  } catch (err) {
-    const error = new HttpError('로그인 실패', 500);
-    return next(error);
-  }
+//   let isValidPassword = false;
+//   try {
+//     isValidPassword = await bcrypt.compare(password, existingUser.password);
+//   } catch (err) {
+//     const error = new HttpError('로그인 실패', 500);
+//     return next(error);
+//   }
 
-  if (!isValidPassword) {
-    const error = new HttpError('로그인 실패, 비밀번호 불일치.', 401);
-    return next(error);
-  }
+//   if (!isValidPassword) {
+//     const error = new HttpError('로그인 실패, 비밀번호 불일치.', 401);
+//     return next(error);
+//   }
 
-  
-  let token;
-  try {
-    token = jwt.sign(
-      {
-        id: existingUser.id,
-        email: existingUser.email,
-        name: existingUser.name,
-      },
-      secretKey,
-      { expiresIn: '10m' }
-      );
-    } catch (err) {
-      const error = new HttpError('로그인 오류.', 500);
-      return next(error);
-    }
-    res.json({
-      message: '로그인 성공',
-      id: id,
-      token: token,
-    });
-    // await user.findOne({ id: id }).then(async (result) => {
-    //   if (!result) return res.send('아이디가 없습니다.');
-    //   const checkPw = await bcrypt.compare(password, result.password);
-    //   if (checkPw) res.send('로그인 성공');
-    //   else res.send('로그인 실패, 비밀번호 불일치') 
-    // });
-  };
+//   let token;
+//   try {
+//     token = jwt.sign(
+//       {
+//         id: existingUser.id,
+//         email: existingUser.email,
+//         name: existingUser.name,
+//       },
+//       secretKey,
+//       { expiresIn: '10m' }
+//       );
+//     } catch (err) {
+//       const error = new HttpError('로그인 오류.', 500);
+//       return next(error);
+//     }
+//     res.json({
+//       message: '로그인 성공',
+//       id: id,
+//       token: token,
+//     });
+//     // await user.findOne({ id: id }).then(async (result) => {
+//     //   if (!result) return res.send('아이디가 없습니다.');
+//     //   const checkPw = await bcrypt.compare(password, result.password);
+//     //   if (checkPw) res.send('로그인 성공');
+//     //   else res.send('로그인 실패, 비밀번호 불일치')
+//     // });
+//   };
 
 exports.postIdFind = async (req, res, next) => {
   const { email, name } = req.body;

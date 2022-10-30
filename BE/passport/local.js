@@ -1,25 +1,30 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const user = require('../models/users');
+const bcrypt = require('bcrypt');
 
-module.exports = new LocalStrategy({
+module.exports = new LocalStrategy(
+  {
     usernameField: 'id',
     passwordField: 'password',
-  }, async (id, password, done) => {
+  },
+  async (id, password, done) => {
+    let existingUser;
     try {
-      if ( name == fakeUser.name ){
-        if ( password == fakeUser.password ) {
-          console.log( "*****Login Success*****")
-          done(null, fakeUser);
+      existingUser = await user.findOne({ id: id });
+      if (existingUser) {
+        PW = await bcrypt.compare(password, existingUser.password);
+        if (PW) {
+          done(null, existingUser);
         } else {
-          console.log("*****Password Invalid*****");
-          done(null, false, {message: '비밀번호가 일치하지 않습니다.'} );
+          done(null, false, { message: '비밀번호 불일치.' });
         }
       } else {
-        console.log("*****Username invalid*****");
-        done(null, false, {message: '사용자 이름이 존재하지 않습니다.'} );
+        done(null, false, { message: '아이디가 없음.' });
       }
     } catch (error) {
       console.error(error);
       done(error);
     }
-  });
+  }
+);
