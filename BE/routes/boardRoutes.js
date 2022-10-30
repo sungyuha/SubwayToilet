@@ -27,7 +27,9 @@ const upload = multer({
 
 router.get('/', boardController.viewList);
 router.get('/view', boardController.viewPost);
+
 router.delete('/view', boardController.deletePost);
-router.post('/write', boardController.noticeWrite);
+router.put('/write', boardController.modifyPost);
+router.post('/write', boardController.writePost);
 router.post('/write/uploadImg', upload.single('uploadImg'), boardController.uploadImg);
 module.exports = router;

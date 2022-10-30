@@ -1,14 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './PageNotice.scss';
 import MyCkeditor from '../Components/MyCkeditor';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PageNotice_Write = () => {
+    const params = useParams();
     const SERVER_URL = 'http://localhost:8000/page-notice/write';
+    const GETPOST_URL = 'http://localhost:8000/page-notice/view';
     const navigate = useNavigate();
     const [noticeTitle, setNoticeTitle] = useState('');
     const [addData, setAddData] = useState("");
+    const [mode, setMode] = useState("write");
+
+    useEffect(() => {
+        
+        if(Object.keys(params).length){
+            setMode("modify");
+            axios.get(GETPOST_URL, {
+                params: {
+                    postId: params.postId
+                } 
+            }).then((res) => {
+                setNoticeTitle(res.data.title);
+                setAddData(res.data.content);
+            });
+        } 
+    }, [])
+
     
     const onChangeTitle = (e) => {
         setNoticeTitle(e.target.value);
@@ -27,8 +46,27 @@ const PageNotice_Write = () => {
             navigate("/page-notice");
         });
     }
+    const modifyPost = async () => {
+        const writer = 'admin'
+        const title = noticeTitle;
+        const content = addData;
+        const _id = params.postId;
+        await axios.put(SERVER_URL, {
+            writer, 
+            title,
+            content,
+            _id
+        }).then((res) => {
+            navigate("/page-notice/view/" + params.postId);
+        });
+    }
     const cancelWrite = () => {
-        navigate("/page-notice");
+        if(mode === "write") {
+            navigate("/page-notice");
+        }else{
+            navigate("/page-notice/view/" + params.postId);
+        }
+        
     }
     return(
         <div className="Notice-writeForm">
@@ -46,7 +84,7 @@ const PageNotice_Write = () => {
                         <MyCkeditor addData={addData} setAddData={setAddData} writer='admin'/>
                     </div>
                     <div className='noticeButton-wrap'>
-                        <button type='submit'>등록</button>
+                        {mode === "write" ? <button type='submit'>등록</button> : <button type='button' onClick={()=>{modifyPost()}}>수정</button>}
                         <button type='button' className='cancelButton' onClick={()=>{cancelWrite()}}>취소</button>
                     </div>
                 </form>
