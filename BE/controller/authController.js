@@ -18,7 +18,7 @@ exports.postLocal = (req, res, next) => {
     console.log('2 : ',user);
     console.log('3 : ',info);
     if (authError) return next(authError);
-    if (user) return res.redirect(`http://localhost:3000?token=${setUserToken(user)}`);
+    if (user) return res.send(`${setUserToken(user)}`);
     // jwt 토큰을 이용할 때는 session 사용을 종료해야 한다.
     // return req.login(user,(loginError) => {
     //   if (loginError || !user) return next(loginError);

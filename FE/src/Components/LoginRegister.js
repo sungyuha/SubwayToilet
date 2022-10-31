@@ -4,8 +4,10 @@ import kakao from '../images/login_kakao.png';
 import naver from '../images/login_naver.png';
 import google from '../images/login_google.png';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const LoginRegister = () => {
+  const navigate = useNavigate();
   const SERVER_URL = 'http://localhost:8000/auth/local';
   const SERVER_URL2 = 'http://localhost:8000/user/signup';
   const [activeIndex, setActiveIndex] = useState(0);
@@ -35,7 +37,10 @@ const LoginRegister = () => {
       id, 
       password
     }).then((res) => {
-      console.log(res.data.token);
+      console.log(res.data);
+      localStorage.setItem('access_token', res.data);
+      navigate("/");
+
     });
 
   }
