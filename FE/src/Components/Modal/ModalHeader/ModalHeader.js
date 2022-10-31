@@ -1,6 +1,6 @@
 import "./ModalHeader.scss"
 
-const ModalHeader = ({onClick}) => {
+const ModalHeader = ({onClick, toilet}) => {
     return (
         <div className='modalheader'>
             <div className='modalheader_box'>
@@ -11,10 +11,10 @@ const ModalHeader = ({onClick}) => {
                 <div className='modalheader_box_info'>
                     <div className='modalheader_box_info_box'>
                         <div className='modalheader_box_info_box_line'>
-                            2
+                            {parseInt(toilet.routNm)}
                         </div>
                         <div className='modalheader_box_info_box_title'>
-                            문래
+                            {toilet.stinNm}
                         </div>
                     </div>
                 </div>

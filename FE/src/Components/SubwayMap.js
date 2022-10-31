@@ -10,9 +10,10 @@ const SubwayLineMap = () => {
 
   const ref = useRef(); // svg감싸는 div
   const [isTooltipOpen, SetIsTooltipOpen] = useState(false);
-  const [tooltipX, SetTooltipX] = useState(null);
-  const [tooltipY, SetTooltipY] = useState(null);
-  const [tooltipTitle, SetTooltipTitle] = useState(null);
+  // const [tooltipX, SetTooltipX] = useState(null);
+  // const [tooltipY, SetTooltipY] = useState(null);
+  // const [tooltipTitle, SetTooltipTitle] = useState(null);
+  const [selectStation, setSelectStation] = useState('');
 
   function zoomInOut( viewEl, contentEl, oldScale, newScale, mx, my ){
 
@@ -62,6 +63,7 @@ const SubwayLineMap = () => {
         // SetTooltipY(e.target.getBoundingClientRect().y);
         // SetTooltipTitle(this.firstChild.textContent);
         SetIsTooltipOpen(true);
+        setSelectStation(parseInt(this.id));
       });
       
       arr[i].addEventListener('mouseenter', function(){
@@ -171,9 +173,9 @@ const SubwayLineMap = () => {
   
   return(
     <div>
-      {isTooltipOpen && <Modal />}
+      {isTooltipOpen && <Modal selectStation={selectStation}/>}
       <div className='SubwayMap-wrap'>
-        <Search data={SubwayData} SetIsTooltipOpen={SetIsTooltipOpen} SetTooltipX={SetTooltipX} SetTooltipY={SetTooltipY} SetTooltipTitle={SetTooltipTitle} />
+        <Search data={SubwayData} SetIsTooltipOpen={SetIsTooltipOpen} setSelectStation={setSelectStation}/>
         <div className='SubwayMap' id='SubwayMap' ref={ref}>
           <SubwayLine2 width='100%' height='100%'/>
         </div>
