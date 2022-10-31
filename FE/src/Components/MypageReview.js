@@ -32,24 +32,23 @@ const MypageReview = () => {
 
     return (
         <div>
-            <div className="wrap">
+            <div className="wrap" onChange={Revieveshandle}>
             <h1>{data.text}작성한 리뷰</h1>
                 <div className="rewiew_wrap"><br />
                     <div>
                         <span className="subway-txt">
-                            {data.stinNm}
-                            역명 : 문래역
-                            </span><br />
+                            역명 : {data.stinNm}
+                        </span><br />
                     </div>
                     
                     <div className="subway-content">
-                        리뷰 작성내용
+                        <span>리뷰 작성내용</span><br />
+                        {data.content}
                     </div>
 
                     <div className="subway-Cleanliness">
                         화장실 평점 <br />
-                        
-                        {/* */}
+                        {data.rating}
                     </div>
                 </div>
             </div>
