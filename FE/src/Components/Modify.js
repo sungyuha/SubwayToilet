@@ -28,7 +28,7 @@ const Modify = () => {
           [name]: value, // name 키를 가진 값을 value 로 변경
         });
         ModifyFindHandler();
-        console.log(inputs.password,"vs", inputs.pwd);
+        // console.log(inputs.password,"vs", inputs.pwd);
     }
 
     const IdModifyHandler = (e) => {
@@ -41,7 +41,7 @@ const Modify = () => {
             pwd,
         })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             navigate("/user/login");
         });
     }
