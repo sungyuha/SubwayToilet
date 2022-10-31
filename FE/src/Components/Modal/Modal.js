@@ -19,10 +19,12 @@ const Modal = (props) => {
   const closeModal = () => {
     setModal(false);
   }
-  const SERVER_URL = 'http://localhost:8000/toilet/?stinCd='+ props.selectStation;
+  console.log(typeof(props.selectStation) );
+  const SERVER_URL = `http://localhost:8000/toilet/?stinCd=${props.selectStation}`;
 
   useEffect(()=>{
     axios.get(SERVER_URL).then((res) => {
+      console.log(res.data);
       setToilet(res.data.Toilet);
       setReview(res.data.Review);
       setLoad(true);
