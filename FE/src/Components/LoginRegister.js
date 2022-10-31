@@ -6,7 +6,7 @@ import google from '../images/login_google.png';
 import axios from 'axios';
 
 const LoginRegister = () => {
-  const SERVER_URL = 'http://localhost:8000/user/login';
+  const SERVER_URL = 'http://localhost:8000/auth/local';
   const SERVER_URL2 = 'http://localhost:8000/user/signup';
   const [activeIndex, setActiveIndex] = useState(0);
   const [inputs, setInputs] = useState({
@@ -97,9 +97,9 @@ const LoginRegister = () => {
             <div className='other-login-form'>
                 <p>OR</p>
                 <div>
-                <a className="simpleLogin"><img src={naver}/></a>
-                <a className="simpleLogin"><img src={kakao}></img></a>
-                <a className="simpleLogin"><img src={google}></img></a>
+                <a className="simpleLogin" href='http://localhost:8000/auth/naver'><img src={naver}/></a>
+                <a className="simpleLogin" href='http://localhost:8000/auth/kakao'><img src={kakao}></img></a>
+                <a className="simpleLogin" href='http://localhost:8000/auth/google'><img src={google}></img></a>
                 </div>
             </div>
           </div>
