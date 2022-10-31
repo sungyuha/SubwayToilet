@@ -14,7 +14,7 @@ module.exports = new JWTStrategy(
       // palyload의 id값으로 유저의 데이터 조회 ( id까지 저장한다면 )
       // sequelize를 이용할 경우
       const local = await User.findOne({ id: jwtPayload.id });
-      const auth = await Auth.findOne({ snsId: jwtPayload.id });
+      const auth = await Auth.findOne({ id: jwtPayload.id });
       if (local || auth) {
         done(null, local || auth);
         return;
