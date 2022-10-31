@@ -2,6 +2,7 @@ import "./ModalContentButton.scss";
 // import ModalReviewHeader from './ModalReviewHeader';
 import ModalReviewComment from "./ModalReviewComment"
 import ModalReviewButton from "./ModalReviewButton";
+import StarRating from "../StarRating";
 
 
 function ModalContentButton() {
@@ -25,18 +26,18 @@ function ModalContentButton() {
               </div>
               <div className='modal_review_top_content_box_star'>
                 <p>⭐️⭐️⭐️⭐️⭐️</p>
-                <p>4.0</p>
-                <p>13 reviews</p>
+                <p>총 별점</p>
+                <p>리뷰 몇개인지</p>
               </div>
             </div>
         <div className='modal_review_bottom'>
-          <p>청결</p>
+          <p>청결도</p>
           <div className='modal_review_bottom_clean'>
-            <label for="verygood">매우 깨끗</label><input type="radio" id='verygood' value="verygood" name='clean'/>
-            <label for="verygood">깨끗</label><input type="radio" id='good' value="good" name='clean'/>
+            <label for="verygood">매우 좋음</label><input type="radio" id='verygood' value="verygood" name='clean'/>
+            <label for="verygood">좋음</label><input type="radio" id='good' value="good" name='clean'/>
             <label for="sosoclean">보통</label><input type="radio" id='sosclean' value="sosoclean" name='clean'/>
-            <label for="bad">더럽</label><input type="radio" id='bad' value="bad" name='clean'/>
-            <label for="sobad">매우 더럽</label><input type="radio" id='sobad' value="sobad" name='clean'/>
+            <label for="bad">좋지 않음</label><input type="radio" id='bad' value="bad" name='clean'/>
+            <label for="sobad">매우 좋지 않음</label><input type="radio" id='sobad' value="sobad" name='clean'/>
           </div>
             <p>변기 개수</p>
           <div className='modal_review_bottom_num'>
@@ -61,6 +62,11 @@ function ModalContentButton() {
             <label for="badcon">좋지 않음</label><input type="radio" id='badcon' value="badcon" name='convenience'/>
             <label for="verybadcon">매우 좋지 않음</label><input type="radio" id='verybadcon' value="verybadcon" name='convenience'/>
           </div>
+          <div>
+            <p>별점</p>
+            <StarRating/>
+          </div>
+          {/* </div> */}
           <div className='modal_review_bottom_text'>
             <textarea/>
           </div>
