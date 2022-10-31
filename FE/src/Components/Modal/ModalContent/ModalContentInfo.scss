@@ -1,17 +1,21 @@
 $color-point: rgb(19, 18, 20);
 
 .modal_content_info {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  // text-align: center;
   &_title {
     color: $color-point;
     font-size: 1.3rem;
     font-weight: 600;
     color: &$color-point;
-    text-align: center;
+    // text-align: center;
 
     &_title {
       margin: 16px;
       display: flex;
-      justify-content: center;
+      // justify-content: center;
       width: 100%;
       height: 2rem;
     }
@@ -22,7 +26,7 @@ $color-point: rgb(19, 18, 20);
       display: flex;
       flex-direction: column;
       height: 13rem;
-      padding-left: 2rem;
+      padding: 0 2rem;
 
       li {
         height: 10rem;
@@ -37,6 +41,45 @@ $color-point: rgb(19, 18, 20);
 
         .modal_content_info_content_title {
           font-size: 1rem;
+        }
+
+        .modal_content_info_content_able {
+          border: 1px solid gray;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+
+          &_info:nth-child(1) {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid gray;
+
+            p {
+              padding: 0 2rem;
+              display: flex;
+              align-items: center;
+            }
+
+            // &_p {
+            //   border-bottom: 1px solid gray;
+            // }
+          }
+
+          &_info:nth-child(2) {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            p {
+              padding: 0 2rem;
+              display: flex;
+              align-items: center;
+            }
+
+            // &_p {
+            //   border-bottom: 1px solid gray;
+            // }
+          }
         }
       }
     }
