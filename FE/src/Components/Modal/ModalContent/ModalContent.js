@@ -19,7 +19,7 @@ function ModalContent({toilet, review}) {
             </div>
           </div>
           <div className="modal_content_box_right">
-            <ModalButton />
+            <ModalButton stinCd={toilet.stinCd}/>
           </div>
 
         </div>
