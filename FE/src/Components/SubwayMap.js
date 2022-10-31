@@ -171,7 +171,7 @@ const SubwayLineMap = () => {
   
   return(
     <div>
-      {isTooltipOpen && <Modal/>}
+      {isTooltipOpen && <Modal />}
       <div className='SubwayMap-wrap'>
         <Search data={SubwayData} SetIsTooltipOpen={SetIsTooltipOpen} SetTooltipX={SetTooltipX} SetTooltipY={SetTooltipY} SetTooltipTitle={SetTooltipTitle} />
         <div className='SubwayMap' id='SubwayMap' ref={ref}>
@@ -180,7 +180,6 @@ const SubwayLineMap = () => {
       </div>
     </div>
       
-     
   );
 }
 
