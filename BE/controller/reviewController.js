@@ -2,6 +2,17 @@ const review = require('../models/review');
 const HttpError = require('../models/http-error');
 const moment = require('moment');
 
+exports.getReview = async (req, res, next) => {
+  const { stinCd } = req.query;
+  try {
+    const Review = await review.find({ stinCd: stinCd });
+    await res.json({Review});
+  } catch (err) {
+    const error = new HttpError('리뷰 정보를 불러올 수 없습니다.');
+    return next(error);
+  }
+}
+
 exports.postReview = async (req, res, next) => {
   const { stinCd,id, cleanliness, count, size, convenience,  text, rating } = req.body;
   const Review = new review({

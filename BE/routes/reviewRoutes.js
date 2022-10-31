@@ -3,6 +3,7 @@ const router = Router();
 const passport = require('../passport/index.js');
 const reviewControllers = require('../controller/reviewController');
 
+router.get("/", reviewControllers.getReview);
 router.get('*', passport.authenticate('jwt', {session:false}), 
   async (req,res,next) => {
     console.log("hi");

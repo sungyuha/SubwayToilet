@@ -3,8 +3,20 @@ import clean from "../../../images/icon-clean.png";
 import wc from "../../../images/icon-wc.png";
 import size from "../../../images/icon-size.png";
 import thumb from "../../../images/icon-thumb-ups.png";
+import {useState, useEffect} from 'react';
 
-function ModalContentRating() {
+function ModalContentRating({review}) {
+  
+  const [rating, setRating] = useState(0);
+
+  const calculate = () => {
+
+  }
+
+
+
+
+
   return (
     <>
       <div className="modal_content_rating">
@@ -18,7 +30,7 @@ function ModalContentRating() {
                 <li>
                   <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p>
                   <p>4.7</p>
-                  <p>리뷰 40개</p>
+                  <p>리뷰 {review.length}개</p>
                 </li>
               </ul>
             </div>

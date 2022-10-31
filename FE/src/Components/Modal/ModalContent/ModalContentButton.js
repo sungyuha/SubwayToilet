@@ -3,20 +3,39 @@ import "./ModalContentButton.scss";
 import ModalReviewComment from "./ModalReviewComment"
 import ModalReviewButton from "./ModalReviewButton";
 import StarRating from "../StarRating";
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import axios from "axios";
 
 
-function ModalContentButton({stinCd}) {
-
+function ModalContentButton({stinCd, review}) {
+  const [reviewArr, setReviewArr] = useState([]);
+  
   const [rating, setRating] = useState(0);
-  const SERVER_URL = 'http://localhost:8000/review'
+  const ref1 = useRef();
+  const ref2 = useRef();
+  const ref3 = useRef();
+  const ref4 = useRef();
+  const ref5 = useRef();
+  const POST_URL = 'http://localhost:8000/review'
+  const GET_URL = `http://localhost:8000/review?stinCd=${stinCd}` 
+
+  useEffect(()=>{
+    setReviewArr(review);
+  }, []);
+
+  const setDefault = (target) => {
+    for(let i = 0; i < target.length; i++){
+      if(target[i].localName === 'input'){
+        target[i].checked = false;
+      }
+    }
+  }
+
   const writeReviewHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
     axios({
       method: 'post',
-      url: SERVER_URL,
+      url: POST_URL,
       data: {
         stinCd: stinCd,
         cleanliness: e.target.clean.value,
@@ -31,8 +50,17 @@ function ModalContentButton({stinCd}) {
         'Authorization': localStorage.getItem('access_token'),
       }
     })
-    .then((res) => { 
-      console.log(res);
+    .then(async (res) => { 
+      alert(res.data.message);
+      setRating(0);
+      ref5.current.value = '';
+      setDefault(ref1.current.children);
+      setDefault(ref2.current.children);
+      setDefault(ref3.current.children);
+      setDefault(ref4.current.children);
+      await axios.get(GET_URL).then((res) => {
+        setReviewArr(res.data.Review);
+      });
     });
   }
 
@@ -50,7 +78,7 @@ function ModalContentButton({stinCd}) {
             
           </div>
           <div className='modal_review_top_content'>
-            <div className="modal_review_top_content_box">
+            {/* <div className="modal_review_top_content_box">
               <div className='modal_review_top_content_box_title'>
                 문래역
               </div>
@@ -59,42 +87,42 @@ function ModalContentButton({stinCd}) {
                 <p>총 별점</p>
                 <p>리뷰 몇개인지</p>
               </div>
-            </div>
+            </div> */}
         <div className='modal_review_bottom'>
           <form onSubmit={writeReviewHandler}>
             <p>청결도</p>
-            <div className='modal_review_bottom_clean'>
-              <label for="verygood">매우 좋음</label><input type="radio" id='verygood' value="verygood" name='clean'/>
-              <label for="verygood">좋음</label><input type="radio" id='good' value="good" name='clean'/>
-              <label for="sosoclean">보통</label><input type="radio" id='sosclean' value="sosoclean" name='clean'/>
-              <label for="bad">좋지 않음</label><input type="radio" id='bad' value="bad" name='clean'/>
-              <label for="sobad">매우 좋지 않음</label><input type="radio" id='sobad' value="sobad" name='clean'/>
+            <div className='modal_review_bottom_clean' ref={ref1}>
+              <label htmlFor="verygood">매우 좋음</label><input type="radio" id='verygood' value="매우 좋음" name='clean'/>
+              <label htmlFor="verygood">좋음</label><input type="radio" id='good' value="좋음" name='clean'/>
+              <label htmlFor="sosoclean">보통</label><input type="radio" id='sosclean' value="보통" name='clean'/>
+              <label htmlFor="bad">좋지 않음</label><input type="radio" id='bad' value="좋지 않음" name='clean'/>
+              <label htmlFor="sobad">매우 좋지 않음</label><input type="radio" id='sobad' value="매우 좋지 않음" name='clean'/>
             </div>
 
             <p>변기 개수</p>
-            <div className='modal_review_bottom_num'>
-              <label for="onetwo">1 ~ 2</label><input type="radio" id='onetwo' value="onetwo" name='num'/>
-              <label for="threefour">3 ~ 4</label><input type="radio" id='threefour' value="threefour" name='num'/>
-              <label for="fivesix">5 ~ 6</label><input type="radio" id='ivesix' value="ivesix" name='num'/>
-              <label for="seven">7 이상</label><input type="radio" id='seven' value="seven" name='num'/>
+            <div className='modal_review_bottom_num' ref={ref2}>
+              <label htmlFor="onetwo">1 ~ 2</label><input type="radio" id='onetwo' value="1 ~ 2" name='num'/>
+              <label htmlFor="threefour">3 ~ 4</label><input type="radio" id='threefour' value="3 ~ 4" name='num'/>
+              <label htmlFor="fivesix">5 ~ 6</label><input type="radio" id='ivesix' value="5 ~ 6" name='num'/>
+              <label htmlFor="seven">7 이상</label><input type="radio" id='seven' value="7 이상" name='num'/>
             </div>
 
             <p>화장실 크기</p>
-            <div className='modal_review_bottom_size'>
-              <label for="verybig">매우 큼</label><input type="radio" id='verygood' value="verygood" name='size'/>
-              <label for="big">큼</label><input type="radio" id='good' value="good" name='size'/>
-              <label for="sososize">보통</label><input type="radio" id='sososize' value="sososize" name='size'/>
-              <label for="small">작음</label><input type="radio" id='small' value="small" name='size'/>
-              <label for="veraysmall">매우 작음</label><input type="radio" id='verysmall' value="veraysmall" name='size'/>
+            <div className='modal_review_bottom_size' ref={ref3}>
+              <label htmlFor="verybig">매우 큼</label><input type="radio" id='verygood' value="매우 큼" name='size'/>
+              <label htmlFor="big">큼</label><input type="radio" id='good' value="good" name='큼'/>
+              <label htmlFor="sososize">보통</label><input type="radio" id='sososize' value="보통" name='size'/>
+              <label htmlFor="small">작음</label><input type="radio" id='small' value="작음" name='size'/>
+              <label htmlFor="veraysmall">매우 작음</label><input type="radio" id='verysmall' value="매우 작음" name='size'/>
             </div>
 
             <p>이용 편의성</p>
-            <div className='modal_review_bottom_convenience'>
-              <label for="verycon">매우 좋음</label><input type="radio" id='verycon' value="verycon" name='convenience'/>
-              <label for="con">좋음</label><input type="radio" id='con' value="con" name='convenience'/>
-              <label for="socon">보통</label><input type="radio" id='socon' value="socon" name='convenience'/>
-              <label for="badcon">좋지 않음</label><input type="radio" id='badcon' value="badcon" name='convenience'/>
-              <label for="verybadcon">매우 좋지 않음</label><input type="radio" id='verybadcon' value="verybadcon" name='convenience'/>
+            <div className='modal_review_bottom_convenience' ref={ref4}>
+              <label htmlFor="verycon">매우 좋음</label><input type="radio" id='verycon' value="매우 좋음" name='convenience'/>
+              <label htmlFor="con">좋음</label><input type="radio" id='con' value="좋음" name='convenience'/>
+              <label htmlFor="socon">보통</label><input type="radio" id='socon' value="보통" name='convenience'/>
+              <label htmlFor="badcon">좋지 않음</label><input type="radio" id='badcon' value="좋지 않음" name='convenience'/>
+              <label htmlFor="verybadcon">매우 좋지 않음</label><input type="radio" id='verybadcon' value="매우 좋지 않음" name='convenience'/>
             </div>
 
             <div>
@@ -102,9 +130,8 @@ function ModalContentButton({stinCd}) {
               <StarRating rating={rating} setRating={setRating}/>
             </div>
 
-            {/* </div> */}
             <div className='modal_review_bottom_text'>
-              <textarea name="text"/>
+              <textarea name="text"  ref={ref5}/>
             </div>
 
             <div className='modal_review_bottom_button'>
@@ -115,7 +142,7 @@ function ModalContentButton({stinCd}) {
         
 
         <div className='modal_review_review'>
-        <ModalReviewComment/>
+        <ModalReviewComment review={reviewArr}/>
       </div>
           </div>
         </div>

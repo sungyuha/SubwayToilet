@@ -12,7 +12,7 @@ const StarRating = ({rating, setRating}) => {
                 const ratingValue = i + 1;
 
                 return (
-                    <label>
+                    <label key={ratingValue}>
                         <input type="radio" name='rating' value={ratingValue} onClick={() => setRating(ratingValue)} />
                         <FaStar className='star' color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} size={20} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)}/>
                     </label>
