@@ -29,7 +29,7 @@ const MypageReview = () => {
     // 별점 조회
     //const [ rating, newRating ] = useState('');
     
-
+    
     return (
         <div>
             <div className="wrap" onChange={Revieveshandle}>
