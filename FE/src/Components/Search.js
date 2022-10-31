@@ -41,9 +41,10 @@ function Search({data, ...props}) {
         ref.current.focus();
         const targetStation = document.getElementById(parseInt(v.station_cd));
         props.SetIsTooltipOpen(true);
-        props.SetTooltipTitle(v.station_nm);
-        props.SetTooltipX(targetStation.firstChild.getBoundingClientRect().x + (targetStation.getBoundingClientRect().width / 2));
-        props.SetTooltipY(targetStation.firstChild.getBoundingClientRect().y);
+        props.setSelectStation(parseInt(v.station_cd));
+        // props.SetTooltipTitle(v.station_nm);
+        // props.SetTooltipX(targetStation.firstChild.getBoundingClientRect().x + (targetStation.getBoundingClientRect().width / 2));
+        // props.SetTooltipY(targetStation.firstChild.getBoundingClientRect().y);
 
     }
 

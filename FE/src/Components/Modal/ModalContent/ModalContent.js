@@ -3,13 +3,13 @@ import ModalContentRating from "./ModalContentRating";
 import ModalButton from "./ModalContentButton";
 import "./ModalContent.scss";
 
-function ModalContent() {
+function ModalContent({toilet, review}) {
   return (
     <>
       <div className="modal_content">
         <div className="modal_content_box">
-          <ModalContentInfo />
-          <ModalContentRating />
+          <ModalContentInfo toilet={toilet} />
+          <ModalContentRating review={review}/>
           <ModalButton />
         </div>
       </div>
