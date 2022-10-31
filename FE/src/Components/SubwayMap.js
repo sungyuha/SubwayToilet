@@ -2,6 +2,7 @@ import './SubwayMap.scss';
 import {ReactComponent as SubwayLine2} from './Seoul_subway_linemap_ko.svg';
 import {useEffect, useRef, useState} from 'react';
 import SubwayTooltip from './SubwayTooltip';
+import Modal from "./Modal/Modal";
 import Search from "./Search";
 import SubwayData from "./Subway-map.json";
 
@@ -49,15 +50,17 @@ const SubwayLineMap = () => {
     const zoomElement = zoomElementWrap.firstChild; //svg객체
     let isDragging = false;
     document.addEventListener("mousedown", (e)=>{
-      if(e.target.localName !== 'text'){
+        
+      if(e.target.textContent === 'X'){
         SetIsTooltipOpen(false);
       }
     });
     for(let i = 0; i < arr.length; i++){
       arr[i].addEventListener('click', function(e){ //e.target : <text>태그 , this : text감싸는 <g>태그
-        SetTooltipX(e.target.getBoundingClientRect().x + (this.getBoundingClientRect().width / 2));
-        SetTooltipY(e.target.getBoundingClientRect().y);
-        SetTooltipTitle(this.firstChild.textContent);
+        
+        // SetTooltipX(e.target.getBoundingClientRect().x + (this.getBoundingClientRect().width / 2));
+        // SetTooltipY(e.target.getBoundingClientRect().y);
+        // SetTooltipTitle(this.firstChild.textContent);
         SetIsTooltipOpen(true);
       });
       
@@ -167,14 +170,15 @@ const SubwayLineMap = () => {
   }, []);
   
   return(
+    <div>
+      {isTooltipOpen && <Modal/>}
       <div className='SubwayMap-wrap'>
         <Search data={SubwayData} SetIsTooltipOpen={SetIsTooltipOpen} SetTooltipX={SetTooltipX} SetTooltipY={SetTooltipY} SetTooltipTitle={SetTooltipTitle} />
-        {isTooltipOpen && <SubwayTooltip X={tooltipX} Y={tooltipY} title={tooltipTitle}/>}
         <div className='SubwayMap' id='SubwayMap' ref={ref}>
-          
           <SubwayLine2 width='100%' height='100%'/>
         </div>
       </div>
+    </div>
       
      
   );

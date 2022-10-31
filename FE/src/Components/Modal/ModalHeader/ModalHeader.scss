@@ -1,0 +1,40 @@
+.modalheader {
+    width: 100%;
+    height: auto;
+    &_box {
+        padding: 2rem 2rem;
+        &_close {
+            display: flex;
+            justify-content: end;
+        }
+
+        &_info {
+            display: flex;
+            justify-content: center;
+            font-size: 19px;
+
+            &_box {
+                width: 60%;
+                display: flex;
+                justify-content: space-between;
+                padding: 0.5rem;
+                background-color: white;
+                border: 4px solid green;
+                border-radius: 2rem 2rem 2rem 2rem;
+                    &_line {
+                        padding: 0.4rem 0.7rem;
+                        color: white;
+                        background: green;
+                        border-radius: 50%;
+                    }
+                    &_title {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-right: 0.7rem;
+                    }
+            }
+        }
+    }
+}
