@@ -10,10 +10,10 @@ module.exports = new Kakao(
     console.info('pro', profile);
     try {
       const exUser = await kaUser.findOne({
-        sns_id: profile.id,
+        id: profile.id,
       });
       if (exUser) {
-        console.log(exUser);
+        console.log('exUser : ', exUser);
         done(null, exUser);
       } else {
         const user = await new kaUser({

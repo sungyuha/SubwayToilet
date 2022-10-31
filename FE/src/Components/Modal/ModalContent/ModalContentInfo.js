@@ -1,55 +1,49 @@
 import "./ModalContentInfo.scss";
 import disabled from "../../../images/icon-disabled.png";
 import turnstiles from "../../../images/icon-turnstiles.png";
-import {useEffect} from 'react';
 
 function ModalContentInfo({toilet}) {
-  useEffect(() => {
-    console.log(toilet.normal);
-  }, [])
+  console.log("info", toilet);
+  
   return (
     <>
       <div className="modal_content_info">
-        <div className="modal_content_info_box">
-          <div className="modal_content_info_title">
-            <p className="modal_content_info_title_title">화장실 정보</p>
-          </div>
-          <div className="modal_content_info_content">
-            <ul>
-              <li>
-                <p className="modal_content_info_content_title">
-                  {/* <img src={turnstiles} /> */}
-                  일반 화장실
-                </p>
+        <div className="modal_content_info_title">
+          <p className="modal_content_info_title_title">화장실 정보</p>
+        </div>
+        <div className="modal_content_info_content">
+          <ul>
+
+            <li>
+              <p className="modal_content_info_content_title">
+                {/* <img src={turnstiles} /> */}
+                일반 화장실
+              </p>
+              {
+              toilet.normal.length ? toilet.normal.map((item, index)=>(
                 <div className="modal_content_info_content_able">
-                  <div className="modal_content_info_content_able_info">
-                    <p>개찰구</p>
-                    <p>개찰구 내</p>
-                  </div>
-                  <div className="modal_content_info_content_able_info">
-                    <p>위치</p>
-                    <p>~~~~~~~~~~~~~~~~~~</p>
-                  </div>
+                  <p>개찰구 정보 : 개찰구 {item.gateInotDvNm}부 위치</p>
+                  <p>화장실 위치 : {item.dtlLoc}</p>
                 </div>
-              </li>
-              <li>
-                <p className="modal_content_info_content_title">
-                  {/* <img src={disabled} /> */}
-                  장애인 화장실
-                </p>
+              )) : <div>정보 없음(업데이트 필요)</div> }
+              
+            </li>
+
+            <li>
+              <p className="modal_content_info_content_title">
+                {/* <img src={disabled} /> */}
+                장애인 화장실
+              </p>
+              {
+              toilet.disabled.length ? toilet.disabled.map((item, index)=>(
                 <div className="modal_content_info_content_able">
-                  <div className="modal_content_info_content_able_info">
-                    <p>개찰구</p>
-                    <p>개찰구 내</p>
-                  </div>
-                  <div className="modal_content_info_content_able_info">
-                    <p>화장실 위치</p>
-                    <p>~~~~~~~~~~~~~~~~~~~</p>
-                  </div>
+                  <p>개찰구 정보 : 개찰구 {item.gateInotDvNm}부 위치</p>
+                  <p>화장실 위치 : {item.dtlLoc}</p>
                 </div>
-              </li>
-            </ul>
-          </div>
+              )) : <div>정보 없음(업데이트 필요)</div> }
+              
+            </li>
+          </ul>
         </div>
       </div>
     </>
