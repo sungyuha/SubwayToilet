@@ -43,14 +43,11 @@ const MypageReview = () => {
                     </div>
                     
                     <div className="subway-content">
-                        화장실 정보 <br />
-                        <span className="subway-content1">{data.stinCd}개찰 구 내</span>
-                        <span className="subway-content2">{data.routNm}개찰 구 외</span>
-                        <span className="subway-content3">{data.railOprIsttCd}장애인 화장실</span>
+                        리뷰 작성내용
                     </div>
 
                     <div className="subway-Cleanliness">
-                        화장실 청결도 <br />
+                        화장실 평점 <br />
                         
                         {/* */}
                     </div>

@@ -24,10 +24,10 @@ const MypageUser = () => {
     const MypageUserHandler = (e) => {
         console.log(e.target);
         e.preventDefault();
-        const id = e.target.id.value;
-        const name = e.target.name.value;
-        const password = e.target.password.value;
-        const email = e.target.email.value;
+        // const id = e.target.id.value;
+        // const name = e.target.name.value;
+        // const password = e.target.password.value;
+        // const email = e.target.email.value;
         axios.post(SERVER_URL7, {
             id,
             name,
@@ -66,10 +66,10 @@ const MypageUser = () => {
             <h1 className="user">회원정보</h1>
             <div className="form-wrap">
                 <form onSubmit={MypageUserHandler}>
-                    <input type="text" placeholder='이름' value={name} onChange={onChangeMypage} /><br />
-                    <input type="text" placeholder='아이디' value={id} onChange={onChangeMypage} /><br />
-                    <input type="password" placeholder='비밀번호' value={password} onChange={onChangeMypage} /><br />
-                    <input type="email" placeholder='이메일' value={email} onChange={onChangeMypage} /><br />
+                    <input type="text" placeholder='이름' name="name" value={name} onChange={onChangeMypage} /><br />
+                    <input type="text" placeholder='아이디' name="id" value={id} onChange={onChangeMypage} /><br />
+                    <input type="password" placeholder='비밀번호' name="password" value={password} onChange={onChangeMypage} /><br />
+                    <input type="email" placeholder='이메일' name="email" value={email} onChange={onChangeMypage} /><br />
                     <button type="submit" className="mypage-btn">회원정보수정</button>
                     <div>
                         <span className="delete" onClick={MypageDelete}>
