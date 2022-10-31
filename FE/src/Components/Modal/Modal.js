@@ -11,6 +11,7 @@ const Modal = (props) => {
   const [modal, setModal] = useState(false);
   const [toilet, setToilet] = useState({});
   const [review, setReview] = useState([]);
+  const [load, setLoad] = useState(false);
   const handleClickOpen= () => {
     setModal(true);
   }
@@ -23,6 +24,7 @@ const Modal = (props) => {
     axios.get(SERVER_URL).then((res) => {
       setToilet(res.data.Toilet);
       setReview(res.data.Review);
+      setLoad(true);
     });
   }, [])
 
@@ -32,15 +34,20 @@ const Modal = (props) => {
       <div>
       
         <div className='modal_modal_main'>
-          <div className='modal_modal_modal'>
-            <ModalHeader modal={modal} setModal={setModal} onClick={closeModal} toilet={toilet}/>
-            <ModalContent toilet={toilet} review={review}/>
-          <div>
+          
+            {
+              load && (
+              <div className='modal_modal_modal'>
+                <ModalHeader modal={modal} setModal={setModal} onClick={closeModal} toilet={toilet}/>
+                <ModalContent toilet={toilet} review={review}/>
+              </div>)
+            }
+            
+          
+          
         </div>
       </div>
     </div>
-  </div>
-</div>
   );
 }
 

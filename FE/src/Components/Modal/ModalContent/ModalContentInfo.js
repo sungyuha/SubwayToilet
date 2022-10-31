@@ -1,12 +1,10 @@
 import "./ModalContentInfo.scss";
 import disabled from "../../../images/icon-disabled.png";
 import turnstiles from "../../../images/icon-turnstiles.png";
-import {useEffect} from 'react';
 
 function ModalContentInfo({toilet}) {
-  useEffect(() => {
-    console.log(toilet.normal);
-  }, [])
+  console.log("info", toilet);
+  
   return (
     <>
       <div className="modal_content_info">
@@ -16,32 +14,19 @@ function ModalContentInfo({toilet}) {
         <div className="modal_content_info_content">
           <ul>
 
-            
-
-            {/* {
-              toilet.normal.length ? toilet.normal.map((item, index)=>(
-                <li>
-                  <p>
-                    <img src={turnstiles} />
-                    
-                    개찰구 내 화장실 
-                    
-                    
-                    <span> / 위치 :</span>
-                  </p>
-                </li>
-              )) : <></> } */}
-            
-
             <li>
               <p className="modal_content_info_content_title">
                 {/* <img src={turnstiles} /> */}
                 일반 화장실
               </p>
-              <div className="modal_content_info_content_able">
-                <p>개찰구 정보</p>
-                <p>화장실 위치</p>
-              </div>
+              {
+              toilet.normal.length ? toilet.normal.map((item, index)=>(
+                <div className="modal_content_info_content_able">
+                  <p>개찰구 정보 : 개찰구 {item.gateInotDvNm}부 위치</p>
+                  <p>화장실 위치 : {item.dtlLoc}</p>
+                </div>
+              )) : <div>정보 없음(업데이트 필요)</div> }
+              
             </li>
 
             <li>
@@ -49,10 +34,14 @@ function ModalContentInfo({toilet}) {
                 {/* <img src={disabled} /> */}
                 장애인 화장실
               </p>
-              <div className="modal_content_info_content_able">
-                <p>개찰구 정보</p>
-                <p>화장실 위치</p>
-              </div>
+              {
+              toilet.disabled.length ? toilet.disabled.map((item, index)=>(
+                <div className="modal_content_info_content_able">
+                  <p>개찰구 정보 : 개찰구 {item.gateInotDvNm}부 위치</p>
+                  <p>화장실 위치 : {item.dtlLoc}</p>
+                </div>
+              )) : <div>정보 없음(업데이트 필요)</div> }
+              
             </li>
           </ul>
         </div>
