@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import {FaStar} from "react-icons/fa";
+import "./StarRating.scss";
 
 const StarRating = () => {
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(null);
 
     return (
-        <div>
+        <div className='star_rating'>
             {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
 
