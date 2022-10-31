@@ -17,7 +17,7 @@ const Footer = () => {
         </address>
         <div className={styles.footer__content__copyright}>
           <BiCopyright />
-          저작권표시
+            Copyright 2022. JiHwaTeam. All Rights Reserved.
         </div>
         <div className={styles.footer__content__site}>
           <ul>

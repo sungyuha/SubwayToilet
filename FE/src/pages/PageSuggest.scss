@@ -1,0 +1,175 @@
+.Suggest-writeForm{
+    margin-top:100px;
+    display:flex;
+    flex-direction: column; 
+    align-items:center;
+    width: 800px;
+}
+
+.Suggest_title{
+    width: 100%;
+}
+.form_wrap{
+    margin-top:20px;
+    width: 100%;
+}
+.form_wrap > form{
+    display:flex;
+    flex-direction: column; 
+}
+.form_wrap > form > div{
+    padding: 10px 0;
+    border-top: 2px solid rgb(97, 97, 97);
+}
+
+.form_wrap > form > div > span{
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+.inputTitle{
+    width: 700px;
+    height: 30px;
+}
+.textarea-wrap{
+    display: flex;
+    align-items: center;
+}
+.textareaCont{
+    width: 90%;
+    height: 412px;
+}
+
+.ck.ck-editor{
+    max-width: 700px;
+}
+.ck-editor__editable{
+    width: 700px;
+    min-height: 300px;
+}
+.SuggestButton-wrap{
+    text-align: center;
+}
+.SuggestButton-wrap > button{
+    text-align: center;
+    margin: 0 10px;
+}
+.cancelButton{
+    background: rgb(105, 105, 105);
+}
+// Suggest-write
+// ////////////////////////////////////////
+
+.SuggestList-wrap{
+    margin-top: 100px;
+    text-align: center;
+    width: 80%;
+}
+.SuggestList-content{
+    margin-top: 100px;
+
+}
+.listInfo-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.listInfo-wrap > button{
+    background: rgba(255, 255, 255, 0);
+    color: black;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+}
+.SuggestList-top{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(212, 213, 255);
+    font-weight: bold;
+    padding: 15px 0;
+}
+.Suggest-obj{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    border-bottom: 1px solid black;
+}
+.SuggestList-top > .num{
+    flex: 1 1 0;
+}
+.SuggestList-top > .title{
+    flex: 4 1 0;
+    
+}
+.SuggestList-top > .writer{
+    flex: 2 1 0;
+}
+.noticeList-top > .date{
+    flex: 1 1 0;
+}
+.Suggest-obj > .num{
+    flex: 1 1 0;
+}
+.Suggest-obj > .title{
+    flex: 4 1 0;
+}
+.Suggest-obj > .writer{
+    flex: 2 1 0;
+}
+.Suggest-obj > .date{
+    flex: 1 1 0;
+}
+
+.pagination{
+    margin-top: 30px;
+}
+
+// Suggest View
+
+.SuggestView-wrap{
+    margin-top: 100px;
+    
+    width: 80%;
+    h1{
+        text-align: center;
+    }
+}
+.viewContent-wrap{
+    margin-top: 100px;
+    
+    
+}
+.SuggestView_tag{
+    text-align: start;
+}
+
+.viewContent-innerWrap{
+    margin-top: 20px;
+    border: 1px solid rgb(168, 168, 168);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.viewContent-title{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(179, 179, 179);
+}
+.viewContent-writer{
+    border-bottom: 1px solid rgb(179, 179, 179);
+    background-color: rgba(0, 0, 0, 0.644);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+    padding: 5px;
+    font-size: 0.8rem;
+}
+.viewContent-content{
+    padding-top: 10px;
+    margin-top: 5px;
+    border-top: 1px solid rgb(179, 179, 179);
+}
