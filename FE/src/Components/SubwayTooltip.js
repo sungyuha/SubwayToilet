@@ -2,10 +2,11 @@ import './SubwayMap.scss';
 import {useRef, useEffect, useState} from 'react';
 import line2icon from "../images/Line_2.png";
 
-import Button from './Button';
-import SubwayModal from './SubwayModal';
-import Header from "./Modal_file/ModalHeader";
-import Content from "./Modal_file/ModalContent";
+import ModalBox from "./Modal/ModalBox"
+// import Button from './Button';
+// import SubwayModal from './SubwayModal';
+// import Header from "./Modal_file/ModalHeader";
+// import Content from "./Modal_file/ModalContent";
 
 const SubwayTooltip = (props) => {
     const ref = useRef();
@@ -16,31 +17,32 @@ const SubwayTooltip = (props) => {
         Tooltip.style.top = props.Y- Tooltip.clientHeight - 16 + 'px';
     });
 
-    const [modal, setModal] = useState();
+    // const [modal, setModal] = useState();
 
-    const lineButtonHandler = () => {
-        setModal({
-            title: <Header/>,
-            message: <Content/>,
-        });
-    }
+    // const lineButtonHandler = () => {
+    //     setModal({
+    //         title: <Header/>,
+    //         message: <Content/>,
+    //     });
+    // }
 
-    const modalHandler = () => {
-        setModal(null);
-    };
+    // const modalHandler = () => {
+    //     setModal(null);
+    // };
 
     return(
         <div className='tooltip-wrap' ref={ref}>
             <div><img className='line2icon' src={line2icon} width='20px' height='20px' alt='2호선'/></div>
             <div>{props.title}</div>
-            {modal && (
+            {/* {modal && (
                 <SubwayModal
                     title={modal.title}
                     message={modal.message}
                     onConfirm={modalHandler}
                 />
-            )}
-                <Button className='success' type="submit" onClick={lineButtonHandler}>역 상세보기</Button>
+            )} */}
+                {/* <Button className='success' type="submit" onClick={lineButtonHandler}>역 상세보기</Button> */}
+                <ModalBox/>
         </div>
     );
 }

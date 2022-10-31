@@ -1,0 +1,141 @@
+$color-point: rgb(19, 18, 20);
+
+.modal_content_rating {
+  display: flex;
+  flex-direction: column;
+  color: black;
+
+  &_content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &_title {
+      text-align: center;
+      color: $color-point;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    &_box {
+      background: rgb(243, 246, 255);
+      margin: 0;
+      padding: 0;
+      margin: 0 0.55rem;
+      padding: 0.7rem 0.5rem;
+      border-radius: 7px;
+      text-align: center;
+
+      &_title {
+        p {
+          margin: 0;
+          padding: 0;
+          font-size: 16px;
+          color: #aaa;
+          font-weight: 600;
+        }
+      }
+
+      &_star {
+        display: flex;
+        justify-content: center;
+
+        ul {
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          list-style: none;
+
+          li {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            justify-content: center;
+
+            p {
+              margin: 0;
+              padding: 0;
+              margin-left: 0.5rem;
+              font-size: 16px;
+            }
+
+            p:nth-child(1) {
+              font-size: 30px;
+              font-weight: 600;
+            }
+
+            p:nth-child(3) {
+              font-size: 12px;
+              font-weight: 800;
+              color: #aaa;
+              margin-top: 0.2rem;
+            }
+          }
+        }
+      }
+    }
+
+    &_total {
+      width: 100%;
+
+      ul {
+        margin: 0;
+        margin: 0.7rem 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+        list-style: none;
+        padding: 0 0.5rem;
+
+        li {
+          width: calc(90% / 4);
+          padding: 0.5rem 0;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          border: 1px solid #eee;
+          border-radius: 10px;
+
+          div {
+            display: flex;
+            justify-content: center;
+
+            p {
+              margin: 0;
+              padding: 0;
+              width: 4rem;
+              height: 4rem;
+              background: rgb(243, 246, 255);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 50%;
+
+              img {
+                width: 2.5rem;
+                height: 2.5rem;
+                object-fit: fill;
+              }
+            }
+          }
+
+          h5 {
+            margin: 0;
+            padding: 0;
+            padding-top: 0.5rem;
+            font-size: 12px;
+          }
+
+          p {
+            margin: 0;
+            padding: 0;
+            padding-top: 0.5rem;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+}
