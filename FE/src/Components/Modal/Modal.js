@@ -37,7 +37,7 @@ const Modal = (props) => {
         <div className='modal_modal_main'>
           
             {
-              load && (
+              load && (<>
               <div className='modal_modal_modal'>
                 <ModalHeader modal={modal} setModal={setModal} onClick={closeModal} toilet={toilet}/>
                 <ModalContent toilet={toilet} review={review}/>
@@ -45,7 +45,7 @@ const Modal = (props) => {
               <div>
                 <ModalContentWrite/>
               </div>
-              )
+              </>)
             }
             
           
