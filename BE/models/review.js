@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
-  stinNm: { type: String },
+  stinCd: { type: String },
+  id : {type:String},
   text: { type: String },
   rating: { type: Number },
   date: { type: String },
