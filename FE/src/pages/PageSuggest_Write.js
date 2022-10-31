@@ -70,9 +70,9 @@ const PageSuggest_Write = () => {
     }
     return(
         <div className="SuggestList-writeForm">
-            <h1>공지사항</h1>
+            <h1>건의사항/정보수정요청</h1>
             <br/><br/>
-            <h3 className="SuggestList_title">공지사항 글쓰기</h3>    
+            <h3 className="SuggestList_title">건의사항/정보수정요청 글쓰기</h3>    
             <div className="form_wrap">
                 <form onSubmit={SuggestSubmitHandler}>
                     <input type="hidden" name="userid"/>
