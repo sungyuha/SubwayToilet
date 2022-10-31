@@ -8,9 +8,19 @@ function ModalContent({toilet, review}) {
     <>
       <div className="modal_content">
         <div className="modal_content_box">
-          <ModalContentInfo toilet={toilet} />
-          <ModalContentRating review={review}/>
-          <ModalButton />
+
+          <div className="modal_content_box_left">
+            <div className="modal_content_box_left_top">
+              <ModalContentInfo toilet={toilet}/>
+            </div>
+            <div>
+              <ModalContentRating  review={review}/>
+            </div>
+          </div>
+          <div className="modal_content_box_right">
+            <ModalButton />
+          </div>
+
         </div>
       </div>
     </>
