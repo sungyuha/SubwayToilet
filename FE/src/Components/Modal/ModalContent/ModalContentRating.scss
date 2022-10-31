@@ -14,14 +14,14 @@ $color-point: rgb(19, 18, 20);
       text-align: center;
       color: $color-point;
       font-size: 1.3rem;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     &_box {
       background: rgb(243, 246, 255);
       margin: 0;
       padding: 0;
-      margin: 0 0.55rem;
+      margin: 1.3rem 0.55rem;
       padding: 0.7rem 0.5rem;
       border-radius: 7px;
       text-align: center;
@@ -38,6 +38,7 @@ $color-point: rgb(19, 18, 20);
 
       &_star {
         display: flex;
+        flex-direction: column;
         justify-content: center;
 
         ul {
@@ -48,6 +49,8 @@ $color-point: rgb(19, 18, 20);
           list-style: none;
 
           li {
+            display: flex;
+            flex-direction: column;
             margin: 0;
             padding: 0;
             width: 100%;
@@ -57,7 +60,8 @@ $color-point: rgb(19, 18, 20);
               margin: 0;
               padding: 0;
               margin-left: 0.5rem;
-              font-size: 16px;
+              margin-top: 0.6rem;
+              font-size: 20px;
             }
 
             p:nth-child(1) {
@@ -81,7 +85,7 @@ $color-point: rgb(19, 18, 20);
 
       ul {
         margin: 0;
-        margin: 0.7rem 0;
+        margin: 0.3rem 0;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -101,6 +105,7 @@ $color-point: rgb(19, 18, 20);
           div {
             display: flex;
             justify-content: center;
+            padding: 0 0.5rem;
 
             p {
               margin: 0;

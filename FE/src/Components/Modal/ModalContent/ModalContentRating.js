@@ -16,8 +16,8 @@ function ModalContentRating() {
             <div className="modal_content_rating_content_box_star">
               <ul>
                 <li>
-                  <p>4.7</p>
                   <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p>
+                  <p>4.7</p>
                   <p>리뷰 40개</p>
                 </li>
               </ul>

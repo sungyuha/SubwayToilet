@@ -3,9 +3,14 @@ const HttpError = require('../models/http-error');
 const moment = require('moment');
 
 exports.postReview = async (req, res, next) => {
-  const { stinNm, text, rating } = req.body;
+  const { stinCd,id, cleanliness, count, size, convenience,  text, rating } = req.body;
   const Review = new review({
-    stinNm,
+    stinCd,
+    id,
+    cleanliness,
+    count,
+    size,
+    convenience,
     text,
     rating,
     date: String(moment().format('YYYY-MM-DD HH:mm:ss')),

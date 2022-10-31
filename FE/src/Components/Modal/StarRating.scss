@@ -1,10 +1,16 @@
 .star_rating {
-    margin-top: 10rem;
+    display: flex;
+    align-items: center;
+    // margin-top: 1rem;
     input[type="radio"] {
         display: none;
     }
     .star {
         cursor: pointer;
         transition: color 200ms;
+    }
+
+    p {
+        margin-left: 1rem;
     }
 }

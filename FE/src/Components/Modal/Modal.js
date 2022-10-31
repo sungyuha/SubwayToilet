@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import "./Modal.scss"
 import ModalHeader from "./ModalHeader/ModalHeader";
 import ModalContent from "./ModalContent/ModalContent";
+import ModalContentWrite from "./ModalContent/ModalContentWrite";
 import axios from 'axios';
 // import ModalInfo from "./ModalInfo/ModalInfo";
 // import ModalScore from "./ModalScore/ModalScore";
@@ -40,11 +41,16 @@ const Modal = (props) => {
               <div className='modal_modal_modal'>
                 <ModalHeader modal={modal} setModal={setModal} onClick={closeModal} toilet={toilet}/>
                 <ModalContent toilet={toilet} review={review}/>
-              </div>)
+              </div>
+              <div>
+                <ModalContentWrite/>
+              </div>
+              )
             }
             
           
           
+
         </div>
       </div>
     </div>

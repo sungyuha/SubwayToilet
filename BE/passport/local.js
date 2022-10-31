@@ -14,10 +14,10 @@ module.exports = new local(
       existingUser = await user.findOne({ id: id });
       if (existingUser) {
         PW = await bcrypt.compare(password, existingUser.password);
-        if (PW) done(null, existingUser);
-        else done(null, false, { message: '비밀번호 불일치.' });
+        if (PW) done(null, existingUser, {message :'로그인 성공'});
+        else done(null, false, { message : '비밀번호 불일치.' });
       } else {
-        done(null, false, { message: '아이디가 없음.' });
+        done(null, false, { message : '아이디가 없음.' });
       }
     } catch (error) {
       console.error(error);

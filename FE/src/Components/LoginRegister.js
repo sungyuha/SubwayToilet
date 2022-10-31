@@ -4,9 +4,11 @@ import kakao from '../images/login_kakao.png';
 import naver from '../images/login_naver.png';
 import google from '../images/login_google.png';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const LoginRegister = () => {
-  const SERVER_URL = 'http://localhost:8000/user/login';
+  const navigate = useNavigate();
+  const SERVER_URL = 'http://localhost:8000/auth/local';
   const SERVER_URL2 = 'http://localhost:8000/user/signup';
   const [activeIndex, setActiveIndex] = useState(0);
   const [inputs, setInputs] = useState({
@@ -35,7 +37,10 @@ const LoginRegister = () => {
       id, 
       password
     }).then((res) => {
-      console.log(res.data.token);
+      console.log(res.data);
+      localStorage.setItem('access_token', res.data);
+      navigate("/");
+
     });
 
   }
@@ -97,9 +102,9 @@ const LoginRegister = () => {
             <div className='other-login-form'>
                 <p>OR</p>
                 <div>
-                <a className="simpleLogin"><img src={naver}/></a>
-                <a className="simpleLogin"><img src={kakao}></img></a>
-                <a className="simpleLogin"><img src={google}></img></a>
+                <a className="simpleLogin" href='http://localhost:8000/auth/naver'><img src={naver}/></a>
+                <a className="simpleLogin" href='http://localhost:8000/auth/kakao'><img src={kakao}></img></a>
+                <a className="simpleLogin" href='http://localhost:8000/auth/google'><img src={google}></img></a>
                 </div>
             </div>
           </div>

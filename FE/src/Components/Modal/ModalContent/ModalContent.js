@@ -1,6 +1,7 @@
 import ModalContentInfo from "./ModalContentInfo";
 import ModalContentRating from "./ModalContentRating";
 import ModalButton from "./ModalContentButton";
+import ModalContentWrite from "./ModalContentWrite";
 import "./ModalContent.scss";
 
 function ModalContent({toilet, review}) {
