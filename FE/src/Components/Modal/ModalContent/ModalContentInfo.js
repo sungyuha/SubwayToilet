@@ -1,8 +1,12 @@
 import "./ModalContentInfo.scss";
 import disabled from "../../../images/icon-disabled.png";
 import turnstiles from "../../../images/icon-turnstiles.png";
+import {useEffect} from 'react';
 
-function ModalContentInfo() {
+function ModalContentInfo({toilet}) {
+  useEffect(() => {
+    console.log(toilet.normal);
+  }, [])
   return (
     <>
       <div className="modal_content_info">
@@ -11,6 +15,24 @@ function ModalContentInfo() {
         </div>
         <div className="modal_content_info_content">
           <ul>
+
+            
+
+            {/* {
+              toilet.normal.length ? toilet.normal.map((item, index)=>(
+                <li>
+                  <p>
+                    <img src={turnstiles} />
+                    
+                    개찰구 내 화장실 
+                    
+                    
+                    <span> / 위치 :</span>
+                  </p>
+                </li>
+              )) : <></> } */}
+            
+
             <li>
               <p className="modal_content_info_content_title">
                 {/* <img src={turnstiles} /> */}
@@ -21,6 +43,7 @@ function ModalContentInfo() {
                 <p>화장실 위치</p>
               </div>
             </li>
+
             <li>
               <p className="modal_content_info_content_title">
                 {/* <img src={disabled} /> */}

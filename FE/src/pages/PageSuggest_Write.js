@@ -69,7 +69,7 @@ const PageSuggest_Write = () => {
         
     }
     return(
-        <div className="SuggestList-writeForm">
+        <div className="SuggestView-wrap">
             <h1>건의사항/정보수정요청</h1>
             <br/><br/>
             <h3 className="SuggestList_title">건의사항/정보수정요청 글쓰기</h3>    
