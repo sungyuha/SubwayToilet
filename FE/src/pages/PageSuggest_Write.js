@@ -78,7 +78,7 @@ const PageSuggest_Write = () => {
                     <input type="hidden" name="userid"/>
                     <input type="hidden" name="BoardName"/>
                     <div><span>제목</span><input className="inputTitle" type="text" name="title" id="title" maxLength="50" onChange={onChangeTitle} value={noticeTitle}/></div>
-                    <div><span>작성자</span>관리자</div>
+                    <div><span>작성자</span>{params.postId}</div>
                     <div className="textarea-wrap">
                         <span>내용</span>
                         <MyCkeditor addData={addData} setAddData={setAddData} writer='admin'/>
