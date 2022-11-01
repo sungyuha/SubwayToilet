@@ -37,25 +37,24 @@ exports.uploadImg = (req, res) => {
 exports.viewList = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   // console.log(req.headers)
+  let msg = {};
   if (req.headers.authorization) {
-    let msg = {};
     try {
       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
       if (process.env.ADMIN === req.decoded.user.id) {
         msg.success = '성공';
       } else {
-        res.send('실패');
+        msg.success = '실패';
       }
     } catch (err) {
       const error = new HttpError('실패');
       return next(error);
     }
   } else {
-    const error = new HttpError('실패');
-    return next(error);
+    msg.success = '실패';
   }
   const notices = await Notice.find().sort({ date: 'desc' });
-  res.json(notices, msg);
+  res.json({notices, msg});
 };
 
 exports.view5List = async (req, res) => {
@@ -67,26 +66,26 @@ exports.view5List = async (req, res) => {
 exports.viewPost = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   // console.log(req.headers)
+  let msg = {};
   if (req.headers.authorization) {
-    let msg = {};
+    
     try {
       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
       if (process.env.ADMIN === req.decoded.user.id) {
         msg.success = '성공';
       } else {
-        res.send('실패');
+        msg.success = '실패';
       }
     } catch (err) {
       const error = new HttpError('실패');
       return next(error);
     }
   } else {
-    const error = new HttpError('실패');
-    return next(error);
+    msg.success = '실패';
   }
   // console.log(req);
   const post = await Notice.findOne({ _id: req.query.postId });
-  res.json(post, msg);
+  res.json({post, msg});
 };
 
 exports.deletePost = async (req, res) => {

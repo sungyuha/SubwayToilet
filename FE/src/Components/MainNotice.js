@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 const MainNotice = () => {
   const [items, setItems] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
+  
   const SERVER_URL = 'http://localhost:8000/page-notice/get5post';
   useEffect(()=>{
     axios.get(SERVER_URL).then((res) => {

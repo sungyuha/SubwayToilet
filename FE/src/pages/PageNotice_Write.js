@@ -20,10 +20,13 @@ const PageNotice_Write = () => {
             axios.get(GETPOST_URL, {
                 params: {
                     postId: params.postId
-                } 
+                },
+                headers: {
+                'Authorization': localStorage.getItem('access_token'),
+            } 
             }).then((res) => {
-                setNoticeTitle(res.data.title);
-                setAddData(res.data.content);
+                setNoticeTitle(res.data.post.title);
+                setAddData(res.data.post.content);
             });
         } 
     }, [])
