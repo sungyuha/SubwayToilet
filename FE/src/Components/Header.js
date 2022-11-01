@@ -12,32 +12,10 @@ const Header = () => {
   const SERVER_URL = 'http://localhost:8000/user/login';
   const [login1, setlogin1] = useState(false);
 
-  /*const onPressText = (e) => {
-    console.dir(e.target.value);
-    const { value, name } = e.target; // e.target에서 value와 name 추출
-    setInputs({
-      ...inputs, // 기존의 input 객체를 복사(불변성을 위해)
-      [name]: value, // name 키를 가진 값을 value 로 변경
-    });
-    LoginHandler();
-    // console.log(inputs.password,"vs", inputs.pwd);
-  }*/
 
-  /*const IdModifyHandler = (e) => {
-    console.log(e.target);
-    e.preventDefault();
-    const id = e.target.id.value;
-    axios.post(SERVER_URL, {
-        password,
-        pwd,
-    })
-    .then((res) => {
-        navigate("/user/login");
-    });
-}*/
 
   const token = localStorage.getItem('token');
-
+  
   useEffect(() => {
     if (token) {
       setlogin1(true);
@@ -93,8 +71,7 @@ const Header = () => {
           Logo
         </Link>
         <Link to="/login">
-          <button className={styles.header__content__button} onClick={()=> handleLogOut }>로그인</button>
-          {/* 삼항 연산자로 false일때는 로그인 버튼으로 / 밎으면 로그아웃으로*/}
+          <button className={styles.header__content__button} onChange={()=>handleLogOut}>로그인</button>
         </Link>
       </div>
     </header>
