@@ -34,7 +34,7 @@ exports.uploadImg = (req, res) => {
   });
 };
 // 관리자만 가능
-exports.viewList = async (req, res) => {
+exports.viewList = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   // console.log(req.headers)
   if (req.headers.authorization) {
@@ -64,7 +64,7 @@ exports.view5List = async (req, res) => {
 };
 
 // 관리자만 가능
-exports.viewPost = async (req, res) => {
+exports.viewPost = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   // console.log(req.headers)
   if (req.headers.authorization) {
