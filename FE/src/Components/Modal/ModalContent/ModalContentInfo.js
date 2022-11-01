@@ -47,7 +47,7 @@ function ModalContentInfo({toilet}) {
           </ul>
          </div>
         </div>
-      </div>
+      
     </>
   );
 }
