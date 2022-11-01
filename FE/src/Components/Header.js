@@ -12,8 +12,6 @@ const Header = () => {
   const SERVER_URL = 'http://localhost:8000/user/login';
   const [login1, setlogin1] = useState(false);
 
-
-
   const token = localStorage.getItem('token');
   
   useEffect(() => {
@@ -25,7 +23,17 @@ const Header = () => {
   const handleLogOut = () => {
     setlogin1(false);
     localStorage.removeItem('token');
-  };
+  }
+
+  const handlelogin = () => {
+      if (login1 && login1.accessToken) {
+        //return { Authorization: 'Bearer ' + login1.accessToken };
+        return { "token": login1.accessToken };
+      } else {
+        setlogin1(true);
+      } return {}
+      
+    };
 
   //if(true면 로그아웃 버튼 구현
   // flase면 로그인 버튼 보여주기)
@@ -71,7 +79,8 @@ const Header = () => {
           Logo
         </Link>
         <Link to="/login">
-          <button className={styles.header__content__button} onChange={()=>handleLogOut}>로그인</button>
+          <button className={styles.header__content__button} onChange={()=>handlelogin}>로그인</button>
+          {/* { )) : {<button className={styles.header__content__button} onChange={()=>handleLogOut}>로그아웃</button>} } */}
         </Link>
       </div>
     </header>
