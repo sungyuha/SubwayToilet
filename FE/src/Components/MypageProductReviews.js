@@ -41,7 +41,7 @@ const MypageProductReviews = () => {
 
     return (
         <div className="wrap">
-            <h1 className="user">내가 작성한 게시글</h1>
+            <h1 className="ps-user">내가 작성한 게시글</h1>
             <br />
 
             <div className="list">
