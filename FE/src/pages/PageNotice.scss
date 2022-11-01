@@ -1,3 +1,5 @@
+@import "./../styles/variables.scss";
+
 .Notice-writeForm{
     margin-top:100px;
     display:flex;
@@ -10,13 +12,15 @@
     width: 100%;
 }
 .form_wrap{
-    margin-top:20px;
-    width: 100%;
+    margin-top: 20px;
+    height: 100%;
 }
 .form_wrap > form{
+    width: 100%;
     display:flex;
     flex-direction: column; 
 }
+
 .form_wrap > form > div{
     padding: 10px 0;
     border-top: 2px solid rgb(97, 97, 97);
@@ -66,9 +70,13 @@
     text-align: center;
     width: 80%;
 }
-.noticeList-content{
-    margin-top: 100px;
 
+.noticeList-content{
+    margin-top: 60px;
+
+    @include breakpoint(md) {
+        margin-top: 100px;
+    }
 }
 .listInfo-wrap{
     display: flex;
@@ -140,6 +148,7 @@
     
     
 }
+
 .NoticeView_tag{
     text-align: start;
 }
