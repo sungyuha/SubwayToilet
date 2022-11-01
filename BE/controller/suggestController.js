@@ -2,7 +2,7 @@ const Suggest = require('../models/suggest');
 const passport = require('../passport/index');
 const jwt = require('jsonwebtoken');
 
-exports.writePost = async (req, res) => {
+exports.writePost = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   try {
     req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
@@ -24,7 +24,7 @@ exports.writePost = async (req, res) => {
 };
 
 // 쓴 사람만 수정
-exports.modifyPost = async (req, res) => {
+exports.modifyPost = async (req, res, next) => {
   const { writer, title, content, _id } = req.body;
   passport.authenticate('jwt', { session: false });
   let msg = {};
@@ -80,7 +80,7 @@ exports.viewPost = async (req, res, next) => {
 };
 
 // 쓴 사람만
-exports.deletePost = async (req, res) => {
+exports.deletePost = async (req, res, next) => {
   const { writer } = req.body;
   passport.authenticate('jwt', { session: false });
   let msg = {};
