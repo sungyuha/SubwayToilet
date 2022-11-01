@@ -1,21 +1,36 @@
+const HttpError = require('../models/http-error');
 const linesNum2 = require('../util/subwayLine');
 const lineNum2Toilet = require('../util/subwayToilet');
 const stationToilet = require('../models/stationToilet');
+const passport = require('../passport/index');
+const jwt = require('jsonwebtoken');
+
 
 // 누르면 api 호출해서 db에 2호선 역, 화장실 정보를 저장시키는 버튼 만들어주세요..
 exports.getAdmin = (req, res, next) => {
   passport.authenticate('jwt', { session: false })
-  try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-    if(process.env.admin === req.decoded.user.id) {
-      res.json({message:'관리자 입니다.'})
+  // console.log(req.headers)
+  if (req.headers.authorization){
+    try {
+      req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+      if (process.env.ADMIN === req.decoded.user.id){
+        res.send('성공')
+      } else{
+        res.send('실패')
+      }
+    } catch (err) {
+      const error = new HttpError('실패');
+      return next(error);
     }
-  } catch (err) {
-    const error = new HttpError('관리자가 아니시네여 꺼지세요');
+  } else {
+    const error = new HttpError('실패');
     return next(error);
   }
-  res.send();
 };
+
+
+      
+      
 
 // api 호출해서 db에 정보 저장하는 로직
 exports.getLines = async (req, res, next) => {
