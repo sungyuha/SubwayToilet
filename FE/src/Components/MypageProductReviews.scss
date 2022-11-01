@@ -47,7 +47,44 @@
         text-align: center;
     }
 
+    @include breakpoint(bg) {
+        width: 100%;
+    }
+
+    margin-top: 2rem;
+    text-align: center;
+
+    .list {
+        display: flex;
+        border: 1.5px solid #bbb;
+        border-radius: 10px;
+        height: 6rem;
+        margin-bottom: 1rem;
+        width: 30rem;
+
+        .nick {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+            font-size: 13px;
+        }
+
+        .review {
+            padding-left: 2rem;
+            margin: auto;
+            white-space: nowrap;
+        }
+    }
+
+    a {
+        color: white;
+        font-size: 12px;
+    }
+
+    h1 {
+        padding-bottom: 1rem;
+    }  
+
+    .ps-user {
+        text-align: center;
+    }
 }
-
-
-
