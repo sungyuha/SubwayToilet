@@ -12,6 +12,7 @@ const PageSuggest_Write = () => {
     const [noticeTitle, setNoticeTitle] = useState('');
     const [addData, setAddData] = useState("");
     const [mode, setMode] = useState("write");
+    const [writer, setWriter] = useState("");
 
     useEffect(() => {
         
@@ -20,10 +21,22 @@ const PageSuggest_Write = () => {
             axios.get(GETPOST_URL, {
                 params: {
                     postId: params.postId
-                } 
+                },
+                headers: {
+                    'Authorization': localStorage.getItem('access_token'),
+                }  
             }).then((res) => {
-                setNoticeTitle(res.data.title);
-                setAddData(res.data.content);
+                setNoticeTitle(res.data.post.title);
+                setAddData(res.data.post.content);
+                setWriter(res.data.post.writer);
+            });
+        }else{
+            axios.get(SERVER_URL, {
+                headers: {
+                    'Authorization': localStorage.getItem('access_token'),
+                }  
+            }).then((res) => {
+                setWriter(res.data);
             });
         }
     }, [])
@@ -35,7 +48,6 @@ const PageSuggest_Write = () => {
     
     const SuggestSubmitHandler = async (e) => {
         e.preventDefault();
-        const writer = 'admin'
         const title = noticeTitle;
         const content = addData;
         await axios.post(SERVER_URL, {
@@ -47,7 +59,6 @@ const PageSuggest_Write = () => {
         });
     }
     const modifyPost = async () => {
-        const writer = 'admin'
         const title = noticeTitle;
         const content = addData;
         const _id = params.postId;
@@ -78,7 +89,7 @@ const PageSuggest_Write = () => {
                     <input type="hidden" name="userid"/>
                     <input type="hidden" name="BoardName"/>
                     <div><span>제목</span><input className="inputTitle" type="text" name="title" id="title" maxLength="50" onChange={onChangeTitle} value={noticeTitle}/></div>
-                    <div><span>작성자</span>{params.postId}</div>
+                    <div><span>작성자</span>{writer}</div>
                     <div className="textarea-wrap">
                         <span>내용</span>
                         <MyCkeditor addData={addData} setAddData={setAddData} writer='admin'/>

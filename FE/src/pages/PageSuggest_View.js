@@ -6,6 +6,8 @@ import PageSuggest_Write from "./PageSuggest_Write";
 
 const PageSuggest_View = () => {
     const [items, setItems] = useState([]);
+    const [islogin, setIslogin] = useState(false);
+    const [isOwner, setIsOwner] = useState(false);
     const [isModify, setIsModify] = useState(0);
     const navigate = useNavigate();
     
@@ -22,7 +24,6 @@ const PageSuggest_View = () => {
             data: {
                 postId: items._id
             }
-            
         }).then((res) =>{
             navigate("/page-suggest");
         });
@@ -32,9 +33,15 @@ const PageSuggest_View = () => {
         axios.get(SERVER_URL, {
             params: {
                 postId: params.postId
-            } 
+            },
+            headers: {
+                'Authorization': localStorage.getItem('access_token'),
+            }  
         }).then((res) => {
-            setItems(res.data);
+            console.log(res.data);
+            setItems(res.data.post);
+            setIslogin(res.data.msg.islogin);
+            setIsOwner(res.data.msg.owner);
         });
 
     }, [])
@@ -62,8 +69,10 @@ const PageSuggest_View = () => {
                     
                     <div className='SuggestButton-wrap'>
                         <button type='button' className='cancelButton' onClick={()=>{moveList()}}>목록</button>
-                        <button type='button'><Link to={'/page-suggest/view/modify/' + items._id}  style={{ textDecoration: "none", color:'inherit'}}>수정</Link></button>
+                        {isOwner && <>
+                            <button type='button'><Link to={'/page-suggest/view/modify/' + items._id}  style={{ textDecoration: "none", color:'inherit'}}>수정</Link></button>
                         <button type='button' onClick={()=>{deletePost()}}>삭제</button>
+                        </>}
                     </div>
                 </div>
             </div>

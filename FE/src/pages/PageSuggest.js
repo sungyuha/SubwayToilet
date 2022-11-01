@@ -7,7 +7,7 @@ import './PageSuggest.scss';
 const PageSuggest = () => {
   const navigate = useNavigate();
   const SERVER_URL = 'http://localhost:8000/Page-Suggest';
-
+  const [islogin, setIslogin] = React.useState(false);
   const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
   const [count, setCount] = React.useState(0); //아이템 총 개수
   const [currentpage, setCurrentpage] = React.useState(1); //현재페이지
@@ -46,8 +46,13 @@ const PageSuggest = () => {
 
 }
   useEffect(()=>{
-    axios.get(SERVER_URL).then((res) => {
-      setItems(res.data);
+    axios.get(SERVER_URL, {
+      headers: {
+        'Authorization': localStorage.getItem('access_token'),
+      }  
+    }).then((res) => {
+      setItems(res.data.suggests);
+      setIslogin(res.data.msg.islogin);
     });
   }, []);
 
@@ -73,7 +78,7 @@ const PageSuggest = () => {
       <div className="SuggestList-content">
         <div className="listInfo-wrap">
           <span>총 <b>{count}</b>개</span>
-          <button onClick={moveWritePage}>🖉글쓰기</button>
+          {islogin && <button onClick={moveWritePage}>🖉글쓰기</button>}
         </div>
         <div className="SuggestList-top">
             <div className="num">번호</div>

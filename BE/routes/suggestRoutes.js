@@ -30,6 +30,7 @@ router.get('/get5post', suggestController.view5List);
 router.get('/view', suggestController.viewPost);
 
 router.delete('/view', suggestController.deletePost);
+router.get('/write', suggestController.checkID);
 router.put('/write', suggestController.modifyPost);
 router.post('/write', suggestController.writePost);
 router.post('/write/uploadImg', upload.single('uploadImg'), suggestController.uploadImg);
