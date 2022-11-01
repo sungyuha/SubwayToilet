@@ -1,7 +1,10 @@
-
-.searchInputs {
+.search {
+    border-right: 1px solid #eee;
+    .searchInputs {
     display: flex;
     align-items: center;
+    width: 20rem;
+    padding: 0 1rem;
     }
 
     .search input {
@@ -74,3 +77,4 @@
     #clearBtn {
     cursor: pointer;
     }
+}
