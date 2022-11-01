@@ -11,12 +11,14 @@ import PageNotice_Write from "./pages/PageNotice_Write";
 import PageNotice_View from "./pages/PageNotice_View";
 import PageSuggest_View from "./pages/PageSuggest_View";
 import PageSuggest_Write from "./pages/PageSuggest_Write";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/page-notice" element={<PageNotice />} />
         <Route path="/page-notice/write" element={<PageNotice_Write />} />
         <Route path="/page-notice/view/:postId" element={<PageNotice_View />} />
