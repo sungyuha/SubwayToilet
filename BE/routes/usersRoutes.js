@@ -3,7 +3,6 @@ const { check } = require('express-validator');
 const router = Router();
 const usersControllers = require('../controller/usersControllers');
 
-
 router.get('/signup', usersControllers.getSignUP);
 
 router.get('/login', usersControllers.getLogin);
@@ -32,11 +31,11 @@ router.post(
 
 router.post('/id/find', usersControllers.postIdFind);
 router.post('/pw/check', usersControllers.postPwCheck);
-router.post('/pw/reset');
+router.post('/pw/reset', usersControllers.postPwReset);
 
 // 회원 정보 수정
-router.patch('/userinfo/edit');
+router.patch('/userinfo/edit', usersControllers.patchUserInfo);
 // 회원 탈퇴
-router.delete('/userinfo/delete');
+router.delete('/userinfo/delete', usersControllers.deleteUser);
 
 module.exports = router;
