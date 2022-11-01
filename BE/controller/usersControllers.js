@@ -10,7 +10,7 @@ function setUserToken(user) {
   const token = jwt.sign({ user }, process.env.TOKEN, {
     expiresIn: '10m',
   });
-  console.log('token : ',token);
+  console.log('token : ', token);
   return token;
 }
 
@@ -23,7 +23,7 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.getUserInfo = async (req, res, next) => {
-  passport.authenticate('jwt', { session: false })
+  passport.authenticate('jwt', { session: false });
   try {
     req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
   } catch (err) {
@@ -33,15 +33,13 @@ exports.getUserInfo = async (req, res, next) => {
   const id = req.decoded.user.id;
   let User;
   try {
-    User= await user.findOne({id})
-    res.json({User})
-    
+    User = await user.findOne({ id });
+    res.json({ User });
   } catch (err) {
-    const error = new HttpError('사용자 정보를 불러올 수 없습니다.')
-    return next(error)
-  } 
-
-}
+    const error = new HttpError('사용자 정보를 불러올 수 없습니다.');
+    return next(error);
+  }
+};
 
 exports.getIdFind = (req, res, next) => {
   res.send('forgot id');
@@ -52,16 +50,15 @@ exports.getPwCheck = (req, res, next) => {
 };
 
 exports.getPwReset = (req, res, next) => {
-  passport.authenticate('jwt', { session: false })
+  passport.authenticate('jwt', { session: false });
   try {
     req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-    res.json({message:'재설정 페이지'})
+    res.json({ message: '재설정 페이지' });
   } catch (err) {
     const error = new HttpError('유저 확인이 되지 않았습니다.');
     return next(error);
   }
-
-}
+};
 
 exports.postSignUP = async (req, res, next) => {
   const errors = validationResult(req);
@@ -105,64 +102,6 @@ exports.postSignUP = async (req, res, next) => {
   });
 };
 
-// exports.postLogin = async (req, res, next) => {
-//   const { id, password } = req.body;
-
-//   let existingUser;
-
-//   try {
-//     existingUser = await user.findOne({ id: id });
-//     console.log(existingUser);
-//   } catch (err) {
-//     const error = new HttpError('로그인 오류', 500);
-//     return next(error);
-//   }
-//   if (!existingUser) {
-//     const error = new HttpError('아이디가 없습니다.', 401);
-//     return next(error);
-//   }
-
-//   let isValidPassword = false;
-//   try {
-//     isValidPassword = await bcrypt.compare(password, existingUser.password);
-//   } catch (err) {
-//     const error = new HttpError('로그인 실패', 500);
-//     return next(error);
-//   }
-
-//   if (!isValidPassword) {
-//     const error = new HttpError('로그인 실패, 비밀번호 불일치.', 401);
-//     return next(error);
-//   }
-
-//   let token;
-//   try {
-//     token = jwt.sign(
-//       {
-//         id: existingUser.id,
-//         email: existingUser.email,
-//         name: existingUser.name,
-//       },
-//       secretKey,
-//       { expiresIn: '10m' }
-//       );
-//     } catch (err) {
-//       const error = new HttpError('로그인 오류.', 500);
-//       return next(error);
-//     }
-//     res.json({
-//       message: '로그인 성공',
-//       id: id,
-//       token: token,
-//     });
-//     // await user.findOne({ id: id }).then(async (result) => {
-//     //   if (!result) return res.send('아이디가 없습니다.');
-//     //   const checkPw = await bcrypt.compare(password, result.password);
-//     //   if (checkPw) res.send('로그인 성공');
-//     //   else res.send('로그인 실패, 비밀번호 불일치')
-//     // });
-//   };
-
 exports.postIdFind = async (req, res, next) => {
   const { email, name } = req.body;
   try {
@@ -176,20 +115,22 @@ exports.postIdFind = async (req, res, next) => {
 };
 
 exports.postPwCheck = async (req, res, next) => {
-  const {email, name, id} = req.body;
+  const { email, name, id } = req.body;
   try {
-    await user.find({id, email, name}.then(async(result) => {
-      const token = await setUserToken(result[0].id)
-      res.json({message:'비밀번호 재설정 페이지로 이동합니다.', token })
-    }))
-  } catch(err) {
+    await user.find(
+      { id, email, name }.then(async (result) => {
+        const token = await setUserToken(result[0].id);
+        res.json({ message: '비밀번호 재설정 페이지로 이동합니다.', token });
+      })
+    );
+  } catch (err) {
     const error = new HttpError('사용자 확인이 안 됩니다.');
     return next(error);
   }
 };
 
 exports.postPwReset = async (req, res, next) => {
-  passport.authenticate('jwt', { session: false })
+  passport.authenticate('jwt', { session: false });
   try {
     req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
   } catch (err) {
@@ -199,11 +140,51 @@ exports.postPwReset = async (req, res, next) => {
   const password = await bcrypt.hash(req.body.password, salt);
 
   try {
-    user.findOneAndUpdate({id:req.decoded.user.id}, {password:password})
-    res.json({message:'비밀번호 재설정 성공!'})
+    user.findOneAndUpdate({ id: req.decoded.user.id }, { password: password });
+    res.json({ message: '비밀번호 재설정 성공!' });
   } catch (err) {
-    const error = new HttpError('비밀번호 재설정 실패!')
-    return next(error) 
+    const error = new HttpError('비밀번호 재설정 실패!');
+    return next(error);
   }
+};
 
-}
+exports.patchUserInfo = async (req, res, next) => {
+  passport.authenticate('jwt', { session: false });
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError('로그인 해주세요.');
+    return next(error);
+  }
+  const id = req.decoded.user.id;
+  const { name, email } = req.body;
+  try {
+    const userInfo = await user.findOneAndUpdate(
+      { id },
+      { name: name, email: email }
+    );
+    res.json({ userInfo });
+  } catch (err) {
+    const error = new HttpError('회원 정보 수정 실패');
+    return next(error);
+  }
+};
+
+exports.deleteUser = async (req, res, next) => {
+  passport.authenticate('jwt', { session: false });
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError('로그인 해주세요.');
+    return next(error);
+  }
+  const id = req.decoded.user.id;
+  try {
+    await user.DeleteOne({ id: id }).then((result) => {
+      res.json({ message: '회원 탈퇴 성공' });
+    });
+  } catch (err) {
+    const error = new HttpError('회원 탈퇴 실패');
+    return next(error);
+  }
+};
