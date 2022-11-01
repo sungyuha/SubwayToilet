@@ -63,7 +63,12 @@ const SubwayLineMap = () => {
         // SetTooltipY(e.target.getBoundingClientRect().y);
         // SetTooltipTitle(this.firstChild.textContent);
         SetIsTooltipOpen(true);
-        setSelectStation(parseInt(this.id));
+        if(this.id === "234-4"){
+          setSelectStation(this.id);
+        }else{
+          setSelectStation(parseInt(this.id));
+        }
+        
       });
       
       arr[i].addEventListener('mouseenter', function(){
