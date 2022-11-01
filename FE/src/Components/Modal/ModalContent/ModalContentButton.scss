@@ -63,7 +63,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     font-size: 1px;
     margin-bottom: 0.5rem;
 
@@ -73,9 +73,9 @@
       margin-right: 1rem;
     }
 
-    // label {
-    //   // margin-right: 0.5rem;
-    // }
+    label {
+      margin-right: 0.5rem;
+    }
   }
 
   &_num {
@@ -104,7 +104,7 @@
     align-items: center;
     font-size: 1px;
     margin-bottom: 0.5rem;
-    justify-content: space-between;
+    // justify-content: space-between;
 
     input {
       width: 1rem;
@@ -112,9 +112,9 @@
       margin-right: 1rem;
     }
 
-    // label {
-    //   margin-right: 0.5rem;
-    // }
+    label {
+      margin-right: 0.5rem;
+    }
   }
 
   &_convenience{
@@ -122,7 +122,7 @@
     align-items: center;
     font-size: 1px;
     margin-bottom: 0.5rem;
-    justify-content: space-between;
+    // justify-content: space-between;
 
     input {
       width: 1rem;
@@ -130,9 +130,9 @@
       margin-right: 1rem;
     }
 
-    // label {
-    //   margin-right: 0.5rem;
-    // }
+    label {
+      margin-right: 0.5rem;
+    }
   }
 
   &_star {
@@ -144,7 +144,7 @@
     }
 
     p {
-      margin-right: 1rem;
+      margin-right: 0.5rem;
     }
   }
 
