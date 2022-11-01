@@ -1,0 +1,9 @@
+@import "../styles/variables.scss";
+
+.ckeditor-wrap {
+    width: 20rem;
+
+    @include breakpoint(md) {
+        width: 100%;
+    }
+}

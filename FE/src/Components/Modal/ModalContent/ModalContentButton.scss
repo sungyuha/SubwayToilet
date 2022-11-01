@@ -1,7 +1,16 @@
+@import "../../../styles/variables.scss";
+
 .modal_review {
   display: flex;
   flex-direction: column;
   padding: 1rem 1rem;
+  margin-top: 1rem;
+
+  @include breakpoint(md) {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
+  }
 
   .modal_review_title {
     display: flex;

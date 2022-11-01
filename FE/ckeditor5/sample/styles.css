@@ -30,6 +30,8 @@ main .ck-editor[role='application'] .ck.ck-content,
 	line-height: 1.6em;
 	min-height: var(--ck-sample-editor-min-height);
 	padding: 1.5em 2em;
+
+	
 }
 
 main .ck-editor[role='application'] {

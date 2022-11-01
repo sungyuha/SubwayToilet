@@ -76,7 +76,7 @@ const PageNotice_Write = () => {
             <div className="form_wrap">
                 <form onSubmit={NoticeSubmitHandler}>
                     <input type="hidden" name="userid"/>
-                    <input type="hidden" name="BoardName"/>
+                    <input type="hidden" name="BoardName"/>                    
                     <div><span>제목</span><input className="inputTitle" type="text" name="title" id="title" maxLength="50" onChange={onChangeTitle} value={noticeTitle}/></div>
                     <div><span>작성자</span>관리자</div>
                     <div className="textarea-wrap">

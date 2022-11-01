@@ -1,6 +1,11 @@
+@import "../../../styles/variables.scss";
+
 .modalheader {
-    width: 100%;
-    margin-bottom: 1rem;
+    margin-top: 4rem;
+    @include breakpoint(md) {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 
     &_box {
         width: 100%;
