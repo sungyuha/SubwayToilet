@@ -4,6 +4,16 @@ const stationToilet = require('../models/stationToilet');
 
 // 누르면 api 호출해서 db에 2호선 역, 화장실 정보를 저장시키는 버튼 만들어주세요..
 exports.getAdmin = (req, res, next) => {
+  passport.authenticate('jwt', { session: false })
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+    if(process.env.admin === req.decoded.user.id) {
+      res.json({message:'관리자 입니다.'})
+    }
+  } catch (err) {
+    const error = new HttpError('관리자가 아니시네여 꺼지세요');
+    return next(error);
+  }
   res.send();
 };
 
