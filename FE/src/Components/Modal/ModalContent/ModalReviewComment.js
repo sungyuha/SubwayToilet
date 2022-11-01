@@ -5,6 +5,7 @@ function ModalReviewContent() {
     <>
       <div className="modal_review_comment">
         <div className="modal_review_comment_box">
+
           <ul className="modal_review_comment_box_name">
             <li>
               <p>이름</p>
@@ -15,27 +16,23 @@ function ModalReviewContent() {
               <p>1일 전</p>
             </li>
           </ul>
+
+          <table className="modal_review_comment_box_score">
+            <tr>
+              <td><p>청결도</p><p>좋음</p></td>
+              <td><p>변기 개수</p><p>1~2개</p></td>
+            </tr>
+            <tr>
+              <td><p>화장실 크기</p><p>큼</p></td>
+              <td><p>이용 편의성</p><p>좋음</p></td>
+            </tr>
+          </table>
+
+          
           <div className="modal_review_comment_box_content">
             <p>화장실이 깨끗해요.</p>
           </div>
-          <ul className="modal_review_comment_box_info">
-            <li>
-              <p>청결도</p>
-              <p>좋음</p>
-            </li>
-            <li>
-              <p>변개 개수</p>
-              <p>1~2개</p>
-            </li>
-            <li>
-              <p>화장실 크기</p>
-              <p>큼</p>
-            </li>
-            <li>
-              <p>이용 편리성</p>
-              <p>좋음</p>
-            </li>
-          </ul>
+          
 
         </div>
       </div>

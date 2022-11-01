@@ -1,42 +1,53 @@
 $color-point: rgb(19, 18, 20);
 
 .modal_content_info {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 25rem;
-  // text-align: center;
+  justify-content: center;
+  padding: 1rem 1rem;
+
   &_title {
+    display: flex;
+    width: 100%;
     color: $color-point;
     font-size: 1.3rem;
     font-weight: 600;
     color: &$color-point;
-    // text-align: center;
 
     &_title {
-      margin: 16px;
-      display: flex;
-      // justify-content: center;
       width: 100%;
+      // margin: 16px;
+      display: flex;
+      justify-content: center;
       height: 2rem;
     }
   }
 
   &_content {
+      width: 100%;
+      align-items: center;
+
     ul {
+      width: 100%;
       display: flex;
       flex-direction: column;
       height: 13rem;
-      padding: 0 2rem;
+      margin-top: 1rem;
+      padding-right: 1rem;
 
       li {
-        height: 10rem;
         display: flex;
         flex-direction: column;
         margin: 0;
         padding: 0;
+        margin-left: 1rem;
 
         p {
+          display: flex;
+          align-items: center;
           height: 2rem;
+          // border-bottom: 1px solid gray;
         }
 
         .modal_content_info_content_title {
@@ -45,42 +56,32 @@ $color-point: rgb(19, 18, 20);
 
         .modal_content_info_content_able {
           border: 1px solid gray;
+          display: flex;
+          flex-direction: column;
           border-radius: 8px;
           margin-bottom: 1rem;
 
-          &_info:nth-child(1) {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid gray;
-
-            p {
-              padding: 0 2rem;
-              display: flex;
-              align-items: center;
-            }
-
-            // &_p {
-            //   border-bottom: 1px solid gray;
-            // }
+          p {
+            padding-left: 1rem;
+            justify-content: center;
           }
 
-          &_info:nth-child(2) {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-
-            p {
-              padding: 0 2rem;
-              display: flex;
-              align-items: center;
-            }
-
-            // &_p {
-            //   border-bottom: 1px solid gray;
-            // }
+          p:not(p:nth-child(2)) {
+            border-bottom: 1px solid gray;
           }
         }
+
+        .modal_content_info_content_disabled {
+          border: 1px solid gray;
+          display: flex;
+          flex-direction: column;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+          padding: 0.4rem;
+          padding-left: 1rem;
+          text-align: center;
+        }
+
       }
     }
   }
