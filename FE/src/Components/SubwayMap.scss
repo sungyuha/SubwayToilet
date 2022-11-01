@@ -1,42 +1,50 @@
+$tablet : 1024px;
+$mobile : 600px;
+@mixin desktop {
+    @media (min-width: #{$tablet}) {
+      @content;
+    }
+  }
+
+  @mixin tablet {
+    @media (min-width: #{$mobile}) and (max-width: #{$tablet - 1px}) {
+      @content;
+    }
+  }
+
+  @mixin mobile {
+    @media (max-width: #{$mobile - 1px}) {
+      @content;
+    }
+  }
+.subwayComponent-wrap{
+  display: flex;
+  justify-content: center;
+}
 .SubwayMap-wrap{
-    
     margin-top: 105px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 500px;
     border: 0.3rem #eee solid;
-    display: flex;
     border-radius: 1rem;
-    
-    @media screen and (max-width: 576px) {
-        flex-wrap: wrap;
+    @include desktop() {
+        width: 702px;
     }
-    @media screen and (min-width: 576px) {
-        flex-wrap: wrap;
-    }
-    @media screen and (min-width: 768px) { 
-        flex-wrap: wrap;
+    @include tablet {
+        width: 500px;
     }
 
-    // Large devices (desktops, 992px and up)
-    @media screen and (min-width: 992px) { 
-        flex-wrap: nowrap;
-    }
-
-    // X-Large devices (large desktops, 1200px and up)
-    @media screen and (min-width: 1200px) { 
-        flex-wrap: nowrap;
-    }
-
-    // XX-Large devices (larger desktops, 1400px and up)
-    @media screen and (min-width: 1400px) { 
-        flex-wrap: nowrap;
+    @include mobile {
+        width: 305px;
     }
 }
 
 .SubwayMap{
-    // border: 2px green solid;
-    width: 750px;
-    height: 600px;
+    border: 2px green solid;
+    
+    height: 570px;
     overflow: scroll;
     
     position: relative;
@@ -46,6 +54,19 @@
     -webkit-user-select: none;
     user-select: none;
     -ms-overflow-style: none;
+    @include desktop() {
+        width: 702px;
+        height: 800px;
+    }
+    @include tablet {
+        width: 500px;
+        height: 570px;
+    }
+
+    @include mobile {
+        width: 305px;
+        height: 348px;
+    }
 }
 .SubwayMap::-webkit-scrollbar{
     display:none;

@@ -7,7 +7,7 @@ import Search from "./Search";
 import SubwayData from "./Subway-map.json";
 
 const SubwayLineMap = () => {
-
+  
   const ref = useRef(); // svg감싸는 div
   const [isTooltipOpen, SetIsTooltipOpen] = useState(false);
   // const [tooltipX, SetTooltipX] = useState(null);
@@ -177,12 +177,12 @@ const SubwayLineMap = () => {
   }, []);
   
   return(
-    <div>
+    <div className="subwayComponent-wrap">
       {isTooltipOpen && <Modal selectStation={selectStation}/>}
       <div className='SubwayMap-wrap'>
         <Search data={SubwayData} SetIsTooltipOpen={SetIsTooltipOpen} setSelectStation={setSelectStation}/>
         <div className='SubwayMap' id='SubwayMap' ref={ref}>
-          <SubwayLine2 width='100%' height='100%'/>
+          <SubwayLine2/>
         </div>
       </div>
     </div>

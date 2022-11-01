@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <>
       <div>
-        <SubwayMap width='100%' height='100%' />
+        <SubwayMap/>
         <div className={styles.main__content}>
           <MainNotice />
           <MainSuggest />
