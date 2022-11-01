@@ -5,6 +5,7 @@ import { BiArrowBack } from "react-icons/bi";
 import axios from 'axios';
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import logo from "../images/Logo.png"
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -68,7 +69,7 @@ const Header = () => {
           )}
         </div>
         <Link to="/" className={styles.header__content__logo}>
-          Logo
+          <img src={logo} style={{width:"100px", height:"100px"}}/>
         </Link>
         <Link to="/login">
           <button className={styles.header__content__button} onChange={()=>handleLogOut}>로그인</button>
