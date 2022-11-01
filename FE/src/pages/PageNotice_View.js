@@ -8,6 +8,7 @@ import PageNotice_Write from "./PageNotice_Write";
 const PageNotice_View = (props) => {
     const [items, setItems] = useState([]);
     const [isModify, setIsModify] = useState(0);
+    const [isAdminFlag, setIsAdminFlag] = useState('실패');
     const navigate = useNavigate();
     
     const SERVER_URL = 'http://localhost:8000/page-notice/view';
@@ -33,9 +34,14 @@ const PageNotice_View = (props) => {
         axios.get(SERVER_URL, {
             params: {
                 postId: params.postId
-            } 
+            } ,
+            headers: {
+                'Authorization': localStorage.getItem('access_token'),
+            }
         }).then((res) => {
-            setItems(res.data);
+            setItems(res.data.post);
+            setIsAdminFlag(res.data.msg.success);
+            console.log(res.data);
         });
 
 
@@ -66,8 +72,9 @@ const PageNotice_View = (props) => {
                     
                     <div className='noticeButton-wrap'>
                         <button type='button' className='cancelButton' onClick={()=>{moveList()}}>목록</button>
-                        <button type='button'><Link to={'/page-notice/view/modify/' + items._id}  style={{ textDecoration: "none", color:'inherit'}}>수정</Link></button>
-                        <button type='button' onClick={()=>{deletePost()}}>삭제</button>
+                        {isAdminFlag === '성공' && <>  <button type='button'><Link to={'/page-notice/view/modify/' + items._id}  style={{ textDecoration: "none", color:'inherit'}}>수정</Link></button>
+                            <button type='button' onClick={()=>{deletePost()}}>삭제</button> </>}
+                        
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 const Notice = () => {
   const navigate = useNavigate();
   const SERVER_URL = 'http://localhost:8000/page-notice';
-
+  const [isAdminFlag, setIsAdminFlag] = React.useState('실패');
   const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
   const [count, setCount] = React.useState(0); //아이템 총 개수
   const [currentpage, setCurrentpage] = React.useState(1); //현재페이지
@@ -46,12 +46,20 @@ const Notice = () => {
 
 }
   useEffect(()=>{
-    axios.get(SERVER_URL).then((res) => {
-      setItems(res.data);
+    axios.get(SERVER_URL, {
+      headers: {
+        'Authorization': localStorage.getItem('access_token'),
+      }
+    }).then((res) => {
+      // setItems(res.data);
+      console.log(res.data);
+      setItems(res.data.notices);
+      setIsAdminFlag(res.data.msg.success);
     });
   }, []);
 
   useEffect(() => {
+    
 
     setCount(items.length);
     setIndexOfLastPost(currentpage * postPerPage);
@@ -74,7 +82,7 @@ const Notice = () => {
       <div className="noticeList-content">
         <div className="listInfo-wrap">
           <span>총 <b>{count}</b>개</span>
-          <button onClick={moveWritePage}>🖉글쓰기</button>
+          {isAdminFlag === '성공' &&<button onClick={moveWritePage}>🖉글쓰기</button>}
         </div>
         <div className="noticeList-top">
             <div className="num">번호</div>
