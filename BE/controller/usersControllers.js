@@ -52,6 +52,14 @@ exports.getPwCheck = (req, res, next) => {
 };
 
 exports.getPwReset = (req, res, next) => {
+  passport.authenticate('jwt', { session: false })
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+    res.json({message:'재설정 페이지'})
+  } catch (err) {
+    const error = new HttpError('유저 확인이 되지 않았습니다.');
+    return next(error);
+  }
 
 }
 
