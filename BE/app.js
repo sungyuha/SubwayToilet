@@ -33,6 +33,7 @@ const authRoutes = require('./routes/authRoutes');
 const boardRoutes = require('./routes/boardRoutes');
 const toiletRoutes = require('./routes/toiletRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
+const suggestRoutes = require('./routes/suggestRoutes');
 
 const corsOption = {
   origin: 'http://localhost:3000',
@@ -43,6 +44,7 @@ app.use('/user', usersRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 app.use('/page-notice', boardRoutes);
+app.use('/page-Suggest', suggestRoutes);
 app.use('/toilet', toiletRoutes);
 app.use('/review', reviewRoutes);
 
