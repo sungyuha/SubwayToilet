@@ -10,6 +10,7 @@ router.post(
   (req, res, next) => {
     console.log(req.body);
     console.log('hi');
+
     // console.log(req)
     try {
       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
