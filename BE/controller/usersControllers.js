@@ -2,9 +2,17 @@ const HttpError = require('../models/http-error');
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const salt = 12;
-const jwt = require('jsonwebtoken');
-const secretKey = process.env.TOKEN_SECRET_KEY;
 const user = require('../models/users');
+const passport = require('../passport/index');
+const jwt = require('jsonwebtoken');
+
+function setUserToken(user) {
+  const token = jwt.sign({ user }, process.env.TOKEN, {
+    expiresIn: '10m',
+  });
+  console.log('token : ',token);
+  return token;
+}
 
 exports.getSignUP = (req, res, next) => {
   res.send('signUP page');
@@ -14,13 +22,38 @@ exports.getLogin = (req, res, next) => {
   res.send('login page');
 };
 
-exports.getForgotId = (req, res, next) => {
+exports.getUserInfo = async (req, res, next) => {
+  passport.authenticate('jwt', { session: false })
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError('로그인 해주세요');
+    return next(error);
+  }
+  const id = req.decoded.user.id;
+  let User;
+  try {
+    User= await user.findOne({id})
+    res.json({User})
+    
+  } catch (err) {
+    const error = new HttpError('사용자 정보를 불러올 수 없습니다.')
+    return next(error)
+  } 
+
+}
+
+exports.getIdFind = (req, res, next) => {
   res.send('forgot id');
 };
 
-exports.getForgotPw = (req, res, next) => {
+exports.getPwCheck = (req, res, next) => {
   res.send('forgot pw');
 };
+
+exports.getPwReset = (req, res, next) => {
+
+}
 
 exports.postSignUP = async (req, res, next) => {
   const errors = validationResult(req);
@@ -62,7 +95,6 @@ exports.postSignUP = async (req, res, next) => {
     email: userInfo.email,
     name: userInfo.name,
   });
-  // res.send('회원가입 완료');
 };
 
 // exports.postLogin = async (req, res, next) => {
@@ -135,14 +167,35 @@ exports.postIdFind = async (req, res, next) => {
   }
 };
 
-// exports.postPwRest = (req, res, next) => {
-//   const { id, email, name } = req.body;
-//   try {
-//     user.findOne({ id, email, name }).then((res) => {
-//       res.send(res);
-//     });
-//   } catch (err) {
-//     const error = new HttpError('비밀번호 재설정 실패', 500);
-//     return next(error);
-//   }
-// };
+exports.postPwCheck = async (req, res, next) => {
+  const {email, name, id} = req.body;
+  try {
+    await user.find({id, email, name}.then(async(result) => {
+      const token = await setUserToken(result[0].id)
+      res.json({message:'비밀번호 재설정 페이지로 이동합니다.', token })
+    }))
+  } catch(err) {
+    const error = new HttpError('사용자 확인이 안 됩니다.');
+    return next(error);
+  }
+};
+
+exports.postPwReset = async (req, res, next) => {
+  passport.authenticate('jwt', { session: false })
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError('유저 확인이 되지 않았습니다.');
+    return next(error);
+  }
+  const password = await bcrypt.hash(req.body.password, salt);
+
+  try {
+    user.findOneAndUpdate({id:req.decoded.user.id}, {password:password})
+    res.json({message:'비밀번호 재설정 성공!'})
+  } catch (err) {
+    const error = new HttpError('비밀번호 재설정 실패!')
+    return next(error) 
+  }
+
+}

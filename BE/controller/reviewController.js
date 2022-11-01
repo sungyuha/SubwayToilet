@@ -1,7 +1,12 @@
 const review = require('../models/review');
 const HttpError = require('../models/http-error');
 const moment = require('moment');
+const passport = require('../passport/index');
+const jwt = require('jsonwebtoken');
 
+// const auth = function(req,res,next) {
+  
+// }
 exports.getReview = async (req, res, next) => {
   const { stinCd } = req.query;
   try {
@@ -14,10 +19,18 @@ exports.getReview = async (req, res, next) => {
 }
 
 exports.postReview = async (req, res, next) => {
-  const { stinCd,id, cleanliness, count, size, convenience,  text, rating } = req.body;
+  // console.log(req.headers)
+  passport.authenticate('jwt', { session: false })
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError('로그인 해주세요');
+    return next(error);
+  }
+  const { stinCd, cleanliness, count, size, convenience,  text, rating } = req.body;
   const Review = new review({
     stinCd,
-    id,
+    id : req.decoded.user.id,
     cleanliness,
     count,
     size,

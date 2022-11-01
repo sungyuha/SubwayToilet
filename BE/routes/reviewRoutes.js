@@ -4,21 +4,21 @@ const reviewControllers = require('../controller/reviewController');
 const passport = require('../passport/index');
 const jwt = require('jsonwebtoken');
 
-router.post(
-  '*',
-  passport.authenticate('jwt', { session: false }),
-  (req, res, next) => {
-    console.log(req)
-    try {
-      req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-      console.log('a', req.decoded);
-      next();
-    } catch (error) {
-      console.log(error);
-      next(error);
-    }
-  },
-);
+// router.post(
+//   '*',
+//   passport.authenticate('jwt', { session: false }),
+//   (req, res, next) => {
+//     console.log(req)
+//     try {
+//       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+//       console.log('a', req.decoded);
+//       next();
+//     } catch (error) {
+//       console.log(error);
+//       next(error);
+//     }
+//   },
+// );
 
 router.post('/',reviewControllers.postReview)
 
