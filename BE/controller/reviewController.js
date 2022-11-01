@@ -36,9 +36,8 @@ exports.postReview = async (req, res, next) => {
 };
 
 exports.patchReview = async (req, res, next) => {
-  const { stinNm, text, rating, date } = req.body;
-  console.log(req.body);
-  const filter = { stinNm, date };
+  const { stinCd,id, cleanliness, count, size, convenience,  text, rating } = req.body;
+  const filter = { stinCd, date };
   let Review;
   try {
     Review = await review.findOne({ filter });
