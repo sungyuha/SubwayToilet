@@ -5,18 +5,17 @@ const stationToilet = require('../models/stationToilet');
 const passport = require('../passport/index');
 const jwt = require('jsonwebtoken');
 
-
 // 누르면 api 호출해서 db에 2호선 역, 화장실 정보를 저장시키는 버튼 만들어주세요..
 exports.getAdmin = (req, res, next) => {
-  passport.authenticate('jwt', { session: false })
+  passport.authenticate('jwt', { session: false });
   // console.log(req.headers)
-  if (req.headers.authorization){
+  if (req.headers.authorization) {
     try {
       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-      if (process.env.ADMIN === req.decoded.user.id){
-        res.send('성공')
-      } else{
-        res.send('실패')
+      if (process.env.ADMIN === req.decoded.user.id) {
+        res.send('성공');
+      } else {
+        res.send('실패');
       }
     } catch (err) {
       const error = new HttpError('실패');
@@ -27,10 +26,6 @@ exports.getAdmin = (req, res, next) => {
     return next(error);
   }
 };
-
-
-      
-      
 
 // api 호출해서 db에 정보 저장하는 로직
 exports.getLines = async (req, res, next) => {
@@ -59,5 +54,5 @@ exports.getLines = async (req, res, next) => {
       stationToilets.push(station);
     });
   });
-  res.redirect('http://localhost:3000')
+  res.redirect('http://localhost:3000');
 };

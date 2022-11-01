@@ -22,6 +22,7 @@ exports.getLogin = (req, res, next) => {
   res.send('login page');
 };
 
+// 회원 정보 가져오기
 exports.getUserInfo = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   try {
@@ -45,10 +46,12 @@ exports.getIdFind = (req, res, next) => {
   res.send('forgot id');
 };
 
+// 비밀번호 재설정 전 확인 페이지
 exports.getPwCheck = (req, res, next) => {
   res.send('forgot pw');
 };
 
+// 비밀번호 재설정 페이지
 exports.getPwReset = (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   try {
@@ -102,6 +105,7 @@ exports.postSignUP = async (req, res, next) => {
   });
 };
 
+// 아이디 찾기
 exports.postIdFind = async (req, res, next) => {
   const { email, name } = req.body;
   try {
@@ -114,6 +118,7 @@ exports.postIdFind = async (req, res, next) => {
   }
 };
 
+// 비밀번호 재설정 전 유저 확인
 exports.postPwCheck = async (req, res, next) => {
   const { email, name, id } = req.body;
   try {
@@ -129,6 +134,7 @@ exports.postPwCheck = async (req, res, next) => {
   }
 };
 
+// 비밀번호 재설정
 exports.postPwReset = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   try {
@@ -148,6 +154,7 @@ exports.postPwReset = async (req, res, next) => {
   }
 };
 
+// 회원 정보 수정
 exports.patchUserInfo = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   try {
@@ -170,6 +177,7 @@ exports.patchUserInfo = async (req, res, next) => {
   }
 };
 
+// 회원 탈퇴
 exports.deleteUser = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   try {
@@ -180,7 +188,7 @@ exports.deleteUser = async (req, res, next) => {
   }
   const id = req.decoded.user.id;
   try {
-    await user.DeleteOne({ id: id }).then((result) => {
+    await user.deleteOne({ id: id }).then((result) => {
       res.json({ message: '회원 탈퇴 성공' });
     });
   } catch (err) {
