@@ -17,6 +17,11 @@ const MainSuggest = () => {
     
   }, []);
 
+  const dateToString = (date) => {
+    const newDate = new Date(date);
+    return newDate.toLocaleDateString();
+  }
+
   return (
     <>
       <div className={styles.mainNotice__content}>
@@ -31,7 +36,7 @@ const MainSuggest = () => {
           {isLoaded && items.length > 0 ? items.map((item, index)=> (
             <li key={index}>
               <p>[건의사항] {item.title}</p>
-              <p>{item.date}</p>
+              <p>{dateToString(item.date)}</p>
             </li>
           
             )) : 

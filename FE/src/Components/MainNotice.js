@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 const MainNotice = () => {
   const [items, setItems] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
-
   const SERVER_URL = 'http://localhost:8000/page-notice/get5post';
   useEffect(()=>{
     axios.get(SERVER_URL).then((res) => {
@@ -16,6 +15,10 @@ const MainNotice = () => {
     });
     
   }, []);
+  const dateToString = (date) => {
+    const newDate = new Date(date);
+    return newDate.toLocaleDateString();
+  }
 
   return (
     <>
@@ -31,7 +34,7 @@ const MainNotice = () => {
             {isLoaded && items.length > 0 ? items.map((item, index)=> (
             <li key={index}>
               <p>[공지사항] {item.title}</p>
-              <p>{item.date}</p>
+              <p>{dateToString(item.date)}</p>
             </li>
           
             )) : 

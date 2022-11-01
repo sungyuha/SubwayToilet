@@ -54,11 +54,11 @@ const Header = () => {
                 건의사항/정보수정요청
               </Link>
             </li>
-            <li>
+            {login1 && <li>
               <Link to="/mypage" onClick={menuToggleHandler}>
                 마이페이지
-              </Link>
-            </li>
+              </Link> 
+            </li>}
           </ul>
         </nav>
         <div className={styles.header__content__toggle}>
