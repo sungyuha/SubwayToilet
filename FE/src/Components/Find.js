@@ -4,7 +4,7 @@ import axios from 'axios';
 import "./Find.scss";
 
 const Find = () => {
-    const navigate = useNavigate('');
+    const navigate = useNavigate();
     const SERVER_URL3 = 'http://localhost:8000/user/id/find';
     const SERVER_URL4 = 'http://localhost:8000/user/pw/check';
     const [findIndex, setfindIndex] = useState(0);
@@ -67,7 +67,7 @@ const Find = () => {
 
     const tabClickHand=(findIndex)=>{
         setfindIndex(findIndex);
-        findinputs({
+        setfindinputs({
             id_username: '',
             id_email: '',
             pw_userid: '',
