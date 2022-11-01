@@ -4,14 +4,12 @@ import { BiMenu } from "react-icons/bi";
 import { BiArrowBack } from "react-icons/bi";
 //import axios from 'axios';
 import styles from "./Header.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../images/Logo.png"
 
 const Header = () => {
-  const navigate = useNavigate('');
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const SERVER_URL = 'http://localhost:8000/user/login';
   const [login1, setlogin1] = useState(false);
 
   const getToken = () => {
@@ -19,13 +17,13 @@ const Header = () => {
 
     if (token) {
       setlogin1(true);
-      navigate("/");
+    }else{
+      setlogin1(false);
     }
   }
   
   useEffect(() => {
     getToken();
-    console.log(login1);
   });
 
   const handleLogOut = () => {
