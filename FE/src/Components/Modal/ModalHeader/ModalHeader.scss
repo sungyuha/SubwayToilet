@@ -1,12 +1,13 @@
 .modalheader {
     width: 100%;
-    height: auto;
-    
+    margin-bottom: 1rem;
+
     &_box {
-         padding: 0 2rem;
+        width: 100%;
+
         &_close {
             display: flex;
-            justify-content: end;
+            justify-content: space-around;
         }
 
         &_info {
