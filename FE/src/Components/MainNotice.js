@@ -1,8 +1,22 @@
 import styles from "./MainNotice.module.scss";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const MainNotice = () => {
+  const [items, setItems] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const SERVER_URL = 'http://localhost:8000/page-notice/get5post';
+  useEffect(()=>{
+    axios.get(SERVER_URL).then((res) => {
+      setItems(res.data);
+      setIsLoaded(true);
+    });
+    
+  }, []);
+
   return (
     <>
       <div className={styles.mainNotice__content}>
@@ -14,26 +28,18 @@ const MainNotice = () => {
         </div>
         <div className={styles.mainNotice__content__box}>
           <ul>
-            <li>
-              <p>[공지사항] 공지사항을 공지합니다.</p>
-              <p>2022.01.01</p>
+            {isLoaded && items.length > 0 ? items.map((item, index)=> (
+            <li key={index}>
+              <p>[공지사항] {item.title}</p>
+              <p>{item.date}</p>
             </li>
+          
+            )) : 
             <li>
-              <p>[공지사항] 공지사항을 공지합니다.</p>
-              <p>2022.01.01</p>
-            </li>
-            <li>
-              <p>[공지사항] 공지사항을 공지합니다.</p>
-              <p>2022.01.01</p>
-            </li>
-            <li>
-              <p>[공지사항] 공지사항을 공지합니다.</p>
-              <p>2022.01.01</p>
-            </li>
-            <li>
-              <p>[공지사항] 공지사항을 공지합니다.</p>
-              <p>2022.01.01</p>
-            </li>
+              <p>게시물이 없습니다.</p>
+              <p>날짜</p>
+            </li> } 
+            
           </ul>
         </div>
       </div>
