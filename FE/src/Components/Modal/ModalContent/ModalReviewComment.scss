@@ -3,11 +3,12 @@
   
     &_box {
       width: 100%;
+      margin-bottom: 0.3rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+      // justify-content: center;
       border: 1px solid #eee;
+      padding: 0.2rem 0.5rem 0.5rem 0.5rem;
       border-radius: 8px;
   
       &_name {
@@ -48,19 +49,19 @@
         font-size: 11px;
         display: flex;
         flex-direction: column;
-        background: #eee;
+        // background: #eee;
         padding: 0.1rem 0.5rem;
         border-radius: 0.5rem;
 
         tr {
           width: 100%;
           display: flex;
-          justify-content: center;
+          // justify-content: center;
 
           td {
             width: 100%;
             display: flex;
-            justify-content: center;
+            // justify-content: center;
             flex-direction: row;
 
             p {

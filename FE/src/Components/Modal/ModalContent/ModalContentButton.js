@@ -66,6 +66,7 @@ function ModalContentButton({stinCd, review}) {
 
   return (
     <>
+    <div className='modal_review'>
       <div className="modal_review_title">
           <h1>리뷰</h1>
       </div>
@@ -73,19 +74,19 @@ function ModalContentButton({stinCd, review}) {
         {/* <div className='modal_review_write_title'>
           <h1>리뷰 작성</h1>
         </div> */}
+        <div className='modal_review_review'>
+          <ModalReviewComment review={reviewArr}/>
+        </div>
         <div className='modal_review_top'>
-          <div className='modal_review_top_photo'>
-            
-          </div>
           <div className='modal_review_top_content'>
             {/* <div className="modal_review_top_content_box">
               <div className='modal_review_top_content_box_title'>
-                문래역
+              문래역
               </div>
               <div className='modal_review_top_content_box_star'>
-                <p>⭐️⭐️⭐️⭐️⭐️</p>
-                <p>총 별점</p>
-                <p>리뷰 몇개인지</p>
+              <p>⭐️⭐️⭐️⭐️⭐️</p>
+              <p>총 별점</p>
+              <p>리뷰 몇개인지</p>
               </div>
             </div> */}
             <div className='modal_review_bottom'>
@@ -101,16 +102,16 @@ function ModalContentButton({stinCd, review}) {
 
                 <p>변기 개수</p>
                 <div className='modal_review_bottom_num' ref={ref2}>
-                  <label htmlFor="onetwo">1 ~ 2</label><input type="radio" id='onetwo' value="1 ~ 2" name='num'/>
-                  <label htmlFor="threefour">3 ~ 4</label><input type="radio" id='threefour' value="3 ~ 4" name='num'/>
-                  <label htmlFor="fivesix">5 ~ 6</label><input type="radio" id='ivesix' value="5 ~ 6" name='num'/>
-                  <label htmlFor="seven">7 이상</label><input type="radio" id='seven' value="7 이상" name='num'/>
+                  <label htmlFor="onetwo">1 ~ 2개</label><input type="radio" id='onetwo' value="1 ~ 2" name='num'/>
+                  <label htmlFor="threefour">3 ~ 4개</label><input type="radio" id='threefour' value="3 ~ 4" name='num'/>
+                  <label htmlFor="fivesix">5 ~ 6개</label><input type="radio" id='ivesix' value="5 ~ 6" name='num'/>
+                  <label htmlFor="seven">7개 이상</label><input type="radio" id='seven' value="7 이상" name='num'/>
                 </div>
                 
                 <p>화장실 크기</p>
                 <div className='modal_review_bottom_size' ref={ref3}>
                   <label htmlFor="verybig">매우 큼</label><input type="radio" id='verygood' value="매우 큼" name='size'/>
-                  <label htmlFor="big">큼</label><input type="radio" id='good' value="good" name='큼'/>
+                  <label htmlFor="big">큼</label><input type="radio" id='good' value="good" name='size'/>
                   <label htmlFor="sososize">보통</label><input type="radio" id='sososize' value="보통" name='size'/>
                   <label htmlFor="small">작음</label><input type="radio" id='small' value="작음" name='size'/>
                   <label htmlFor="veraysmall">매우 작음</label><input type="radio" id='verysmall' value="매우 작음" name='size'/>
@@ -125,8 +126,8 @@ function ModalContentButton({stinCd, review}) {
                   <label htmlFor="verybadcon">매우 좋지 않음</label><input type="radio" id='verybadcon' value="매우 좋지 않음" name='convenience'/>
                 </div>
 
-                <div>
-                <p>별점</p>
+                <div className='modal_review_bottom_star'>
+                <p className='modal_review_bottom_star_title'>별점</p>
                 <StarRating rating={rating} setRating={setRating}/>
               </div>
 
@@ -136,18 +137,13 @@ function ModalContentButton({stinCd, review}) {
 
               <div className='modal_review_bottom_button'>
                 <button type="submit">등록하기</button>
-              </div>
-                  
+              </div>                  
               </form>
-        </div>
-                
-
-        <div className='modal_review_review'>
-        <ModalReviewComment review={reviewArr}/>
-        </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
     </>
   );
 }

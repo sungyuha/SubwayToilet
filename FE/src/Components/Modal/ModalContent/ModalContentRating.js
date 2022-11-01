@@ -26,16 +26,13 @@ function ModalContentRating({review}) {
           </div>
           <div className="modal_content_rating_content_box">
             <div className="modal_content_rating_content_box_star">
-              <ul>
-                <li>
-                  <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p>
-                  <p>4.7</p>
-                  <p>리뷰 {review.length}개</p>
-                </li>
-              </ul>
+              <div className='modal_content_rating_contnet_box_star_box'>
+                <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p>
+                <p>4.7</p>
+              </div>
             </div>
           </div>
-          <p className="modal_content_rating_content_review">리뷰 40개</p>
+          <p className="modal_content_rating_content_review">리뷰 {review.length}개</p>
           <div className="modal_content_rating_content_total">
             <ul>
               <li>
