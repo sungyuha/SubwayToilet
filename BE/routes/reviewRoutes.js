@@ -21,6 +21,8 @@ const jwt = require('jsonwebtoken');
 // );
 router.get('/', reviewControllers.getReview);
 
+router.get('/', reviewControllers.getReview);
+
 router.post('/',reviewControllers.postReview)
 
 router.patch('/',reviewControllers.patchReview

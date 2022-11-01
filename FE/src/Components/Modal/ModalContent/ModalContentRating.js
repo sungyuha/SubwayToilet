@@ -6,12 +6,21 @@ import thumb from "../../../images/icon-thumb-ups.png";
 import {useState, useEffect} from 'react';
 
 function ModalContentRating({review}) {
-  
-  const [rating, setRating] = useState(0);
+  console.log(review);
+  const [reviewRating, setReviewRating] = useState(0);
+  const [reviews, setReviews] = useState(review);
 
-  const calculate = () => {
-
+  const calculate = (array) => {
+    let sum = 0;
+    for(let i = 0; i < array.length; i++){
+      sum = sum + array[i].rating;
+    }
+    return sum / array.length;
   }
+  
+  useEffect(()=>{
+    setReviewRating(Math.round(calculate(reviews)*10)/10);
+  }, []);
 
 
 
@@ -28,7 +37,7 @@ function ModalContentRating({review}) {
             <div className="modal_content_rating_content_box_star">
               <div className='modal_content_rating_contnet_box_star_box'>
                 <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p>
-                <p>4.7</p>
+                <p>{reviewRating}</p>
               </div>
             </div>
           </div>
