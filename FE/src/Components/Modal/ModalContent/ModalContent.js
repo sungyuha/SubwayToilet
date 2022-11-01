@@ -1,3 +1,4 @@
+import ModalHeader from "../ModalHeader/ModalHeader"
 import ModalContentInfo from "./ModalContentInfo";
 import ModalContentRating from "./ModalContentRating";
 import ModalButton from "./ModalContentButton";
@@ -10,7 +11,6 @@ function ModalContent({toilet, review}) {
     <>
       <div className="modal_content">
         <div className="modal_content_box">
-
           <div className="modal_content_box_left">
             <div className="modal_content_box_left_top">
               <ModalContentInfo toilet={toilet}/>

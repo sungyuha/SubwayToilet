@@ -7,7 +7,6 @@ const ModalHeader = ({onClick, toilet}) => {
                 <div className='modalheader_box_close' onClick={onClick}>
                     X
                 </div>
-                
                 <div className='modalheader_box_info'>
                     <div className='modalheader_box_info_box'>
                         <div className='modalheader_box_info_box_line'>
