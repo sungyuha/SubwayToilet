@@ -31,10 +31,10 @@ const MypageReview = () => {
     
     
     return (
-        <div>
-            <div className="wrap" onChange={Revieveshandle}>
-            <h1>{data.text}작성한 리뷰</h1>
-                <div className="rewiew_wrap"><br />
+        <div className="rewiew_wrap">
+            <div className="wraprewiew" onChange={Revieveshandle}>
+            <h1 className="rewiew">{data.text}작성한 리뷰</h1>
+                <div className="rewiew_wrap2"><br />
                     <div>
                         <span className="subway-txt">
                             역명 : {data.stinNm}
@@ -43,11 +43,13 @@ const MypageReview = () => {
                     
                     <div className="subway-content">
                         <span>리뷰 작성내용</span><br />
+                        <p className="p-content-txt">작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.</p>
                         {data.content}
                     </div>
 
                     <div className="subway-Cleanliness">
                         화장실 평점 <br />
+                        ⭐️⭐️⭐️⭐️⭐️
                         {data.rating}
                     </div>
                 </div>

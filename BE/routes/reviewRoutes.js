@@ -4,60 +4,30 @@ const reviewControllers = require('../controller/reviewController');
 const passport = require('../passport/index');
 const jwt = require('jsonwebtoken');
 
-router.post(
-  '*',
-  passport.authenticate('jwt', { session: false }),
-  (req, res, next) => {
-    console.log(req)
-    try {
-      req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-      console.log('a', req.decoded);
-      next();
-    } catch (error) {
-      console.log(error);
-      next(error);
-    }
-  },
-);
+// router.post(
+//   '*',
+//   passport.authenticate('jwt', { session: false }),
+//   (req, res, next) => {
+//     console.log(req)
+//     try {
+//       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+//       console.log('a', req.decoded);
+//       next();
+//     } catch (error) {
+//       console.log(error);
+//       next(error);
+//     }
+//   },
+// );
+router.get('/', reviewControllers.getReview);
+
+router.get('/', reviewControllers.getReview);
 
 router.post('/',reviewControllers.postReview)
 
-router.patch(
-  '/',
-  passport.authenticate('jwt', { session: false }),
-  (req, res, next) => {
-    
-    console.log(req);
-    console.log('hi');
-    // console.log(req)
-    try {
-      req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-      console.log('a', req.decoded);
-      return next();
-    } catch (error) {
-      console.error(error);
-      return next(error);
-    }
-  },
-  reviewControllers.patchReview
+router.patch('/',reviewControllers.patchReview
 );
-router.delete(
-  '/',
-  passport.authenticate('jwt', { session: false }),
-  (req, res, next) => {
-    console.log(req.body);
-    console.log('hi');
-    // console.log(req)
-    try {
-      req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-      console.log('a', req.decoded);
-      next();
-    } catch (error) {
-      console.error(error);
-      next(error);
-    }
-  },
-  reviewControllers.deleteReview
+router.delete('/', reviewControllers.deleteReview
 );
 
 module.exports = router;

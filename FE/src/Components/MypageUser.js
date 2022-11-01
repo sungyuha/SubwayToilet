@@ -62,7 +62,7 @@ const MypageUser = () => {
     }
 
     return (
-        <div className="wrap">
+        <div className="userwrap">
             <h1 className="user">회원정보</h1>
             <div className="form-wrap">
                 <form onSubmit={MypageUserHandler}>
