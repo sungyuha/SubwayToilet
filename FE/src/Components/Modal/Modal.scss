@@ -1,5 +1,7 @@
+@import "../../styles/variables.scss";
+
 .modal_modal {
-    margin-top: 3.7rem;
+    // margin-top: 3.7rem;
     position: absolute;
     top: 0;
     bottom: auto;
@@ -9,6 +11,19 @@
     z-index: 100;
     width: 100%;
     height: calc(100% + 34.9rem);
+
+    @include breakpoint(md) {
+        margin-top: 3.7rem;
+        position: absolute;
+        top: 0;
+        bottom: auto;
+        left: 0;
+        right: auto;
+        background-color: rgba(124, 126, 128, 0.719);
+        z-index: 100;
+        width: 100%;
+        // height: calc(100% + 34.9rem);
+    }
 
     .main {
         width: 100%;
