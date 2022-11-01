@@ -61,7 +61,7 @@ function ModalContentButton({stinCd, review}) {
       await axios.get(GET_URL).then((res) => {
         setReviewArr(res.data.Review);
       });
-    });
+    }).catch((res) => {alert(res.response.data.message)});
   }
 
   return (
