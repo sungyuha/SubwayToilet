@@ -13,13 +13,13 @@ const MypageReview = () => {
         setData(e.target.value);
     }
 
-    const SERVER_URL8 = 'http://localhost:8000/mypage/rewiew'; // 임의 작성 
+    const SERVER_URL8 = 'http://localhost:8000/rewiew/mypage'; // 임의 작성
     
     useEffect(()=>{
         axios.get(SERVER_URL8, {
             data: {
                 postId: data._id
-            } 
+            }
         }).then((res) => {
             setData(res.data);
         });

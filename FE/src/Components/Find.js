@@ -1,19 +1,23 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import "./Find.scss";
 
 const Find = () => {
+    const navigate = useNavigate('');
     const SERVER_URL3 = 'http://localhost:8000/user/id/find';
     const SERVER_URL4 = 'http://localhost:8000/user/pw/check';
     const [findIndex, setfindIndex] = useState(0);
     const [findinputs, setfindinputs ] = useState({
-        userid: '',
-        username: '',
-        email: '',
+        id_username: '',
+        id_email: '',
+        pw_userid: '',
+        pw_username: '',
+        pw_email: '',
     });
 
-    const {userid, username, email} = findinputs;
-    const onChangeText = (e) => {
+    const {id_username, id_email, pw_userid, pw_username, pw_email} = findinputs;
+    const onFindText = (e) => {
         const { value, name } = e.target; // e.target에서 value와 name 추출
         setfindinputs({
           ...findinputs, // 기존의 input 객체를 복사(불변성을 위해)
@@ -21,27 +25,35 @@ const Find = () => {
         });
     }
 
+    // 아이디 유무 검사
     const IdFindHandler = (e) => {
         console.log(e.target);
         e.preventDefault();
-        const name = e.target.username.value;
-        const email = e.target.email.value;
+        const name = e.target.id_username.value;
+        const email = e.target.id_email.value;
         axios.post(SERVER_URL3, {
             name,
             email
         })
         .then((res) => {
             console.log(res);
-        });
-    }
+            
+            if(res.data.code == 422) {
+                alert("존재하지 않는 아이디 입니다.")
+              }
+              
+            }).catch(function(error){
+              console.log(error);
+            })
+        }
 
-    // 아이디 유무 검사
+    // 비밀번호 찾기
     const PassWordFindHandler = (e) => {
         console.log(e.target);
         e.preventDefault();
-        const username = e.target.username.value;
-        const userid = e.target.userid.value;
-        const email = e.target.email.value;
+        const username = e.target.pw_username.value;
+        const userid = e.target.pw_userid.value;
+        const email = e.target.pw_email.value;
     
         axios.post(SERVER_URL4, {
             username,
@@ -49,22 +61,18 @@ const Find = () => {
             email
             }).then((res) => {
             console.log(res);
-        
-            if(res.data.code == 422) {
-                alert("존재하지 않는 아이디 입니다.")
-            }
-            
-            }).catch(function(error){
-            console.log(error);
-            })
-        };
+            navigate("/user/pw/reset");
+        });
+    }
 
     const tabClickHand=(findIndex)=>{
         setfindIndex(findIndex);
         findinputs({
-            userid: '',
-            username: '',
-            email: '',
+            id_username: '',
+            id_email: '',
+            pw_userid: '',
+            pw_username: '',
+            pw_email: '',
             });
         };
 
@@ -79,9 +87,9 @@ const Find = () => {
                     <div className="find" style={{ display: "flex", flexDirection: "column" }}>
                     <h1 className="id-txt">아이디 찾기</h1>
                     <form onSubmit={IdFindHandler} className="find-form">
-                        <input type="text" name="username" placeholder='이름' value={username} onChange={onChangeText}/>
+                        <input type="text" name="id_username" placeholder='이름' value={id_username} onChange={onFindText}/>
                         <br />
-                        <input type="text" name="email" placeholder='이메일' value={email} onChange={onChangeText}/>
+                        <input type="text" name="id_email" placeholder='이메일' value={id_email} onChange={onFindText}/>
                         <br />
                         <div>
                             <a className="login-link">로그인하러 가기</a>
@@ -101,11 +109,11 @@ const Find = () => {
                     <div className="find" style={{ display: "flex", flexDirection: "column" }}>
                         <h1 className="id-txt">비밀번호 찾기</h1>
                         <form onSubmit={PassWordFindHandler} className="find-form">
-                            <input type="text" name="username" placeholder='이름' value={username} onChange={onChangeText}/>
+                            <input type="text" name="pw_username" placeholder='이름' value={pw_username} onChange={onFindText}/>
                             <br />
-                            <input type="text" name="userid" placeholder='아이디' vlaue={userid} onChange={onChangeText}/>
+                            <input type="text" name="pw_userid" placeholder='아이디' vlaue={pw_userid} onChange={onFindText}/>
                             <br />
-                            <input type="text" name="email" placeholder='이메일' vlaue={email} onChange={onChangeText}/>
+                            <input type="text" name="pw_email" placeholder='이메일' vlaue={pw_email} onChange={onFindText}/>
                             <br />
                             <div>
                                 <a className="login-link">로그인하러 가기</a>
@@ -133,6 +141,6 @@ const Find = () => {
             </div>
         </div>
     )
-};
+};      
 
 export default Find;

@@ -26,7 +26,7 @@ const MypageProductReviews = () => {
         setData(e.target.value);
     }
 
-    const SERVER_URL9 = 'http://localhost:8000/mypage/suggest'; // 임의 작성 
+    const SERVER_URL9 = 'http://localhost:8000/suggest'; // 임의 작성 
     
     useEffect(()=>{
         axios.get(SERVER_URL9, {
