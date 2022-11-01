@@ -38,6 +38,11 @@ exports.viewList = async (req, res) => {
     const suggests = await Suggest.find().sort({date: 'desc'});
     res.send(suggests);
 }
+exports.view5List = async (req, res) => {
+    
+    const suggests = await Suggest.find().sort({date: 'desc'}).limit(5);
+    res.send(suggests);
+}
 
 exports.viewPost = async (req, res) => {
     // console.log(req);
