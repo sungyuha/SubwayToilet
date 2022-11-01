@@ -5,20 +5,58 @@
     display:flex;
     flex-direction: column; 
     align-items:center;
-    width: 800px;
+    width: 20rem;
+
+    @include breakpoint(md){
+        width: 800px;
+    }
 }
 
 .Notice_title{
+    // margin-left: 0.1rem;
     width: 100%;
+
+    // @include breakpoint(md) {
+    //     width: 100%;
+    // }
 }
 .form_wrap{
     margin-top: 20px;
-    height: 100%;
+    width: 100%;
+    // height: 100%;
+
+    // @include breakpoint(md) {
+    //     // width: 100%;
+    //     margin-top: 20px;
+    //     height: 100%;
+    // }
 }
 .form_wrap > form{
     width: 100%;
     display:flex;
-    flex-direction: column; 
+    flex-direction: column;
+    // padding: 1rem 5rem;
+
+    @include breakpoint(md) {
+        width: 100%;
+        display:flex;
+        flex-direction: column; 
+    }
+}
+
+
+.form_wrap > form > input {
+    padding: 10px 0;
+    border-top: 2px solid rgb(97, 97, 97);
+    // width: 0.5rem;
+
+    // @include breakpoint(md) {
+        
+    // }
+}
+
+.inputTitle {
+    width: 1rem;
 }
 
 .form_wrap > form > div{
@@ -32,9 +70,15 @@
     width: 100px;
     text-align: center;
 }
+
 .inputTitle{
     width: 700px;
     height: 30px;
+
+    @include breakpoint(md) {
+    width: 230px;
+    height: 30px;
+    }
 }
 .textarea-wrap{
     display: flex;
@@ -54,6 +98,7 @@
 }
 .noticeButton-wrap{
     text-align: center;
+    margin-bottom: 5rem;
 }
 .noticeButton-wrap > button{
     text-align: center;
@@ -66,16 +111,20 @@
 // ////////////////////////////////////////
 
 .noticeList-wrap{
-    margin-top: 100px;
+    margin-top: 130px;
     text-align: center;
-    width: 80%;
+    width: 90%;
+
+    @include breakpoint(md) {
+        width: 80%;
+    }
 }
 
 .noticeList-content{
     margin-top: 60px;
 
-    @include breakpoint(md) {
-        margin-top: 100px;
+    @include breakpoint(md){
+        margint-top: 50px;
     }
 }
 .listInfo-wrap{
@@ -96,6 +145,11 @@
     background-color: rgb(212, 213, 255);
     font-weight: bold;
     padding: 15px 0;
+
+    @include breakpoint(md) {
+        display: flex;
+    }
+
 }
 .notice-obj{
     display: flex;
@@ -144,9 +198,12 @@
     }
 }
 .viewContent-wrap{
-    margin-top: 100px;
-    
-    
+    margin-top: 60px;
+    margin-bottom: 10px;
+
+    @include breakpoint(md) {
+        margin-bottom: 100px;
+    }
 }
 
 .NoticeView_tag{

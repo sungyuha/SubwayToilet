@@ -1,9 +1,18 @@
+@import "../../../styles/variables.scss";
 $color-point: rgb(19, 18, 20);
+
 
 .modal_content_rating {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  margin-top: 3rem;
+
+  @include breakpoint(md) {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
   
   &_content {
     width: 100%;

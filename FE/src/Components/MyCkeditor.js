@@ -1,7 +1,7 @@
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import axios from 'axios';
-
+import "./MyCkeditor.scss"
 
 const MyCkeditor = (props) => {
     const UPLOAD_URL = 'http://localhost:8000/page-notice/write/uploadImg';

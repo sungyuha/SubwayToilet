@@ -5,7 +5,11 @@
     display:flex;
     flex-direction: column; 
     align-items:center;
-    width: 800px;
+    width: 20rem;
+
+    @include breakpoint(md){
+        width: 800px;
+    }
 }
 
 .Suggest_title{
@@ -19,7 +23,25 @@
     width: 100%;
     display:flex;
     flex-direction: column; 
+
+    @include breakpoint(md) {
+        width: 100%;
+        display:flex;
+        flex-direction: column; 
+    }
 }
+
+// 추가
+
+.form_wrap > form > input {
+    padding: 10px 0;
+    border-top: 2px solid rgb(97, 97, 97);
+}
+
+.inputTitle {
+    width: 1rem;
+}
+
 .form_wrap > form > div{
     padding: 10px 0;
     border-top: 2px solid rgb(97, 97, 97);
@@ -34,6 +56,11 @@
 .inputTitle{
     width: 700px;
     height: 30px;
+
+    @include breakpoint(md) {
+        width: 230px;
+        height: 30px;
+    }
 }
 .textarea-wrap{
     display: flex;
@@ -53,6 +80,7 @@
 }
 .suggestListButton-wrap{
     text-align: center;
+    margin-bottom: 5rem;
 }
 .suggestListButton-wrap > button{
     text-align: center;
@@ -65,15 +93,19 @@
 // ////////////////////////////////////////
 
 .SuggestList-wrap{
-    margin-top: 100px;
+    margin-top: 130px;
     text-align: center;
-    width: 80%;
+    // width: 80%;
+
+    @include breakpoint(md) {
+        width: 80%;
+    }
 }
 .SuggestList-content{
     margin-top: 60px;
 
     @include breakpoint(md) {
-        margin-top: 100px;
+        margin-top: 50px;
     }
 }
 .listInfo-wrap{
@@ -94,6 +126,10 @@
     background-color: rgb(212, 213, 255);
     font-weight: bold;
     padding: 15px 0;
+
+    @include breakpoint(md){
+        display: flex;
+    }
 }
 .Suggest-obj{
     display: flex;

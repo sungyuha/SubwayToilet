@@ -5,8 +5,8 @@
   padding: 1rem 0;
 
   @include breakpoint(md) {
-    width: 33rem;
-    padding: 1rem 6rem;
+    width: 30rem;
+    padding: 1rem 3rem;
   }
 
   @include breakpoint(sm) {
@@ -24,6 +24,7 @@
     flex-direction: row;
     justify-content: space-between;
     font-size: 20px;
+    
 
     &__title {
       font-weight: 500;
