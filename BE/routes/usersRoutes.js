@@ -2,9 +2,28 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const router = Router();
 const usersControllers = require('../controller/usersControllers');
+const passport = require('../passport/index');
+const jwt = require('jsonwebtoken');
 
 router.get('/signup', usersControllers.getSignUP);
 router.get('/login', usersControllers.getLogin);
+router.get(
+  '*',
+  passport.authenticate('jwt', { session: false }),
+  (req, res, next) => {
+    console.log(req.body);
+    console.log('hi');
+    // console.log(req)
+    try {
+      req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+      console.log('a', req.decoded);
+      next();
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  }
+);
 router.get('/userinfo');
 // 아이디 찾기
 router.get('/id/find');
@@ -23,11 +42,7 @@ router.post(
   ],
   usersControllers.postSignUP
 );
-// router.post(
-//   '/login',
-//   [check('id').not().isEmpty(), check('password').not().isEmpty()],
-//   usersControllers.postLogin
-// );
+
 router.post('/id/find', usersControllers.postIdFind);
 router.post('/pw/check');
 router.post('/pw/reset');

@@ -5,6 +5,7 @@ import ModalContentWrite from "./ModalContentWrite";
 import "./ModalContent.scss";
 
 function ModalContent({toilet, review}) {
+  console.log(review);
   return (
     <>
       <div className="modal_content">
@@ -19,7 +20,7 @@ function ModalContent({toilet, review}) {
             </div>
           </div>
           <div className="modal_content_box_right">
-            <ModalButton stinCd={toilet.stinCd}/>
+            <ModalButton stinCd={toilet.stinCd} review={review}/>
           </div>
 
         </div>

@@ -3,7 +3,6 @@ const review = require('../models/review');
 const HttpError = require('../models/http-error');
 
 exports.getToiletInfo = async (req, res, next) => {
-  console.log(req.query);
   const { stinCd } = req.query;
   try {
     const Toilet = await stationToilet.findOne({ stinCd: stinCd });
