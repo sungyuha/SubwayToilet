@@ -7,8 +7,7 @@ import React, {useState, useRef, useEffect} from "react";
 import axios from "axios";
 
 
-function ModalContentButton({stinCd, review}) {
-  const [reviewArr, setReviewArr] = useState([]);
+function ModalContentButton({stinCd, review, setReview}) {
   
   const [rating, setRating] = useState(0);
   const ref1 = useRef();
@@ -20,7 +19,7 @@ function ModalContentButton({stinCd, review}) {
   const GET_URL = `http://localhost:8000/review?stinCd=${stinCd}` 
 
   useEffect(()=>{
-    setReviewArr(review);
+    
   }, []);
 
   const setDefault = (target) => {
@@ -59,7 +58,7 @@ function ModalContentButton({stinCd, review}) {
       setDefault(ref3.current.children);
       setDefault(ref4.current.children);
       await axios.get(GET_URL).then((res) => {
-        setReviewArr(res.data.Review);
+        setReview(res.data.Review);
       });
     }).catch((res) => {alert(res.response.data.message)});
   }
@@ -75,7 +74,7 @@ function ModalContentButton({stinCd, review}) {
           <h1>리뷰 작성</h1>
         </div> */}
         <div className='modal_review_review'>
-          <ModalReviewComment review={reviewArr}/>
+          <ModalReviewComment review={review}/>
         </div>
         <div className='modal_review_top'>
           <div className='modal_review_top_content'>
@@ -111,7 +110,7 @@ function ModalContentButton({stinCd, review}) {
                 <p>화장실 크기</p>
                 <div className='modal_review_bottom_size' ref={ref3}>
                   <label htmlFor="verybig">매우 큼</label><input type="radio" id='verygood' value="매우 큼" name='size'/>
-                  <label htmlFor="big">큼</label><input type="radio" id='good' value="good" name='size'/>
+                  <label htmlFor="big">큼</label><input type="radio" id='good' value="큼" name='size'/>
                   <label htmlFor="sososize">보통</label><input type="radio" id='sososize' value="보통" name='size'/>
                   <label htmlFor="small">작음</label><input type="radio" id='small' value="작음" name='size'/>
                   <label htmlFor="veraysmall">매우 작음</label><input type="radio" id='verysmall' value="매우 작음" name='size'/>
