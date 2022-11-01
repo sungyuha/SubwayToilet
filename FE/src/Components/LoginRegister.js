@@ -4,7 +4,7 @@ import kakao from '../images/login_kakao.png';
 import naver from '../images/login_naver.png';
 import google from '../images/login_google.png';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginRegister = () => {
   const navigate = useNavigate();
@@ -95,7 +95,7 @@ const LoginRegister = () => {
                 <input type='text' name='L_userid' placeholder='아이디' onChange={onChangeText} value={L_userid}/>
                 <input type='password' name='L_password' placeholder='비밀번호' onChange={onChangeText} value={L_password}/>
                 <div>
-                    <a>아이디/비밀번호를 잊으셨나요?</a>
+                    <Link to='/finds'>아이디/비밀번호를 잊으셨나요?</Link>
                 </div>
                 <input style={{background:"rebeccapurple", color:"white", cursor:"pointer"}} type='submit' value="로그인" />
             </form>

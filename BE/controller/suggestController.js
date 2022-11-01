@@ -1,19 +1,26 @@
+const HttpError = require('../models/http-error');
 const Suggest = require('../models/suggest');
 const passport = require('../passport/index');
 const jwt = require('jsonwebtoken');
 
-exports.writePost = async (req, res, next) => {
+exports.checkID = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
   try {
     req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+    res.send(req.decoded.user.id);
   } catch (err) {
-    const error = new HttpError('오류..');
+    const error = new HttpError('로그인 해주세요');
     return next(error);
   }
+}
+
+
+exports.writePost = async (req, res, next) => {
+  
   console.log(req.body);
-  const { title, content } = req.body;
+  const { writer, title, content } = req.body;
   const object = {
-    writer: req.decoded.user.id,
+    writer,
     title,
     content,
     date: Date.now(),
@@ -26,18 +33,7 @@ exports.writePost = async (req, res, next) => {
 // 쓴 사람만 수정
 exports.modifyPost = async (req, res, next) => {
   const { writer, title, content, _id } = req.body;
-  passport.authenticate('jwt', { session: false });
-  let msg = {};
-  try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-    if (req.decoded.user.id === writer) {
-      msg.message = '작성자 일치';
-    }
-  } catch (err) {
-    const error = new HttpError('작성자가 아닙니다.');
-    return next(error);
-  }
-
+  
   const object = {
     // 작성자는 로그인한 아이디니까 업데이트 안 되게 주석 처리를 하는 것이 어떨까합니다..
     // writer
@@ -56,9 +52,15 @@ exports.uploadImg = (req, res) => {
   });
 };
 // 게시글 보기
-exports.viewList = async (req, res) => {
+exports.viewList = async (req, res, next) => {
+  let msg = {};
+  if(req.headers.authorization){
+    msg.islogin = true;
+  }else{
+    msg.islogin = false;
+  }
   const suggests = await Suggest.find().sort({ date: 'desc' });
-  res.send(suggests);
+  res.send({suggests, msg});
 };
 exports.view5List = async (req, res) => {
   const suggests = await Suggest.find().sort({ date: 'desc' }).limit(5);
@@ -68,31 +70,32 @@ exports.view5List = async (req, res) => {
 // 로그인한 사람만 건의사항 작성
 exports.viewPost = async (req, res, next) => {
   passport.authenticate('jwt', { session: false });
-  try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-  } catch (err) {
-    const error = new HttpError('로그인 해주세요.');
-    return next(error);
-  }
-  // console.log(req);
   const post = await Suggest.findOne({ _id: req.query.postId });
-  res.send(post);
+  let msg = {};
+  if(req.headers.authorization){
+    try {
+      req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+      if(req.decoded.user.id === post.writer){
+        msg.owner = true;
+      }else{
+        msg.owner = false;
+      }
+      msg.islogin = true;
+    } catch (err) {
+      const error = new HttpError('로그인 해주세요.');
+      return next(error);
+    }
+  }else{
+    msg.islogin = false;
+  }
+  
+  // console.log(req);
+  
+  res.send({post, msg});
 };
 
 // 쓴 사람만
 exports.deletePost = async (req, res, next) => {
-  const { writer } = req.body;
-  passport.authenticate('jwt', { session: false });
-  let msg = {};
-  try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-    if (req.decoded.user.id === writer) {
-      msg.message = '작성자 일치';
-    }
-  } catch (err) {
-    const error = new HttpError('작성자가 아닙니다.');
-    return next(error);
-  }
 
   // console.log(req.body.postId);
   const deleted = await Suggest.findByIdAndDelete(req.body.postId);
