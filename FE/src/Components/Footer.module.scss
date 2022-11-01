@@ -6,11 +6,18 @@
   height: 14rem;
   color: gray;
   padding: 0 7rem 7rem 7rem;
+  bottom: 0;
+  position: fixed;
+  bottom: 0;
 
   @include breakpoint(md) {
     height: $headerHeight + 110px;
     position: fixed;
     bottom: 0;
+  }
+
+  @include breakpoint(bg) {
+    display: none;
   }
 
   &__team {

@@ -1,3 +1,7 @@
+
+@import "./../styles/variables.scss";
+
+
 $tablet : 1024px;
 $mobile : 600px;
 @mixin desktop {
@@ -21,6 +25,7 @@ $mobile : 600px;
   display: flex;
   justify-content: center;
 }
+
 .SubwayMap-wrap{
     margin-top: 105px;
     display: flex;
@@ -39,6 +44,10 @@ $mobile : 600px;
     @include mobile {
         width: 305px;
     }
+
+    // @include breakpoint(md) {
+    //     width: 30%;
+    // }
 }
 
 .SubwayMap{
