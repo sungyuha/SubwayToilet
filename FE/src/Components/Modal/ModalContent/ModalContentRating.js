@@ -22,7 +22,7 @@ function ModalContentRating({review}) {
       <div className="modal_content_rating">
         <div className="modal_content_rating_content">
           <div className="modal_content_rating_content_title">
-            <p>화장실 후기</p>
+            <p>화장실 평점</p>
           </div>
           <div className="modal_content_rating_content_box">
             <div className="modal_content_rating_content_box_star">
@@ -35,14 +35,15 @@ function ModalContentRating({review}) {
               </ul>
             </div>
           </div>
+          <p className="modal_content_rating_content_review">리뷰 40개</p>
           <div className="modal_content_rating_content_total">
             <ul>
               <li>
-                <div>
+                {/* <div> */}
                   <p>
                     <img src={clean} />
                   </p>
-                </div>
+                {/* </div> */}
                 <p>청결도</p>
                 <h5>좋음</h5>
               </li>

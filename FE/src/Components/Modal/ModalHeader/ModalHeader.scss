@@ -1,8 +1,9 @@
 .modalheader {
     width: 100%;
     height: auto;
+    
     &_box {
-        padding: 2rem 2rem;
+         padding: 0 2rem;
         &_close {
             display: flex;
             justify-content: end;

@@ -9,9 +9,10 @@ function ModalContentInfo({toilet}) {
     <>
       <div className="modal_content_info">
         <div className="modal_content_info_title">
-          <p className="modal_content_info_title_title">화장실 정보</p>
+          <p className="modal_content_info_title_title">화장실 위치</p>
         </div>
         <div className="modal_content_info_content">
+
           <ul>
 
             <li key={'normal'}>
@@ -25,7 +26,7 @@ function ModalContentInfo({toilet}) {
                   <p>개찰구 정보 : 개찰구 {item.gateInotDvNm}부 위치</p>
                   <p>화장실 위치 : {item.dtlLoc}</p>
                 </div>
-              )) : <div>정보 없음(업데이트 필요)</div> }
+              )) : <div className="modal_content_info_content_disabled">정보 없음(업데이트 필요)</div> }
               
             </li>
 
@@ -40,10 +41,11 @@ function ModalContentInfo({toilet}) {
                   <p>개찰구 정보 : 개찰구 {item.gateInotDvNm}부 위치</p>
                   <p>화장실 위치 : {item.dtlLoc}</p>
                 </div>
-              )) : <div>정보 없음(업데이트 필요)</div> }
+              )) : <div className="modal_content_info_content_disabled">정보 없음(업데이트 필요)</div> }
               
             </li>
           </ul>
+         </div>
         </div>
       </div>
     </>
