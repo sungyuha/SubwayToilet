@@ -1,6 +1,7 @@
 import styles from "./Footer.module.scss";
 import github from "../images/github.png";
 import notion from "../images/notion.png";
+import logo from "../images/Logo.png";
 
 import { BiCopyright } from "react-icons/bi";
 
@@ -9,7 +10,7 @@ const Footer = () => {
     <>
       <div className={styles.footer__content}>
         <div className={styles.footer__content__logo}>
-          <h2>Logo</h2>
+          <img src={logo} style={{width : "50px", height : "50px"}}></img>
         </div>
         <address className={styles.footer__content__team}>
           팀원 이동근 장근영 성유하 박자연 | 서울시 영등포구 선유로 9길 30

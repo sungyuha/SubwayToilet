@@ -20,12 +20,12 @@ function ModalReviewContent({review}) {
 
           <table className="modal_review_comment_box_score">
             <tr>
-              <td><p>청결도</p><p>{item.cleanliness}</p></td>
-              <td><p>변기 개수</p><p>{item.count}개</p></td>
+              <td><p style={{fontWeight:"600"}}>청결도</p><p>{item.cleanliness}</p></td>
+              <td><p style={{fontWeight:"600"}}>변기 개수</p><p>{item.count}개</p></td>
             </tr>
             <tr>
-              <td><p>화장실 크기</p><p>{item.size}</p></td>
-              <td><p>이용 편의성</p><p>{item.convenience}</p></td>
+              <td><p style={{fontWeight:"600"}}>화장실 크기</p><p>{item.size}</p></td>
+              <td><p style={{fontWeight:"600"}}>이용 편의성</p><p>{item.convenience}</p></td>
             </tr>
           </table>
 

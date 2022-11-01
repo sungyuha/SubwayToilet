@@ -5,6 +5,7 @@ import { BiArrowBack } from "react-icons/bi";
 import axios from 'axios';
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import logo from "../images/Logo.png"
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,32 +13,8 @@ const Header = () => {
   const SERVER_URL = 'http://localhost:8000/user/login';
   const [login1, setlogin1] = useState(false);
 
-  /*const onPressText = (e) => {
-    console.dir(e.target.value);
-    const { value, name } = e.target; // e.target에서 value와 name 추출
-    setInputs({
-      ...inputs, // 기존의 input 객체를 복사(불변성을 위해)
-      [name]: value, // name 키를 가진 값을 value 로 변경
-    });
-    LoginHandler();
-    // console.log(inputs.password,"vs", inputs.pwd);
-  }*/
-
-  /*const IdModifyHandler = (e) => {
-    console.log(e.target);
-    e.preventDefault();
-    const id = e.target.id.value;
-    axios.post(SERVER_URL, {
-        password,
-        pwd,
-    })
-    .then((res) => {
-        navigate("/user/login");
-    });
-}*/
-
   const token = localStorage.getItem('token');
-
+  
   useEffect(() => {
     if (token) {
       setlogin1(true);
@@ -47,7 +24,17 @@ const Header = () => {
   const handleLogOut = () => {
     setlogin1(false);
     localStorage.removeItem('token');
-  };
+  }
+
+  const handlelogin = () => {
+      if (login1 && login1.accessToken) {
+        //return { Authorization: 'Bearer ' + login1.accessToken };
+        return { "token": login1.accessToken };
+      } else {
+        setlogin1(true);
+      } return {}
+      
+    };
 
   //if(true면 로그아웃 버튼 구현
   // flase면 로그인 버튼 보여주기)
@@ -90,11 +77,11 @@ const Header = () => {
           )}
         </div>
         <Link to="/" className={styles.header__content__logo}>
-          Logo
+          <img src={logo} style={{width:"100px", height:"100px"}}/>
         </Link>
         <Link to="/login">
-          <button className={styles.header__content__button} onClick={()=> handleLogOut }>로그인</button>
-          {/* 삼항 연산자로 false일때는 로그인 버튼으로 / 밎으면 로그아웃으로*/}
+          <button className={styles.header__content__button} onChange={()=>handlelogin}>로그인</button>
+          {/* { )) : {<button className={styles.header__content__button} onChange={()=>handleLogOut}>로그아웃</button>} } */}
         </Link>
       </div>
     </header>

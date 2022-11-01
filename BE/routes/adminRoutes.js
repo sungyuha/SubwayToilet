@@ -12,8 +12,9 @@ router.get(
     // console.log(req)
     try {
       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-      console.log('a', req.decoded);
-      next();
+      if(req.decoded==='admin')
+        console.log('a', req.decoded);
+        next();
     } catch (error) {
       console.log('a');
       console.log(error);
