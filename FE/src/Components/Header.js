@@ -1,43 +1,37 @@
 import React, { useState, useEffect } from "react";
-
+//import { useLocation } from 'react-router-dom';
 import { BiMenu } from "react-icons/bi";
 import { BiArrowBack } from "react-icons/bi";
-import axios from 'axios';
+//import axios from 'axios';
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../images/Logo.png"
 
 const Header = () => {
+  const navigate = useNavigate('');
   const [menuOpen, setMenuOpen] = useState(false);
 
   const SERVER_URL = 'http://localhost:8000/user/login';
   const [login1, setlogin1] = useState(false);
 
-  const token = localStorage.getItem('token');
-  
-  useEffect(() => {
+  const getToken = () => {
+    const token = localStorage.getItem('access_token');
+
     if (token) {
       setlogin1(true);
+      navigate("/");
     }
-  }, [token]);
+  }
+  
+  useEffect(() => {
+    getToken();
+    console.log(login1);
+  });
 
   const handleLogOut = () => {
     setlogin1(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
   }
-
-  const handlelogin = () => {
-      if (login1 && login1.accessToken) {
-        //return { Authorization: 'Bearer ' + login1.accessToken };
-        return { "token": login1.accessToken };
-      } else {
-        setlogin1(true);
-      } return {}
-      
-    };
-
-  //if(true면 로그아웃 버튼 구현
-  // flase면 로그인 버튼 보여주기)
 
   const menuToggleHandler = () => {
     setMenuOpen((p) => !p);
@@ -79,10 +73,8 @@ const Header = () => {
         <Link to="/" className={styles.header__content__logo}>
           <img src={logo} style={{width:"100px", height:"100px"}}/>
         </Link>
-        <Link to="/login">
-          <button className={styles.header__content__button} onChange={()=>handlelogin}>로그인</button>
-          {/* { )) : {<button className={styles.header__content__button} onChange={()=>handleLogOut}>로그아웃</button>} } */}
-        </Link>
+        {login1 && <button className={styles.header__content__button} onClick={handleLogOut}>로그아웃</button> }
+        {!login1 && <Link to="/login"><button className={styles.header__content__button}>로그인</button></Link>}
       </div>
     </header>
   );

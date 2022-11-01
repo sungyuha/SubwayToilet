@@ -43,13 +43,13 @@ const MypageReview = () => {
                     
                     <div className="subway-content">
                         <span>리뷰 작성내용</span><br />
-                        <p className="p-content-txt">작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.작성 된 리뷰 내용입니다.</p>
+                        <p className="p-content-txt"></p>
                         {data.content}
                     </div>
 
                     <div className="subway-Cleanliness">
                         화장실 평점 <br />
-                        ⭐️⭐️⭐️⭐️⭐️
+                        {/* ⭐️⭐️⭐️⭐️⭐️ */}
                         {data.rating}
                     </div>
                 </div>
