@@ -37,6 +37,11 @@ exports.viewList = async (req, res) => {
     const notices = await Notice.find().sort({date: 'desc'});
     res.send(notices);
 }
+exports.view5List = async (req, res) => {
+    
+    const notices = await Notice.find().sort({date: 'desc'}).limit(5);
+    res.send(notices);
+}
 
 exports.viewPost = async (req, res) => {
     // console.log(req);
