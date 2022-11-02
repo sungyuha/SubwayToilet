@@ -18,6 +18,24 @@ exports.getReview = async (req, res, next) => {
   }
 };
 
+exports.getMyReview = async (req, res, next) => {
+  passport.authenticate('jwt', { session: false });
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError('로그인 해주세요');
+    return next(error);
+  }
+  try{
+    const myReview = await review.find({id:req.decoded.user.id})
+    res.json(myReview)
+  }catch(err){
+    const error = new HttpError('리뷰 불러오기 실패')
+    return next(error)
+  }
+}
+  
+
 exports.postReview = async (req, res, next) => {
   // console.log(req.headers)
   passport.authenticate('jwt', { session: false });
