@@ -48,7 +48,7 @@ const MypageReview = () => {
                             {item.rating}
                         </div>
                 </div>
-                )) : <div></div>}
+                )) : <div className="r-txt">작성된 리뷰가 없습니다.</div>}
                     
                 
             </div>
