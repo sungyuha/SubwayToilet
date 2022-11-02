@@ -50,7 +50,7 @@ const PageSuggest_View = () => {
     return (
         <div>
             <div className="SuggestList-wrap">
-                <h1>건의사항/정보수정요청</h1>
+                <h1 className="SuggestList">건의사항/정보수정요청</h1>
                 
                 <div className="viewContent-wrap">
                     

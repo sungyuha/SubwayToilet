@@ -95,7 +95,12 @@
 .SuggestList-wrap{
     margin-top: 130px;
     text-align: center;
+    word-wrap: break-word;
     // width: 80%;
+
+    .SuggestList {
+        width: 25rem;
+    }
 
     @include breakpoint(md) {
         width: 80%;
@@ -186,7 +191,7 @@
     }   
 }
 .SuggestView_tag{
-    text-align: center;
+    text-align: start;
 }
 
 .viewContent-innerWrap{
