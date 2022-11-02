@@ -7,34 +7,23 @@ const MypageProductReviews = () => {
     
     // 게시글 데이터 조회
     const [items, setItems] = useState([]);
-    const [data, setData] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
     
-    // setData = () => {
-    //     const url = `http://localhost:8000/userinfo?q=${review}`; // 임의작성
-    //     fetch(url)
-    //         .then(responseData => { setData(responseData.name); });
-    // }
 
-    /*const Data = data.map(
-        (items, index) =>
-            <div key={index}>
-                <p>{review}</p>
-            </div>
-    );*/
+    
 
-    const Revieveshandle = (e) => {
-        setData(e.target.value);
-    }
-
-    const SERVER_URL9 = 'http://localhost:8000/suggest'; // 임의 작성 
+    const SERVER_URL9 = 'http://localhost:8000/page-Suggest/getMyPost'; // 임의 작성 
     
     useEffect(()=>{
         axios.get(SERVER_URL9, {
-            data: {
-                postId: data._id
+            headers: {
+                'Authorization': localStorage.getItem('access_token'),
             } 
         }).then((res) => {
-            setData(res.data);
+            console.log(res.data);
+            setItems(res.data.mySuggests);
+            setIsLoaded(true);
         });
 
     }, [])
@@ -43,27 +32,21 @@ const MypageProductReviews = () => {
         <div className="wrap">
             <h1 className="ps-user">내가 작성한 게시글</h1>
             <br />
-
+            {isLoaded && items.length > 0 ? items.map((item, index)=> (
             <div className="list">
-                <p className="nick">{items.name}</p>
-                <p className="review">작성한 게시글이 조회됩니다. 조회됩니다.</p>
-                {/* <span className="review" onChange={Revieveshandle} value={review} data={items.content} /> */}
-                <button className="btn-1" style={{color:'white'}}><Link to="{/page-suggest/modify/:postId}">자세히보기</Link></button>
+                <p className="nick">{item.writer}</p>
+                <p className="review">{item.title}</p>
+                <button className="btn-1" style={{color:'white'}}><Link to={"/page-Suggest/view/"+item._id}>보기</Link></button>
             </div>
 
-            <div className="list">
-                <p className="nick">{items.name}</p>
-                <p className="review">작성한 게시글이 조회됩니다. 조회됩니다.</p>
-                {/* <span className="review" onChange={Revieveshandle} value={review} data={items.content} /> */}
-                <button className="btn-1" style={{color:'white'}}><Link to="{/page-suggest/modify/:postId}">자세히보기</Link></button>
-            </div>
+            )) : 
+            <div className="my-list">
+                <p className="list-txt">게시물이 없습니다.</p>
+                <p className="my-list-date">날짜</p>
+            </div> } 
+            
 
-            <div className="list">
-                <p className="nick">{items.name}</p>
-                <p className="review">작성한 게시글이 조회됩니다. 조회됩니다.</p>
-                {/* <span className="review" onChange={Revieveshandle} value={review} data={items.content} /> */}
-                <button className="btn-1" style={{color:'white'}}><Link to="{/page-suggest/modify/:postId}">자세히보기</Link></button>
-            </div>
+            
         </div>
     )
 }
