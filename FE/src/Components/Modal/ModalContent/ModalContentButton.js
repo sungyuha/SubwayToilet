@@ -92,7 +92,7 @@ function ModalContentButton({stinCd, review, setReview}) {
               <form onSubmit={writeReviewHandler}>
                 <p>청결도</p>
                 <div className='modal_review_bottom_clean' ref={ref1}>
-                  <label htmlFor="verygood">매우 좋음</label><input type="radio" id='verygood' value="매우 좋음" name='clean'/>
+                  <label htmlFor="verygood">매우 좋음</label><input type="radio" id='verygood' value="매우 좋음" name='clean' required/>
                   <label htmlFor="verygood">좋음</label><input type="radio" id='good' value="좋음" name='clean'/>
                   <label htmlFor="sosoclean">보통</label><input type="radio" id='sosclean' value="보통" name='clean'/>
                   <label htmlFor="bad">좋지 않음</label><input type="radio" id='bad' value="좋지 않음" name='clean'/>
@@ -101,7 +101,7 @@ function ModalContentButton({stinCd, review, setReview}) {
 
                 <p>변기 개수</p>
                 <div className='modal_review_bottom_num' ref={ref2}>
-                  <label htmlFor="onetwo">1 ~ 2개</label><input type="radio" id='onetwo' value="1 ~ 2" name='num'/>
+                  <label htmlFor="onetwo">1 ~ 2개</label><input type="radio" id='onetwo' value="1 ~ 2" name='num' required/>
                   <label htmlFor="threefour">3 ~ 4개</label><input type="radio" id='threefour' value="3 ~ 4" name='num'/>
                   <label htmlFor="fivesix">5 ~ 6개</label><input type="radio" id='ivesix' value="5 ~ 6" name='num'/>
                   <label htmlFor="seven">7개 이상</label><input type="radio" id='seven' value="7 이상" name='num'/>
@@ -109,7 +109,7 @@ function ModalContentButton({stinCd, review, setReview}) {
                 
                 <p>화장실 크기</p>
                 <div className='modal_review_bottom_size' ref={ref3}>
-                  <label htmlFor="verybig">매우 큼</label><input type="radio" id='verygood' value="매우 큼" name='size'/>
+                  <label htmlFor="verybig">매우 큼</label><input type="radio" id='verygood' value="매우 큼" name='size' required/>
                   <label htmlFor="big">큼</label><input type="radio" id='good' value="큼" name='size'/>
                   <label htmlFor="sososize">보통</label><input type="radio" id='sososize' value="보통" name='size'/>
                   <label htmlFor="small">작음</label><input type="radio" id='small' value="작음" name='size'/>
@@ -118,7 +118,7 @@ function ModalContentButton({stinCd, review, setReview}) {
 
                 <p>이용 편의성</p>
                 <div className='modal_review_bottom_convenience' ref={ref4}>
-                  <label htmlFor="verycon">매우 좋음</label><input type="radio" id='verycon' value="매우 좋음" name='convenience'/>
+                  <label htmlFor="verycon">매우 좋음</label><input type="radio" id='verycon' value="매우 좋음" name='convenience' required/>
                   <label htmlFor="con">좋음</label><input type="radio" id='con' value="좋음" name='convenience'/>
                   <label htmlFor="socon">보통</label><input type="radio" id='socon' value="보통" name='convenience'/>
                   <label htmlFor="badcon">좋지 않음</label><input type="radio" id='badcon' value="좋지 않음" name='convenience'/>
