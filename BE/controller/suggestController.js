@@ -51,6 +51,20 @@ exports.uploadImg = (req, res) => {
     url: `http://localhost:8000/imgUploadFolder/${req.file.filename}`,
   });
 };
+// 마이페이지 내가 올린 게시글 보기
+exports.getMyPost = async (req, res, next) => {
+  passport.authenticate('jwt', { session: false });
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError('로그인 해주세요');
+    return next(error);
+  }
+  
+  const mySuggests = await Suggest.find({writer: req.decoded.user.id}).sort({ date: 'desc' });
+  res.send({mySuggests});
+};
+
 // 게시글 보기
 exports.viewList = async (req, res, next) => {
   let msg = {};
