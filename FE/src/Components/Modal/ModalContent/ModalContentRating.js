@@ -4,6 +4,7 @@ import wc from "../../../images/icon-wc.png";
 import size from "../../../images/icon-size.png";
 import thumb from "../../../images/icon-thumb-ups.png";
 import {useState, useEffect} from 'react';
+import SmoothStarRating from "../../SmoothStarRating";
 
 function ModalContentRating({review, setReview}) {
   console.log(review);
@@ -96,7 +97,7 @@ function ModalContentRating({review, setReview}) {
           <div className="modal_content_rating_content_box">
             <div className="modal_content_rating_content_box_star">
               <div className='modal_content_rating_contnet_box_star_box'>
-                <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p>
+                <p><SmoothStarRating rating={reviewRating}/></p>
                 <p>{reviewRating}</p>
               </div>
             </div>
