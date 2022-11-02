@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+}
+.score-wrapper {
+    font-size: 20px;
+    color: gold;
+}
+.score-wrapper > .score{
+    position: relative;
+    display: inline-block;
+
+}
+
+.score-wrapper > .score > .foreground{
+    overflow: hidden;
+    width: 50%;
+}
+.score-wrapper > .score > .background{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
