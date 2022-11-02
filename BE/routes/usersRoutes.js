@@ -34,7 +34,7 @@ router.post('/pw/check', usersControllers.postPwCheck);
 router.post('/pw/reset', usersControllers.postPwReset);
 
 // 회원 정보 수정
-router.patch('/userinfo/edit', usersControllers.patchUserInfo);
+router.put('/userinfo/edit', usersControllers.patchUserInfo);
 // 회원 탈퇴
 router.delete('/userinfo/delete', usersControllers.deleteUser);
 

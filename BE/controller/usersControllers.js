@@ -156,21 +156,14 @@ exports.postPwReset = async (req, res, next) => {
 
 // 회원 정보 수정
 exports.patchUserInfo = async (req, res, next) => {
-  passport.authenticate('jwt', { session: false });
-  try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-  } catch (err) {
-    const error = new HttpError('로그인 해주세요.');
-    return next(error);
-  }
-  const id = req.decoded.user.id;
-  const { name, email } = req.body;
+  const { id, name, email } = req.body;
   try {
     const userInfo = await user.findOneAndUpdate(
       { id },
       { name: name, email: email }
     );
-    res.json({ userInfo });
+    let msg = "회원 정보 수정 성공";
+    res.json({ userInfo, msg });
   } catch (err) {
     const error = new HttpError('회원 정보 수정 실패');
     return next(error);
@@ -179,18 +172,10 @@ exports.patchUserInfo = async (req, res, next) => {
 
 // 회원 탈퇴
 exports.deleteUser = async (req, res, next) => {
-  passport.authenticate('jwt', { session: false });
+  console.log(req.body);
   try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-  } catch (err) {
-    const error = new HttpError('로그인 해주세요.');
-    return next(error);
-  }
-  const id = req.decoded.user.id;
-  try {
-    await user.deleteOne({ id: id }).then((result) => {
-      res.json({ message: '회원 탈퇴 성공' });
-    });
+    const deleted = await user.findOneAndDelete({ id: req.body.id });
+    res.json({deleted, message: '회원 탈퇴 성공' });
   } catch (err) {
     const error = new HttpError('회원 탈퇴 실패');
     return next(error);

@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Mypageuser.scss";
+import { useNavigate } from "react-router-dom";
 
 const MypageUser = () => {
-    const SERVER_URL7 = 'http://localhost:8000/userinfo/edit';
+    const navigate = useNavigate('');
+    const [index, setIndex] = useState('');
+    const [ info, setInfo] = useState({
+        name: '',
+        id: '',
+        password: '',
+        email: '',
+    });
     const [ inputs , setInputs ] = useState({
         name: '',
         id: '',
@@ -20,46 +28,67 @@ const MypageUser = () => {
           [name]: value, // name 키를 가진 값을 value 로 변경
         });
     }
-
+    //회원정보 수정
+    const SERVER_URL7 = 'http://localhost:8000/user/userinfo/edit';
     const MypageUserHandler = (e) => {
-        console.log(e.target);
         e.preventDefault();
         // const id = e.target.id.value;
         // const name = e.target.name.value;
         // const password = e.target.password.value;
         // const email = e.target.email.value;
-        axios.post(SERVER_URL7, {
-            id,
-            name,
-            password,
-            email,
+        axios.put(SERVER_URL7, {
+            id : info.id,
+            name : inputs.name,
+            password : info.password,
+            email : inputs.email
         })
         .then((res) => {
-            console.log(res);
+            alert(res.data.msg);
+            
         });
     }
     
     // 회원탈퇴
     //const [delete, setDelete] = useState('');
 
-    const SERVER_URL8 = 'http://localhost:8000/userinfo/delete';
-    const MypageDelete = (e) => {
-        console.log(e.target);
-        e.preventDefault();
-        const id = e.target.id.value;
-        const name = e.target.name.value;
-        const password = e.target.password.value;
-        const email = e.target.email.value;
-        axios.delete(SERVER_URL8, {
-            id,
-            name,
-            password,
-            email,
+    const SERVER_URL8 = 'http://localhost:8000/user/userinfo/delete';
+    const MypageDelete = async () => {
+        const id = info.id;
+        await axios.delete(SERVER_URL8, {
+            data:{
+                id,
+                _id : index
+            } 
         })
         .then((res) => {
-            console.log(res);
+            alert(res.data.deleted.id + "님 " + res.data.message);
+            localStorage.removeItem('access_token');
+            window.location.replace('/');
         });
     }
+
+    const SERVER_URL9 = 'http://localhost:8000/user/userinfo';
+    useEffect(() => {
+        axios.get(SERVER_URL9, {
+            headers: {
+              'Authorization': localStorage.getItem('access_token'),
+            }  
+          }).then((res) => {
+            setInputs({
+                name: res.data.User.name,
+                id: res.data.User.id,
+                password: res.data.User.password,
+                email: res.data.User.email,
+            });
+            setInfo({
+                name: res.data.User.name,
+                id: res.data.User.id,
+                password: res.data.User.password,
+                email: res.data.User.email,
+            });
+            setIndex(res.data.User._id);
+          });
+    }, [])
 
     return (
         <div className="userwrap">
@@ -67,12 +96,12 @@ const MypageUser = () => {
             <div className="form-wrap">
                 <form onSubmit={MypageUserHandler}>
                     <input type="text" placeholder='이름' name="name" value={name} onChange={onChangeMypage} /><br />
-                    <input type="text" placeholder='아이디' name="id" value={id} onChange={onChangeMypage} /><br />
-                    <input type="password" placeholder='비밀번호' name="password" value={password} onChange={onChangeMypage} /><br />
+                    <input type="text" placeholder='아이디' name="id" value={id} onChange={onChangeMypage} readOnly /><br />
+                    <input type="password" placeholder='비밀번호' name="password" value={password} onChange={onChangeMypage} readOnly /><br />
                     <input type="email" placeholder='이메일' name="email" value={email} onChange={onChangeMypage} /><br />
                     <button type="submit" className="mypage-btn">회원정보수정</button>
                     <div>
-                        <span className="delete" onClick={MypageDelete}>
+                        <span className="delete" onClick={()=>{MypageDelete()}}>
                             회원탈퇴
                         </span>
                     </div>    

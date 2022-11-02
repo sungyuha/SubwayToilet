@@ -59,7 +59,7 @@ const LoginRegister = () => {
       name,
       email 
     }).then((res) => {
-      console.log(res);
+      alert(res.data.message);
 
       if(res.data.code == 422) {
         alert("이미 존재하는 회원입니다.")
