@@ -28,7 +28,7 @@ const upload = multer({
 router.get('/', suggestController.viewList);
 router.get('/get5post', suggestController.view5List);
 router.get('/view', suggestController.viewPost);
-
+router.get('/getMyPost', suggestController.getMyPost);
 router.delete('/view', suggestController.deletePost);
 router.get('/write', suggestController.checkID);
 router.put('/write', suggestController.modifyPost);
