@@ -3,6 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import ReactInnerHTML from "../Components/ReactInnerHTML";
 import PageSuggest_Write from "./PageSuggest_Write";
+import './PageSuggest.scss';
 
 const PageSuggest_View = () => {
     const [items, setItems] = useState([]);
