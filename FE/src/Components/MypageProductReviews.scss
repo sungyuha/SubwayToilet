@@ -4,6 +4,16 @@
     margin-top: 2rem;
     text-align: center;
 
+    .my-list {
+        display: flex;
+    }
+
+    .list-txt, .my-list-date {
+        margin: 0 auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
     .list {
         display: flex;
         border: 1.5px solid #bbb;
@@ -60,7 +70,7 @@
         border-radius: 10px;
         height: 6rem;
         margin-bottom: 1rem;
-        width: 30rem;
+        width: 25rem;
 
         .nick {
             margin-left: 1rem;

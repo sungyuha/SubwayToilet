@@ -38,12 +38,12 @@ const MypageProductReviews = () => {
                 <p className="review">{item.title}</p>
                 <button className="btn-1" style={{color:'white'}}><Link to={"/page-Suggest/view/"+item._id}>보기</Link></button>
             </div>
-          
+
             )) : 
-            <div className="list">
-              <p>게시물이 없습니다.</p>
-              <p>날짜</p>
-              </div> } 
+            <div className="my-list">
+                <p className="list-txt">게시물이 없습니다.</p>
+                <p className="my-list-date">날짜</p>
+            </div> } 
             
 
             
