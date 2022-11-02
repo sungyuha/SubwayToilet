@@ -111,21 +111,23 @@
 // ////////////////////////////////////////
 
 .noticeList-wrap{
-    margin-top: 130px;
+    margin-top: 60px;
     text-align: center;
     width: 90%;
 
     @include breakpoint(md) {
+        margin-top: 0;
         width: 80%;
+        padding: 7.3rem 0;
     }
 }
 
 .noticeList-content{
     margin-top: 60px;
 
-    @include breakpoint(md){
-        margint-top: 50px;
-    }
+    // @include breakpoint(md){
+    //     // margint-top: 50px;
+    // }
 }
 .listInfo-wrap{
     display: flex;
@@ -148,6 +150,7 @@
 
     @include breakpoint(md) {
         display: flex;
+        
     }
 
 }
@@ -196,12 +199,17 @@
     h1{
         text-align: center;
     }
+
+    @include breakpoint(md) {
+        margin-top: 100px;
+    }
 }
 .viewContent-wrap{
     margin-top: 60px;
     margin-bottom: 10px;
 
     @include breakpoint(md) {
+        // margin-top: 0;
         margin-bottom: 100px;
     }
 }

@@ -93,20 +93,22 @@
 // ////////////////////////////////////////
 
 .SuggestList-wrap{
-    margin-top: 130px;
+    margin-top: 40px;
     text-align: center;
-    // width: 80%;
+    width: 90%;
 
     @include breakpoint(md) {
+        margin-top: 0;
         width: 80%;
+        padding: 7.3rem 0;
     }
 }
 .SuggestList-content{
     margin-top: 60px;
 
-    @include breakpoint(md) {
-        margin-top: 50px;
-    }
+    // @include breakpoint(md) {
+    //     margin-top: 50px;
+    // }
 }
 .listInfo-wrap{
     display: flex;
@@ -129,6 +131,7 @@
 
     @include breakpoint(md){
         display: flex;
+        // flex-wrap: wrap;
     }
 }
 .Suggest-obj{
@@ -147,7 +150,7 @@
 .SuggestList-top > .writer{
     flex: 2 1 0;
 }
-.noticeList-top > .date{
+.SuggestList-top > .date{
     flex: 1 1 0;
 }
 .Suggest-obj > .num{
@@ -176,13 +179,17 @@
     h1{
         text-align: center;
     }
+
+    @include breakpoint(md) {
+        margin-top: 100%;
+    }
 }
 .viewContent-wrap{
     margin-top: 60px;
     margin-bottom: 10px;
     
     @include breakpoint(md) {
-        margin-top: 100px;
+        margin-bottom: 100px;
     }   
 }
 .SuggestView_tag{

@@ -1,6 +1,12 @@
+@import "../styles/variables.scss";
+
 .mypage-wrap{
-    margin-top: 100px;
+    margin-top: 0;
     list-style: none;
+
+    @include breakpoint(md) {
+        margin-top: 0;
+    }
 
     .txt {
         display: flex;
