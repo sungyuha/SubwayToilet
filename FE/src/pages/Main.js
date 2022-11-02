@@ -7,7 +7,7 @@ import SubwayMap from "../Components/SubwayMap";
 const Main = () => {
   return (
     <>
-      <div>
+      <div className={styles.main__content_box}>
         <SubwayMap/>
         <div className={styles.main__content}>
           <MainNotice />

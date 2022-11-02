@@ -1,8 +1,22 @@
 @import "./../styles/variables.scss";
 
 .container {
+  width: 100%;
+  margin-top: 5rem;
   // padding-top: 0.5rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   // overflow-y: scroll;
+
+  @include breakpoint(md) {
+    width: 100%;
+    height: calc(100% - ($headerHeight + 110px) - $headerHeight);
+    margin-top: $headerHeight;
+    // padding-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // overflow-y: scroll;
+  }
 }
