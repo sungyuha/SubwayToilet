@@ -1,8 +1,7 @@
 const axios = require('axios');
 
-const stationToilet = process.env.STATION_TOILET
-const stationDisabledToilet = process.env.DISBLED_TOILET
-  
+const stationToilet = process.env.STATION_TOILET;
+const stationDisabledToilet = process.env.DISBLED_TOILET;
 
 function getSubwayToilets(stinCd) {
   return new Promise((resolve, reject) => {
