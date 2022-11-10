@@ -4,6 +4,16 @@ const moment = require('moment');
 const passport = require('../passport/index');
 const jwt = require('jsonwebtoken');
 
+function token(req, msg, next) {
+  passport.authenticate('jwt', { session: false });
+  try {
+    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  } catch (err) {
+    const error = new HttpError(msg);
+    return next(error);
+  }
+}
+
 // const auth = function(req,res,next) {
 
 // }
@@ -19,32 +29,26 @@ exports.getReview = async (req, res, next) => {
 };
 
 exports.getMyReview = async (req, res, next) => {
-  passport.authenticate('jwt', { session: false });
+  // passport.authenticate('jwt', { session: false });
+  // try {
+  //   req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+  // } catch (err) {
+  //   const error = new HttpError('로그인 해주세요');
+  //   return next(error);
+  // }
+  token(req, '로그인 해주세요', next);
   try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
+    const myReview = await review.find({ id: req.decoded.user.id });
+    res.json(myReview);
   } catch (err) {
-    const error = new HttpError('로그인 해주세요');
+    const error = new HttpError('리뷰 불러오기 실패');
     return next(error);
   }
-  try{
-    const myReview = await review.find({id:req.decoded.user.id})
-    res.json(myReview)
-  }catch(err){
-    const error = new HttpError('리뷰 불러오기 실패')
-    return next(error)
-  }
-}
-  
+};
 
 exports.postReview = async (req, res, next) => {
-  // console.log(req.headers)
-  passport.authenticate('jwt', { session: false });
-  try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-  } catch (err) {
-    const error = new HttpError('로그인 해주세요');
-    return next(error);
-  }
+  token(req, '로그인 해주세요', next);
+
   const { stinCd, cleanliness, count, size, convenience, text, rating } =
     req.body;
   const Review = new review({
@@ -68,13 +72,7 @@ exports.postReview = async (req, res, next) => {
 };
 
 exports.patchReview = async (req, res, next) => {
-  passport.authenticate('jwt', { session: false });
-  try {
-    req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
-  } catch (err) {
-    const error = new HttpError('로그인 해주세요');
-    return next(error);
-  }
+  token(req, '로그인 해주세요', next);
   const { cleanliness, count, size, convenience, text, rating, date } =
     req.body;
   const Review = {
