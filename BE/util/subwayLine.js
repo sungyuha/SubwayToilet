@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const subwayLines = process.env.SUBWAY_LINES
+const subwayLines = process.env.SUBWAY_LINES;
 
 async function getSubwayLines() {
   const Lines = await axios.get(

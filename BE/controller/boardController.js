@@ -54,7 +54,7 @@ exports.viewList = async (req, res, next) => {
     msg.success = '실패';
   }
   const notices = await Notice.find().sort({ date: 'desc' });
-  res.json({notices, msg});
+  res.json({ notices, msg });
 };
 
 exports.view5List = async (req, res) => {
@@ -68,7 +68,6 @@ exports.viewPost = async (req, res, next) => {
   // console.log(req.headers)
   let msg = {};
   if (req.headers.authorization) {
-    
     try {
       req.decoded = jwt.verify(req.headers.authorization, process.env.TOKEN);
       if (process.env.ADMIN === req.decoded.user.id) {
@@ -85,7 +84,7 @@ exports.viewPost = async (req, res, next) => {
   }
   // console.log(req);
   const post = await Notice.findOne({ _id: req.query.postId });
-  res.json({post, msg});
+  res.json({ post, msg });
 };
 
 exports.deletePost = async (req, res) => {

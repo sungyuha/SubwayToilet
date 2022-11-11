@@ -31,7 +31,6 @@ exports.getAdmin = (req, res, next) => {
 exports.getLines = async (req, res, next) => {
   // 2호선 역 정보 받아오는 함수 실행
   const stationsInfo = await linesNum2();
-  let stationToilets = [];
   // 2호선 역들의 정보를 map 함수를 이용해서 각각 분리
   stationsInfo.map(async (info) => {
     const { stinNm, stinCd, routNm } = info;
@@ -51,7 +50,6 @@ exports.getLines = async (req, res, next) => {
       station.disabled = disabled;
       // mongoDB에 저장
       await station.save();
-      stationToilets.push(station);
     });
   });
   res.redirect('http://localhost:3000');

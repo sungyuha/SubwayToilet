@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const router = Router();
 const authController = require('../controller/authController');
-const passport = require('../passport/index.js');
 
 router.post('/local', authController.postLocal);
 router.get('/set', authController.setToken);
