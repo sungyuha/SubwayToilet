@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+
 const MainNotice = () => {
   const [items, setItems] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
   
-  const SERVER_URL = 'http://localhost:8000/page-notice/get5post';
+  const SERVER_URL = process.env.REACT_APP_BACK + 'page-notice/get5post';
   useEffect(()=>{
     axios.get(SERVER_URL).then((res) => {
       setItems(res.data);

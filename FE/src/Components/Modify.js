@@ -3,8 +3,9 @@ import {useNavigate} from "react-router-dom";
 import "./Modify.scss";
 import axios from 'axios';
 
+
 const Modify = () => {
-    const SERVER_URL5 = 'http://localhost:8000/user/pw/reset';
+    const SERVER_URL5 = process.env.REACT_APP_BACK + 'user/pw/reset';
     const [inputs, setInputs] = useState({
         password: '',
         pwd: '',

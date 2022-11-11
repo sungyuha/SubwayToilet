@@ -4,10 +4,11 @@ import MyCkeditor from '../Components/MyCkeditor';
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 
+
 const PageSuggest_Write = () => {
     const params = useParams();
-    const SERVER_URL = 'http://localhost:8000/page-Suggest/write';
-    const GETPOST_URL = 'http://localhost:8000/page-Suggest/view';
+    const SERVER_URL = process.env.REACT_APP_BACK + 'page-Suggest/write';
+    const GETPOST_URL = process.env.REACT_APP_BACK + 'page-Suggest/view';
     const navigate = useNavigate();
     const [noticeTitle, setNoticeTitle] = useState('');
     const [addData, setAddData] = useState("");

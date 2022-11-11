@@ -7,6 +7,7 @@ import React, {useState, useRef, useEffect} from "react";
 import axios from "axios";
 
 
+
 function ModalContentButton({stinCd, review, setReview}) {
   
   const [rating, setRating] = useState(0);
@@ -15,8 +16,8 @@ function ModalContentButton({stinCd, review, setReview}) {
   const ref3 = useRef();
   const ref4 = useRef();
   const ref5 = useRef();
-  const POST_URL = 'http://localhost:8000/review'
-  const GET_URL = `http://localhost:8000/review?stinCd=${stinCd}` 
+  const POST_URL = process.env.REACT_APP_BACK + 'review'
+  const GET_URL = `${process.env.REACT_APP_BACK}review?stinCd=${stinCd}` 
 
   useEffect(()=>{
     

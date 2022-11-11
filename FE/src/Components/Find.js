@@ -3,10 +3,11 @@ import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import "./Find.scss";
 
+
 const Find = () => {
     const navigate = useNavigate();
-    const SERVER_URL3 = 'http://localhost:8000/user/id/find';
-    const SERVER_URL4 = 'http://localhost:8000/user/pw/check';
+    const SERVER_URL3 = process.env.REACT_APP_BACK + 'user/id/find';
+    const SERVER_URL4 = process.env.REACT_APP_BACK + 'user/pw/check';
     const [findIndex, setfindIndex] = useState(0);
     const [findinputs, setfindinputs ] = useState({
         id_username: '',

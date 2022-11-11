@@ -4,9 +4,10 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import './PageSuggest.scss';
 
+
 const PageSuggest = () => {
   const navigate = useNavigate();
-  const SERVER_URL = 'http://localhost:8000/Page-Suggest';
+  const SERVER_URL = process.env.REACT_APP_BACK + 'Page-Suggest';
   const [islogin, setIslogin] = React.useState(false);
   const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
   const [count, setCount] = React.useState(0); //아이템 총 개수

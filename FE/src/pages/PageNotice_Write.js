@@ -4,10 +4,11 @@ import MyCkeditor from '../Components/MyCkeditor';
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 
+
 const PageNotice_Write = () => {
     const params = useParams();
-    const SERVER_URL = 'http://localhost:8000/page-notice/write';
-    const GETPOST_URL = 'http://localhost:8000/page-notice/view';
+    const SERVER_URL = process.env.REACT_APP_BACK + 'page-notice/write';
+    const GETPOST_URL = process.env.REACT_APP_BACK + 'page-notice/view';
     const navigate = useNavigate();
     const [noticeTitle, setNoticeTitle] = useState('');
     const [addData, setAddData] = useState("");

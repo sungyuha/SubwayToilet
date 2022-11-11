@@ -4,9 +4,10 @@ import axios from "axios";
 import './PageNotice.scss';
 import { useNavigate, Link } from "react-router-dom";
 
+
 const Notice = () => {
   const navigate = useNavigate();
-  const SERVER_URL = 'http://localhost:8000/page-notice';
+  const SERVER_URL = process.env.REACT_APP_BACK + 'page-notice';
   const [isAdminFlag, setIsAdminFlag] = React.useState('실패');
   const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
   const [count, setCount] = React.useState(0); //아이템 총 개수

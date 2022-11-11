@@ -6,10 +6,12 @@ import google from '../images/login_google.png';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 
+
 const LoginRegister = () => {
   const navigate = useNavigate();
-  const SERVER_URL = 'http://localhost:8000/auth/local';
-  const SERVER_URL2 = 'http://localhost:8000/user/signup';
+  const SERVER_URL = `${process.env.REACT_APP_BACK}auth/local`;
+  console.log(SERVER_URL)
+  const SERVER_URL2 = process.env.REACT_APP_BACK + 'user/signup';
   const [activeIndex, setActiveIndex] = useState(0);
   const [inputs, setInputs] = useState({
     L_userid: '',

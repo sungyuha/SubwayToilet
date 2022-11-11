@@ -54,5 +54,5 @@ exports.getLines = async (req, res, next) => {
       stationToilets.push(station);
     });
   });
-  res.redirect('http://localhost:3000');
+  res.redirect(process.env.FEIP);
 };

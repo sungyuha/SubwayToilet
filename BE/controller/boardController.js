@@ -30,7 +30,7 @@ exports.uploadImg = (req, res) => {
   console.log(req.file);
   res.status(200).json({
     uploaded: true,
-    url: `http://localhost:8000/imgUploadFolder/${req.file.filename}`,
+    url: `${process.env.BEIP}/imgUploadFolder/${req.file.filename}`,
   });
 };
 // 관리자만 가능

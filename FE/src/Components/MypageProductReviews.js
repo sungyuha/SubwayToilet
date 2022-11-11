@@ -3,6 +3,7 @@ import "./MypageProductReviews.scss";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 
+
 const MypageProductReviews = () => {
     
     // 게시글 데이터 조회
@@ -13,7 +14,7 @@ const MypageProductReviews = () => {
 
     
 
-    const SERVER_URL9 = 'http://localhost:8000/page-Suggest/getMyPost'; // 임의 작성 
+    const SERVER_URL9 = process.env.REACT_APP_BACK + 'page-Suggest/getMyPost'; // 임의 작성 
     
     useEffect(()=>{
         axios.get(SERVER_URL9, {
