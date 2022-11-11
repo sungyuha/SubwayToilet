@@ -5,13 +5,14 @@ import axios from "axios";
 import ReactInnerHTML from "../Components/ReactInnerHTML";
 import PageNotice_Write from "./PageNotice_Write";
 
+
 const PageNotice_View = (props) => {
     const [items, setItems] = useState([]);
     const [isModify, setIsModify] = useState(0);
     const [isAdminFlag, setIsAdminFlag] = useState('실패');
     const navigate = useNavigate();
     
-    const SERVER_URL = 'http://localhost:8000/page-notice/view';
+    const SERVER_URL = process.env.REACT_APP_BACK + 'page-notice/view';
     const moveList = () => {
         navigate("/page-notice");
     }

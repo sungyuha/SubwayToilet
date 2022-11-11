@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./MypageReview.scss";
 
+
 const MypageReview = () => {
 
     // 리뷰 데이터 조회
     const [data, setData] = useState([]);
     const [review, setreview] = useState(false);
 
-    const SERVER_URL8 = 'http://localhost:8000/review/myReview'; // 임의 작성
+    const SERVER_URL8 = process.env.REACT_APP_BACK + 'review/myReview'; // 임의 작성
     
     useEffect(()=>{
         axios.get(SERVER_URL8, {

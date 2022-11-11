@@ -23,14 +23,14 @@ exports.getKakao = passport.authenticate('kakao');
 
 (exports.getKakaoCallback = passport.authenticate('kakao', {
   successRedirect: '/auth/set',
-  failureRedirect: 'http://localhost:3000/login',
+  failureRedirect: process.env.FEIP + 'login',
   failureFlash: true,
 })),
   (req, res) => {
     res.redirect('/auth/set');
   };
 exports.setToken = (req, res) => {
-  res.redirect('http://localhost:3000?token=' + setUserToken(req.user));
+  res.redirect(process.env.FEIP +'?token=' + setUserToken(req.user));
 };
 
 // 구글 간편 로그인
@@ -40,14 +40,14 @@ exports.getGoogle = passport.authenticate('google', {
 
 (exports.getGoogleCallback = passport.authenticate('google', {
   successRedirect: '/auth/set',
-  failureRedirect: 'http://localhost:3000/login',
+  failureRedirect: process.env.FEIP +'/login',
   failureFlash: true,
 })),
   (req, res) => {
     res.redirect('/auth/set');
   };
 exports.setToken = (req, res) => {
-  res.redirect('http://localhost:3000?token=' + setUserToken(req.user));
+  res.redirect(process.env.FEIP +'?token=' + setUserToken(req.user));
 };
 
 // 네이버 간편 로그인
@@ -55,14 +55,14 @@ exports.getNaver = passport.authenticate('naver');
 
 (exports.getNaverCallback = passport.authenticate('naver', {
   successRedirect: '/auth/set',
-  failureRedirect: 'http://localhost:3000/login',
+  failureRedirect: process.env.FEIP +'/login',
   failureFlash: true,
 })),
   (req, res) => {
     res.redirect('/auth/set');
   };
 exports.setToken = (req, res) => {
-  res.redirect('http://localhost:3000?token=' + setUserToken(req.user));
+  res.redirect(process.env.FEIP +'?token=' + setUserToken(req.user));
 };
 
 // 로그아웃
@@ -74,5 +74,5 @@ exports.logout = (req, res) => {
   res.cookie('token', null, {
     maxAge: 0,
   });
-  res.redirect('http://localhost:3000');
+  res.redirect(process.env.FEIP);
 };

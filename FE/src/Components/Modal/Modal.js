@@ -4,6 +4,7 @@ import ModalHeader from "./ModalHeader/ModalHeader";
 import ModalContent from "./ModalContent/ModalContent";
 import ModalContentWrite from "./ModalContent/ModalContentWrite";
 import axios from 'axios';
+
 // import ModalInfo from "./ModalInfo/ModalInfo";
 // import ModalScore from "./ModalScore/ModalScore";
 // import ModalReview from "./ModalReview/ModalReview";
@@ -20,7 +21,7 @@ const Modal = (props) => {
     setModal(false);
   }
   console.log(typeof(props.selectStation) );
-  const SERVER_URL = `http://localhost:8000/toilet/?stinCd=${props.selectStation}`;
+  const SERVER_URL = `${process.env.REACT_APP_BACK}toilet/?stinCd=${props.selectStation}`;
 
   useEffect(()=>{
     axios.get(SERVER_URL).then((res) => {

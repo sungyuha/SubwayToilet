@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Mypageuser.scss";
 import { useNavigate } from "react-router-dom";
 
+
 const MypageUser = () => {
     const navigate = useNavigate('');
     const [index, setIndex] = useState('');
@@ -29,7 +30,7 @@ const MypageUser = () => {
         });
     }
     //회원정보 수정
-    const SERVER_URL7 = 'http://localhost:8000/user/userinfo/edit';
+    const SERVER_URL7 = process.env.REACT_APP_BACK + 'user/userinfo/edit';
     const MypageUserHandler = (e) => {
         e.preventDefault();
         // const id = e.target.id.value;
@@ -51,7 +52,7 @@ const MypageUser = () => {
     // 회원탈퇴
     //const [delete, setDelete] = useState('');
 
-    const SERVER_URL8 = 'http://localhost:8000/user/userinfo/delete';
+    const SERVER_URL8 = process.env.REACT_APP_BACK + 'user/userinfo/delete';
     const MypageDelete = async () => {
         const id = info.id;
         await axios.delete(SERVER_URL8, {
@@ -67,7 +68,7 @@ const MypageUser = () => {
         });
     }
 
-    const SERVER_URL9 = 'http://localhost:8000/user/userinfo';
+    const SERVER_URL9 = process.env.REACT_APP_BACK + 'user/userinfo';
     useEffect(() => {
         axios.get(SERVER_URL9, {
             headers: {

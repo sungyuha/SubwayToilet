@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+
 const MainSuggest = () => {
   const [items, setItems] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const SERVER_URL2 = 'http://localhost:8000/Page-Suggest/get5post';
+  const SERVER_URL2 = process.env.REACT_APP_BACK + 'Page-Suggest/get5post';
   useEffect(()=>{
     axios.get(SERVER_URL2).then((res) => {
       setItems(res.data);

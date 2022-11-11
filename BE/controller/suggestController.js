@@ -48,7 +48,7 @@ exports.uploadImg = (req, res) => {
   console.log(req.file);
   res.status(200).json({
     uploaded: true,
-    url: `http://localhost:8000/imgUploadFolder/${req.file.filename}`,
+    url: `${process.env.BEIP}/imgUploadFolder/${req.file.filename}`,
   });
 };
 // 마이페이지 내가 올린 게시글 보기

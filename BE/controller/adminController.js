@@ -52,5 +52,5 @@ exports.getLines = async (req, res, next) => {
       await station.save();
     });
   });
-  res.redirect('http://localhost:3000');
+  res.redirect(process.env.FEIP);
 };

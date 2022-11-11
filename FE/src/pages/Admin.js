@@ -2,8 +2,9 @@ import axios from "axios";
 import {useEffect} from 'react';
 
 
+
 const Admin = () => {
-    const LINES_URL = "http://localhost:8000/admin/lines"
+    const LINES_URL = process.env.REACT_APP_BACK + "admin/lines"
     const updateLines = () => {
         axios({
             method: 'get',
@@ -13,7 +14,7 @@ const Admin = () => {
             console.log(res);
           })
     }
-    const GET_URL = "http://localhost:8000/admin"
+    const GET_URL = process.env.REACT_APP_BACK + "admin"
     useEffect(() => {
       axios({
         method: 'get',

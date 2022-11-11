@@ -12,7 +12,8 @@ const PageSuggest_View = () => {
     const [isModify, setIsModify] = useState(0);
     const navigate = useNavigate();
     
-    const SERVER_URL = 'http://localhost:8000/page-suggest/view';
+    
+    const SERVER_URL = process.env.REACT_APP_BACK + 'page-suggest/view';
     const moveList = () => {
         navigate("/page-suggest");
     }

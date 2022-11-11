@@ -3,8 +3,9 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 import axios from 'axios';
 import "./MyCkeditor.scss"
 
+
 const MyCkeditor = (props) => {
-    const UPLOAD_URL = 'http://localhost:8000/page-notice/write/uploadImg';
+    const UPLOAD_URL =  process.env.REACT_APP_BACK+ 'page-notice/write/uploadImg';
     function uploadAdaptor(loader){
         console.dir(loader);
         return{
@@ -20,6 +21,7 @@ const MyCkeditor = (props) => {
                         
                         axios.post(UPLOAD_URL, formData, config)
                         .then((result) => {
+                            console.log(result.data.url)
                             resolve({default: result.data.url});
                         }).catch((err) => {
                             console.log('failure!');

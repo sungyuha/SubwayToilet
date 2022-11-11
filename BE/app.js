@@ -34,10 +34,9 @@ const boardRoutes = require('./routes/boardRoutes');
 const toiletRoutes = require('./routes/toiletRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const suggestRoutes = require('./routes/suggestRoutes');
-
+console.log( process.env.FEIP );
 const corsOption = {
-  origin: 'http://localhost:3000',
-  Credential: true,
+  origin: process.env.FEIP
 };
 app.use(cors(corsOption));
 app.use('/user', usersRoutes);
