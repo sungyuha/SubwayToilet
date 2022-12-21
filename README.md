@@ -1,12 +1,58 @@
-# SubwayToilet
-지하철 화장실 API 이용하여 화장실이 가까운 역 정보 제공 및 지하철 화장실 평점 시스템 웹개발 프로젝트
+## SubwayToilet
 
-## 깃 작업 순서  
-1. git pull(develop 메인 브랜치 최신화)
-1. git checkout -b feature/본인맡은기능이름 (브랜치 만들기)
-1. 만든 브랜치에서 작업
-1. git add . -> git commit -m "작업내용" -> git push origin 작업한브랜치이름
-1. 깃헙 프로젝트 페이지 가서 머지 완료
-1. 콘솔로 돌아와서 -> git checkout develop (develop 브랜치로 전환)
-1. git pull
-1. git branch -d 작업했던브랜치이름 (본인 로컬에 남아 있는 작업브랜치 삭제)
+2022.10.17 ~ 2022.11.02
+
+## 개요
+
+- 지하철 화장실 API 이용하여 화장실이 가까운 역 정보 제공 및 지하철 화장실 평점 시스템 웹개발 프로젝트
+
+## 정보
+
+[맡은 프로젝트 & 회고](https://www.notion.so/bd318e02d6ad4a0c916af5e466eccf41)
+
+- 공공데이터 API를 활용한 React 기반 반응형 팀 프로젝트
+- 작업 인원 : 프론트엔드3, 백엔드1
+- 서버 배포 : [http://13.125.248.225:3000]
+
+## 기술 스택
+
+**Front-End**
+
+- HTML, CSS, JavaScript(ES6), React, Sass, axios
+
+**Back-End**
+
+- Node.js, mongoDB, AWS
+
+**Tools**
+
+- Github, slack, Notion, Figma
+
+### 담당한 부분
+
+- 맡은 업무
+    - 프론트엔드
+
+- Header에 **`JSON Web Token`**을 담아서 백엔드에  데이터 전송 후 로그인&로그아웃 버튼 구현 ( 로그아웃하면 JWT 정보 삭제 )
+- 자동 검색 기능 구현
+    
+    (화장실이 가까운 역 정보 제공에 필요한 검색 기능 구현)
+    
+    - 공공 데이터 API를 활용하여 `**JSON**`파일로 지하철 역명 자동 완성 검색 이벤트 기능 구현
+- 백엔드에 `**Axios**`로 데이터 전송
+- 아이디 찾기 페이지 구현
+    - 아이디 유효성 검사 구현
+- 비밀번호 찾기 페이지 구현
+    - `**hooks**`로 `**tabTitle**`기능 구현
+- 비밀번호 찾기 검사
+    - 비밀번호 재 설정 구현
+- 공통 컴포넌트 모듈화
+    - 서비스에 사용되는 `input, button`과 같은 컴포넌트 모듈화
+    - 서비스에 필요한 `props`을 직접 선언하고 관리
+- Github flow
+    - 코드 리뷰도 함께 진행하면서 코드의 질과 코드 이해도가 상승
+- MyPage 페이지 구현
+    - `**hooks**`로 `**tabTitle**`기능 구현
+    - 레이아웃 구축
+- 페이지 연동 구현
+    - `BrowserRouter`, `Routes`, `Route`사용해서 각각 페이지 연동 적용
