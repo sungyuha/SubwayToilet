@@ -30,37 +30,6 @@ http://103.4.13.20:3001
 
 ---
 
-## 프로젝트 스크린샷, 설명
-
-<img width='100%' src="./readme_img/gif.gif" alt="사진">
-</br>
-
-### 마우스 휠, 드래그 로 노선도 이미지를 자유롭게 확대, 축소, 이동이 가능하고 원하는 역을 선택 가능
-
-</br>
-<img width='50%' src="./readme_img/K-001.png" alt="사진"><img width='50%' src="./readme_img/K-006.png" alt="사진">
-</br>
-
-### 검색으로 선택 가능
-
-</br>
-<img width='50%' src="./readme_img/K-007.png" alt="사진"><img width='50%' src="./readme_img/K-002.png" alt="사진">
-</br>
-
-### 역을 선택하면 해당 역에 대한 정보와 리뷰, 평점 확인 가능
-
-</br>
-<img width='50%' src="./readme_img/K-003.png" alt="사진"><img width='50%' src="./readme_img/K-004.png" alt="사진">
-</br>
-
-### 로그인을 하면 평점과 리뷰를 등록 가능
-
-</br>
-<img width='50%' src="./readme_img/K-005.png" alt="사진"><img width='50%' src="./readme_img/K-008.png" alt="사진">
-</br>
-
-### 공지사항 게시판, 건의 게시판이 있고 글과 이미지를 자유롭게 업로드 가능
-
 </br>
 
 ---
